@@ -1,0 +1,56 @@
+<?php
+
+return [
+
+    /******* JS *******/
+    'please_choose_project' => 'Veuillez choisir un projet',
+    'please_choose_dates' => 'Veuillez choisir des dates',
+    'confirm_unconfirm' => 'Êtes-vous sûr de vouloir annuler la confirmation?',
+    'add_one_task' => 'Ajoutez au moins une tâche afin de sauvegarder.',
+    'please_select_task' => 'Veuillez sélectionner une tâche',
+    'please_enter_time' => 'Veuillez saisir l\'heure de la tâche',
+
+
+	/******* Main template *******/
+    'title' => 'Gestion du temps des employés',
+    'start_date' => 'Date de début',
+    'end_date' => 'Date de fin',
+    'project' => 'Projet',
+    'choose_project' => 'Choisissez un projet',
+    'show_employees' => 'Afficher les employés',
+    'filter_by_employee_name' => 'Filtrer par nom d\'employé',
+    'employee_name' => 'Nom de l\'employé',
+    'time_in' => 'Heure d\'entrée',
+    'time_out' => 'Temps libre',
+    'time_worked' => 'Temps travaillé',
+    'is_confirmed' => 'Confirmé?',
+    'is_approved' => 'Approuvé?',
+    'tasks' => 'Tâches',
+    'confirmed_by' => 'Confirmé par',
+    'confirm_tasks' => 'Confirmer les tâches',
+    'not_confirmed' => 'Pas confirmé',
+    'approved' => 'Approuvé',
+    'approved_by' => 'Approuvé par',
+    'cancel' => 'Annuler',
+    'approve_hours' => 'Approuver les heures',
+    'cannot_approve' => 'Vous ne pouvez pas approuver cet employé car sa profession n\'a pas de taux de base.',
+    'change_rate' => 'Taux de change',
+    'task' => 'Tâche',
+    'hours' => 'Heures',
+    'minutes' => 'Minutes',
+    'regular_time' => 'Temps régulier',
+    'overtime' => 'Heures supplémentaires',
+    'fees' => 'Frais',
+    'choose_task' => 'Choisissez la tâche',
+    'remove' => 'Supprimer',
+    'add_comment' => 'Ajouter un commentaire (facultatif)',
+    'save_and_confirm' => 'Enregistrer et confirmer les tâches',
+    'add_task' => 'Ajouter une tâche',
+    'comment' => 'Commentaire',
+    'other_fees' => 'Autres frais',
+    'unconfirm_task' => 'Annuler la confirmation des tâches',
+    'no_time_entries' => 'Aucune saisie de temps pour cette période',
+    'no_revisions' => 'Aucune révision',
+    'num_revisions' => ':nombre de révisions',
+
+];
