@@ -229,12 +229,13 @@
                                             <ul class="dropdown-menu dropdown-menu-end">
 
                                                 <li>
-                                                    <button  data-bs-toggle="modal" data-bs-target="#updateModal" wire:click="edit({{ $value->id }})" class="btn btn-primary btn-sm">Edition</button>
+                                                    <button  data-bs-toggle="modal" data-bs-target="#updateModal" wire:click="edit({{ $value->id }})" class="btn btn-primary">Edition</button>
                                                 </li>
-                                                <li>
+                                                {{-- <li>
                                                     <button  data-bs-toggle="modal" data-bs-target="#showModal" wire:click="show({{ $value->id }})" class="btn btn-primary btn-sm">Consulter</button>
                                                     <a class="dropdown-item" href="#">Consulter</a></li>
-                                                <li>
+                                                <li> --}}
+                                                    <br>
                                                  <button  wire:click="delete({{$value->id}})" onclick="confirm('Voulez-vous vraiment supprimer l\'utilisateur de ce groupe ?') || event.stopImmediatePropagation()">Supprimer</button>
 
                                                 </li>

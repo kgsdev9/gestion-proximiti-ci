@@ -11,7 +11,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form>  
                         <div class="form-group">
                             <input type="hidden" wire:model="user_id">
                             <label for="exampleFormControlInput1">Désignation</label>

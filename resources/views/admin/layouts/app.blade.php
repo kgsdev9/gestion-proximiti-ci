@@ -169,11 +169,6 @@
         @include('flashy::message')
         @livewireScripts
 
-        <script type="text/javascript">
-            window.livewire.on('userStore', () => {
-                $('#exampleModal').modal('hide');
-            });
-        </script>
     </body>
 
 </html>

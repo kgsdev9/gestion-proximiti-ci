@@ -23,7 +23,8 @@ class CommandeController extends Component
     protected $rules = [
         'designation' => 'required',
         'prix' => 'required|integer',
-        'quantite' => 'required|integer'
+        'quantite' => 'required|integer',
+        'codeCommande'  =>'required'
     ];
 
 
@@ -49,7 +50,7 @@ class CommandeController extends Component
      public function save() {
         $this->validate();
         Commande::create([
-        'codeCommande' => $this->codeCommande,
+        'codeCommande' => $this->codeCommande ?? "REF-".time(),
         'designation' => $this->designation,
         'prix' => $this->prix,
         'quantite' => $this->quantite,
@@ -62,7 +63,12 @@ class CommandeController extends Component
         'total' => $this->calculateAmount(),
         ]);
         $this->reset();
+
+        $this->emit('userStore'); //
+
      }
+
+
 
 
     public function render()
@@ -128,7 +134,10 @@ class CommandeController extends Component
             // $this->updateMode = false;
             // session()->flash('message', 'Users Updated Successfully.');
             // $this->resetInputFields();
-            return redirect()->route('gestion.commande', ['succes'=> true]);
+            $this->updateMode = false;
+
+            $this->reset();
+            // return redirect()->route('gestion.commande', ['succes'=> true]);
         }
     }
 

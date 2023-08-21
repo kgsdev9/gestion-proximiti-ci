@@ -209,6 +209,8 @@
                   <td>{{$value->commune}}</td>
                   <td>  {{$value->specilaite->libelle}}</td>
 
+                  
+
                   <td>
                     <span class="badge bg-success">Disponible</span>
                 </td>
