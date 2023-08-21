@@ -38,8 +38,9 @@ class ArtisanRequest extends FormRequest
                     'speciality_id'=> 'required|exists:specialities,id',
                     'date_adhesion'=> 'required|date',
                     'photo'=> 'required|mimes:png,jpg,jpeg',
-                    'description'=> 'nullable',
+                    'description'=> 'required',
                     'status'=> 'required',
+                    'file'=> 'required',
 
                 ];
                 break ;

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Home;
 
 use App\Models\User;
+use App\Models\Media;
 use App\Models\Artisan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Speciality;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
@@ -75,6 +77,19 @@ class HomeController extends Controller
     public function edit($id)
     {
         //
+
+    }
+
+    public function deletefile($id) {
+    $ressource = Media::findOrFail($id);
+
+
+    if($path = File::exists("programme/".$ressource->image)) {
+        File::delete('programme/'.$ressource->image);
+    }
+
+    $ressource->delete();
+    return redirect()->back();
     }
 
     /**

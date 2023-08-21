@@ -1,156 +1,268 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Fiche technique')
 @section('master')
-
 <div class="main-content">
 
     <div class="page-content">
-        <div class="container">
+        <div class="container-fluid">
 
-                <div class="col-md-12">
-                  <div class="row" >
-                    <div class="col-md-12 grid-margin stretch-card">
-                      <div class="card">
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0 font-size-18">Profile</h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Contacts</a></li>
+                                <li class="breadcrumb-item active">Profile</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+                <div class="col-xl-9 col-lg-8">
+                    <div class="card">
                         <div class="card-body">
                             <div class="row">
+                                <div class="col-sm order-2 order-sm-1">
+                                    <div class="d-flex align-items-start mt-3 mt-sm-0">
+                                        <div class="flex-shrink-0">
+                                            <div class="avatar-xl me-3">
+                                                <img src="{{asset('artisans/photo/'.$ressource->photo)}}" alt="" class="img-fluid rounded-circle d-block">
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div>
+                                                <h5 class="font-size-16 mb-1">{{$ressource->name}}  {{$ressource->prenom}}</h5>
+                                                <p class="text-muted font-size-13">{{$ressource->specilaite->libelle  }}</p>
 
-                                <div class="col-md-8">
-                                    <h2> <strong>FICHE TECHNIQUE DE L'ARTISAN</strong> </h2>
-                                    @if($ressource->status =="Disponible")
-                                    <button class="btn btn-success w-md"></button>
-                                     @elseif($ressource->status =="Absent")
-                                    <button class="btn btn-warning w-md"></button>
-                                     @elseif($ressource->status =="maladie")
-                                     <button class="btn btn-danger w-md"></button>
-                                     @elseif($ressource->status =="intervention")
-                                     <button class="btn btn-info w-md"></button>
-                                     @elseif($ressource->status =="radie")
-                                     <button class="btn btn-danger w-md"></button>
-                                     @endif
-                                    <h5>{{$ressource->name}}  {{$ressource->prenom}} </h5>
-                                    <a href="{{route('invoice.fiche', $ressource->id)}}" class="btn btn-primary">Télecharger</a>
-                                </div>
 
-                                <div class="col-md-2">
-                                    <img class="rounded-circle" src="{{asset('artisans/photo/'.$ressource->photo)}}" alt="" style="height:130px;">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
-                          <div class="table-responsive pt-3">
-                            <table class="table table-striped" id="example">
-
-                           <tbody>
-
-                            <tr>
-                                <td>
-                               Nom Prenom
-                                </td>
-                                <td>
-                                    {{$ressource->name}}     {{$ressource->prenom}}
-                                </td>
-
-                            </tr>
-
-                              <tr>
-                                <td>
-                                Télephone
-                                </td>
-                                <td>
-                             {{$ressource->telephone}}
-                                </td>
-                              </tr>
-
-
-                              <tr>
-                                  <td>
-                                    Whattsapp
-                                  </td>
-                                  <td>
-                                    {{$ressource->num_whattsapp}}
-                                  </td>
-
-                              </tr>
-
-                              <tr>
-                                  <td>
-                               Adresse
-                                  </td>
-                                  <td>
-                                    {{$ressource->adresse}}
-                                  </td>
-
-
-                              </tr>
-                              <tr>
-                                  <td>
-                                    Email
-                                  </td>
-                                  <td>
-                                    {{$ressource->email  }}
-                                  </td>
-                              </tr>
-
-                              <tr>
-                                <td>
-                                 Commune
-                                </td>
-                                <td>
-                                  {{$ressource->commune  }}
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                 Zone intervention
-                                </td>
-                                <td>
-                                  {{$ressource->zone_intervention  }}
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                Description
-                                </td>
-                                <td>
-                                  {{$ressource->description  }}
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                Date d'adhesion
-                                </td>
-                                <td>
-                                  {{$ressource->date_adhesion  }}
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                               Spécialité metier
-                                </td>
-                                <td>
-                                  {{$ressource->specilaite->libelle  }}
-                                </td>
-                            </tr>
-                            </tbody>
-                            </table>
-
-                          </div>
+                            <br>
+                            <ul class="nav nav-tabs-custom card-header-tabs border-top mt-4" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link px-3 active" data-bs-toggle="tab" href="#overview" role="tab" aria-selected="true">Informations</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link px-3" data-bs-toggle="tab" href="#about" role="tab" aria-selected="false" tabindex="-1">Documments</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link px-3" data-bs-toggle="tab" href="#post" role="tab" aria-selected="false" tabindex="-1">Missions</a>
+                                </li>
+                            </ul>
                         </div>
-                      </div>
+                        <!-- end card body -->
                     </div>
-                  </div>
+                    <!-- end card -->
+
+                    <div class="tab-content">
+                        <div class="tab-pane active show" id="overview" role="tabpanel">
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <div>
+                                        <div class="pb-3">
+                                            <div class="row">
+                                                <div class="col-xl-2">
+                                                    <div>
+                                                        <h5 class="font-size-15">Nom Prenom</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl">
+                                                    <div class="text-muted">
+                                                        <p class="mb-2">{{$ressource->name}}     {{$ressource->prenom}}</p>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-xl-2">
+                                                    <div>
+                                                        <h5 class="font-size-15">Spécialité metier</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl">
+                                                    <div class="text-muted">
+                                                        <p class="mb-2"> {{$ressource->specilaite->libelle  }} </p>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3">
+                                            <div class="row">
+                                                <div class="col-xl-2">
+                                                    <div>
+                                                        <h5 class="font-size-15">Télephone :</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl">
+                                                    <div class="text-muted">
+                                                        <p> {{$ressource->telephone}}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-2">
+                                                    <div>
+                                                        <h5 class="font-size-15"> Numero WHATTSAP :</h5>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl">
+                                                    <div class="text-muted">
+                                                        <p>  {{$ressource->num_whattsapp}}</p>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="py-3">
+                                            <div class="row">
+                                                <div class="col-xl-2">
+                                                    <div>
+                                                        <h5 class="font-size-15">Adresse :</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl">
+                                                    <div class="text-muted">
+                                                        <p>  {{$ressource->adresse}}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-2">
+                                                    <div>
+                                                        <h5 class="font-size-15"> Commune :</h5>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl">
+                                                    <div class="text-muted">
+                                                        <p>  {{$ressource->commune}}</p>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="py-3">
+                                            <div class="row">
+                                                <div class="col-xl-2">
+                                                    <div>
+                                                        <h5 class="font-size-15">Zone intervention:</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl">
+                                                    <div class="text-muted">
+                                                        <p>  {{$ressource->zone_intervention}}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-2">
+                                                    <div>
+                                                        <h5 class="font-size-15">Date d'adhesion :</h5>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl">
+                                                    <div class="text-muted">
+                                                        <p>  {{$ressource->date_adhesion}}</p>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                                <!-- end card body -->
+                            </div>
+                            <!-- end card -->
+
+                            <!-- end card -->
+                        </div>
+                        <!-- end tab pane -->
+
+                        <div class="tab-pane" id="about" role="tabpanel">
+                            <div class="card">
+
+                                <div class="card-body">
+
+
+                                    <div>
+                                        <div class="pb-3">
+
+                                            @foreach ($ressource->medias as $value )
+
+                                            <a href=""><iframe src="{{asset('programme/'.$value->image)}}"  frameborder="0" style="height:700px; width:900px;"></iframe></a>
+                                             @endforeach
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <!-- end card body -->
+                            </div>
+                            <!-- end card -->
+                        </div>
+                        <!-- end tab pane -->
+
+
+                        <!-- end tab pane -->
+                    </div>
+                    <!-- end tab content -->
                 </div>
+                <!-- end col -->
 
 
-
+                <!-- end col -->
+            </div>
+            <!-- end row -->
 
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
 
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <script>document.write(new Date().getFullYear())</script>2023 © Minia.
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end d-none d-sm-block">
+                        Design &amp; Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
+
+
 @endsection

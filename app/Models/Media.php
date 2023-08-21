@@ -9,6 +9,10 @@ class Media extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['image', 'artisan_id'];
+    protected $fillable = ['image', 'artisan_id', 'piece'];
+
+    public function artisan() {
+        return $this->belongsTo(Media::class, 'artisan_id');
+    }   
 
 }

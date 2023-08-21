@@ -18,4 +18,10 @@ class Artisan extends Model
         return $this->belongsTo(Speciality::class, 'speciality_id');
     }
 
+    public function medias() {
+        return $this->hasMany(Media::class);
+    }
+
+
+
 }

@@ -1,6 +1,5 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Bienvenue sur proximiti')
 
 @section('master')
 <div class="main-content">
@@ -167,6 +166,5 @@
         </div>
     </footer>
 </div>
-
 
 @endsection

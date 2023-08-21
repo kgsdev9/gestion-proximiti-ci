@@ -12,6 +12,7 @@
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{asset('logo_footer.png')}}">
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
         <!-- plugin css -->
@@ -20,13 +21,14 @@
         <!-- preloader css -->
         <link rel="stylesheet" href="teste/css/preloader.min.css" type="text/css" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,100;1,400;1,500&display=swap" rel="stylesheet">
-
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <!-- Bootstrap Css -->
         <link href="{{asset('teste/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
         <link href="{{asset('teste/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{asset('teste/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        @livewireStyles
 
     </head>
 
@@ -159,8 +161,19 @@
         <script src="{{asset('teste/js/pages/datatables.init.js')}}"></script>
 
         <script src="{{asset('teste/js/app.js')}}"></script>
-       
+        <script>
+            $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+        </script>
         @include('flashy::message')
+        @livewireScripts
+
+        <script type="text/javascript">
+            window.livewire.on('userStore', () => {
+                $('#exampleModal').modal('hide');
+            });
+        </script>
     </body>
 
 </html>

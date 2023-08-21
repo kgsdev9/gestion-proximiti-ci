@@ -17,7 +17,7 @@ class CreateMediaTable extends Migration
             $table->id();
             $table->string('image');
             $table->unsignedBigInteger('artisan_id');
-            $table->foreign('artisan_id')->references('id')->on('artisans');
+            $table->foreign('artisan_id')->references('id')->on('artisans')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

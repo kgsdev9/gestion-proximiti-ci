@@ -2,12 +2,19 @@
 
 use App\Http\Controllers\Admin\Artisan\ArtisanController;
 use App\Http\Controllers\Admin\Invoice\InvoiceController;
+use App\Http\Controllers\Admin\PropositionController;
 use App\Http\Controllers\Admin\Users\UserController;
+use App\Http\Controllers\AgendaMission;
+use App\Http\Controllers\AgendaMissionController;
 use App\Http\Controllers\Artisan\Specialite\SpecialiteController;
 use App\Http\Controllers\CharsController;
+use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Auth\AuthController;
+use App\Http\Livewire\Caise\GestionEntre;
+use App\Http\Livewire\Caise\GestionSortie;
+use App\Http\Livewire\Commande\CommandeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +38,9 @@ Route::get('/login', AuthController::class)->name('auth.login')->middleware('gue
 Route::resources([
     'users' => UserController::class,
     'artisan' => ArtisanController::class,
-    'specialite'=> SpecialiteController::class
+    'specialite'=> SpecialiteController::class,
+    'agenda' => AgendaMissionController::class,
+    'proposition' => PropositionController::class
  ]);
 
  Route::get('/chars' , [CharsController::class, 'googleLineChart']);
@@ -40,3 +49,19 @@ Route::resources([
  Route::get('/artisan/get/{id}', [InvoiceController::class, 'render'])->name('invoice.fiche');
 
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::delete('artisan-file/{id}', [HomeController::class, 'deletefile'])->name('unique.files');
+
+
+Route::get('/annuaire-commande', CommandeController::class)->name('gestion.commande')->middleware('auth');
+
+
+Route::get('/annuaire-entree', GestionEntre::class)->name('gestion.entree');
+Route::get('/annuaire-sortie', GestionSortie::class)->name('gestion.sortie');
+
+
+
+Route::get('/calendrier', function () {
+    return view('livewire.home');
+});

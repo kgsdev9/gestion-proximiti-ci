@@ -1,8 +1,6 @@
-@extends('admin.layouts.app')
+@extends('layout.app')
 
-@section('title', 'Nouvel artisan')
-
-@section('master')
+@section('content')
 
 
 
@@ -69,14 +67,6 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="example-email-input" class="form-label">Photo de l'artisan @error('photo')
-                                                <span class="text-danger">{{$message}}</span>
-
-                                              @enderror </label>
-                                            <input class="form-control" type="file" name="photo" >
-                                        </div>
-
-                                        <div class="mb-3">
                                             <label for="example-week-input" class="form-label">Statut  de l'artisan  @error('status')
                                                 <span class="text-danger">{{$message}}</span>
                                               @enderror</label>
@@ -88,6 +78,15 @@
                                             <option value="radie">Radié</option>
                                           </select>
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="example-email-input" class="form-label">Photo de l'artisan @error('photo')
+                                                <span class="text-danger">{{$message}}</span>
+
+                                              @enderror </label>
+                                            <input class="form-control" type="file" name="photo" >
+                                        </div>
+
+
 
                                     </div>
                                 </div>
@@ -149,7 +148,13 @@
                                         </div>
 
 
+                                        <div class="mb-3">
+                                            <label for="example-email-input" class="form-label">Fiche d'adhesion @error('file')
+                                                <span class="text-danger">{{$message}}</span>
 
+                                              @enderror </label>
+                                            <input class="form-control" type="file" name="file[]" multiple>
+                                        </div>
 
                                     </div>
 
@@ -182,12 +187,3 @@
 
 @endsection
 
-@section('javascript')
-
-<script>
-    $("#specialite").select2({
-    placeholder: "Select a specialite",
-    allowClear: true
-});
-</script>
-@endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Artisan;
 
 use App\Models\Artisan;
+use App\Models\Media;
 use App\Models\Speciality;
 use Illuminate\Http\Request;
 use MercurySeries\Flashy\Flashy;
@@ -26,7 +27,8 @@ class ArtisanController extends Controller
     public function index()
     {
         $artisans = Artisan::orderByDesc('created_at')->get();
-        return view('admin.artisans.liste', compact('artisans'));
+        $specialites = Speciality::orderBYDesc('libelle')->get();
+        return view('admin.artisans.liste', compact('artisans', 'specialites'));
     }
 
     /**
@@ -48,16 +50,16 @@ class ArtisanController extends Controller
      */
     public function store(ArtisanRequest $request)
     {
-        // dd($request->all());
 
         if($request->hasfile('photo')) {
             $filetwo = $request->file('photo');
             $filenametwo  = $request->file('photo')->getClientOriginalName() ;
             $filetwo->move(public_path('artisans/photo'), $filenametwo);
 
-}
+            }
 
-        Artisan::create([
+
+      $artisan  =   Artisan::create([
             'name' => $request->input('name'),
             'slug' => \Str::limit($request->input('name')),
             'prenom' => $request->input('prenom'),
@@ -74,6 +76,20 @@ class ArtisanController extends Controller
             'zone_intervention' => $request->input('zone_intervention'),
 
         ]);
+
+        if( $request->hasfile('file')) {
+            $file = $request->file('file');
+            // $filename = time().'.'.$extention;
+            foreach($file as $informations) {
+                $filename = time().'_'.$informations->getClientOriginalName();
+                $informations->move(\public_path("programme"), $filename);
+                Media::create([
+                'artisan_id' => $artisan->id,
+                'image' => $filename
+                 ]);
+            }
+        }
+
         Flashy::message('Artisan ajouté avec succes!');
         return redirect()->route('artisan.index');
     }
@@ -87,7 +103,8 @@ class ArtisanController extends Controller
     public function show($id)
     {
         $ressource = Artisan::find($id);
-        return view('admin.artisans.detail', compact('ressource'));
+        $fileRessource = Media::where('artisan_id', $ressource->id)->first();
+        return view('admin.artisans.detail', compact('ressource', 'fileRessource'));
     }
 
     /**
@@ -115,16 +132,7 @@ class ArtisanController extends Controller
     public function update(ArtisanRequest $request, $id)
     {
         $ressource  = Artisan::find($id);
-        if($request->hasFile('photo')) {
-            $chemin = 'artisans/photo/'.$ressource->cover_image;
-            if(File::exists($chemin)) {
-            $docs =    File::delete($chemin) ;
-            }
-            $file = $request->file('photo');
-            $name = $request->file('photo')->getClientOriginalName();
-            $file->move(public_path('artisans/photo/'),$name);
-            $ressource->photo = $name;
-         }
+
 
         $ressource->name = $request->input('name');
         $ressource->slug = \Str::slug($request->input('name'));
@@ -138,9 +146,35 @@ class ArtisanController extends Controller
         $ressource->zone_intervention = $request->input('zone_intervention');
         $ressource->speciality_id = $request->input('speciality_id');
         $ressource->description = $request->input('description');
+
+        if($request->hasFile('photo')) {
+            $chemin = 'artisans/photo/'.$ressource->cover_image;
+            if(File::exists($chemin)) {
+            $docs =    File::delete($chemin) ;
+            }
+            $file = $request->file('photo');
+            $name = $request->file('photo')->getClientOriginalName();
+            $file->move(public_path('artisans/photo/'),$name);
+            $ressource->photo = $name;
+         }
+
         $ressource->update();
+
+        if($request->hasFile('file')) {
+            $files = $request->file('file');
+            foreach ($files as $file) {
+            $image = time().'_'.$file->getClientOriginalName();
+            $file->move(\public_path("programme"), $image);
+            Media::create([
+                'artisan_id' => $ressource->id,
+                'image' => $image
+                 ]);
+            }
+        }
+
         Flashy::message('Fiche artisan modifiée avec succes!');
-        return redirect()->route('artisan.index');
+        // return redirect()->route('artisan.index');
+        return redirect()->back();
     }
 
     /**

@@ -15,7 +15,7 @@ class AuthController extends Component
 
     public function render()
     {
-        return view('livewire.auth.auth-controller')->extends('layout.app')->section('content');
+        return view('livewire.auth.auth-controller')->extends('livewire.layout')->section('auth');
     }
 
 

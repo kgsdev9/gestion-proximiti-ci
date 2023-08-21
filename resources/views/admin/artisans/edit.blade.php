@@ -10,9 +10,6 @@
 
     <div class="page-content">
         <div class="container-fluid">
-
-
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -151,8 +148,9 @@
 
 
 
-
                                     </div>
+                                    <label for="">Modifier les fichiers</label>
+                                    <input t*ype="file" type="file" name="file[]" multiple>
 
                                 </div>
 
@@ -161,13 +159,56 @@
                             </div>
                         </form>
                         </div>
+
                     </div>
                 </div> <!-- end col -->
             </div>
             <!-- end row -->
 
 
+            <div class="card">
+                <div class="card-body">
+                    <div>
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="card p-1 mb-xl-0">
+                                    <div class="position-relative">
+                                        <img src="{{asset('artisans/photo/'.$ressource->photo)}}" alt="" class="img-thumbnail">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                            @foreach ($ressource->medias as $value)
+                            <form action="{{route('unique.files', $value->id)}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger">xx SUpprimer
 
+                                </button>
+                            </form>
+
+
+
+
+                            <div class="col-xl-4">
+                                <div class="card p-1 mb-xl-0">
+                                    <div class="position-relative">
+                                        <iframe src="{{asset('programme/'.$value->image)}}" frameborder="0"></iframe>
+                                    </div>
+
+
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                            @endforeach
+
+                        </div>
+                        <!-- end row -->
+                    </div>
+                </div>
+                <!-- end card body -->
+            </div>
 
 
 
@@ -176,16 +217,9 @@
     </div>
     <!-- End Page-content -->
 
+
 </div>
 
 @endsection
 
-@section('javascript')
 
-<script>
-    $("#specialite").select2({
-    placeholder: "Select a specialite",
-    allowClear: true
-});
-</script>
-@endsection
