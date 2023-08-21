@@ -10,17 +10,18 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="{{asset('logo_footer.png')}}">
 
         <!-- preloader css -->
-        <link rel="stylesheet" href="assets/css/preloader.min.css" type="text/css" />
+        <link rel="stylesheet" href="{{asset('assetsauth/css/preloader.min.css')}}" type="text/css" />
 
         <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{{asset('assetsauth/css/bootstrap.min.css')}}">
         <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+       
+        <link href="{{asset('teste/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{{asset('assetsauth/css/app.min.css')}}">
         @livewireStyles
     </head>
 
@@ -31,16 +32,18 @@
         @yield('auth')
 
         <!-- JAVASCRIPT -->
-        <script src="assets/libs/jquery/jquery.min.js"></script>
-        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/libs/node-waves/waves.min.js"></script>
-        <script src="assets/libs/feather-icons/feather.min.js"></script>
+
+        <script src="{{asset('assetsauth/js/jquery.min.js')}}"></script>
+        <script src="{{asset('assetsauth/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('assetsauth/js/metisMenu.min.js')}}"></script>
+        <script src="{{asset('assetsauth/js/simplebar.min.js')}}"></script>
+        <script src="{{asset('assetsauth/js/waves.min.js')}}"></script>
+        <script src="{{asset('assetsauth/js/feather.min.js')}}"></script>
         <!-- pace js -->
-        <script src="assets/libs/pace-js/pace.min.js"></script>
+        <script src="{{asset('assetsauth/js/pace.min.js')}}"></script>
         <!-- password addon init -->
-        <script src="assets/js/pages/pass-addon.init.js"></script>
+
+        <script src="{{asset('assetsauth/js/pass-addon.init.js')}}"></script>
         @livewireScripts
 
     </body>

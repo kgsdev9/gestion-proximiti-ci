@@ -93,7 +93,7 @@
                                     </div>
 
                                     <div class="mt-5 text-center">
-                                        <p class="text-muted mb-0">Vous n'avez pas de compte  ? <a href="auth-register.html"
+                                        <p class="text-muted mb-0">Vous n'avez pas de compte  ? <a href="#"
                                                 class="text-primary fw-semibold"> Contactez l'administrateur </a> </p>
                                     </div>
                                 </div>
