@@ -183,8 +183,11 @@
 
                         <div class="col-sm-12 col-md-6">
                             <div id="example1_filter" class="dataTables_filter">
-                                <button class="btn btn-success">Excell</button>
-                                <button class="btn btn-warning">PDF</button>
+
+                               <a href="{{route('artisan.export')}}"  class="btn btn-success">Excelle</a>
+
+                               <a href="{{route('artisan.pdf')}}" class="btn btn-warning">PDF</a>
+                              
                             </div>
                         </div>
                     </div>
@@ -209,7 +212,7 @@
                   <td>{{$value->commune}}</td>
                   <td>  {{$value->specilaite->libelle}}</td>
 
-                  
+
 
                   <td>
                     <span class="badge bg-success">Disponible</span>

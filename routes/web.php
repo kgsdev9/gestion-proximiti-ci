@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\ArtisanExport;
 use App\Http\Controllers\Admin\Artisan\ArtisanController;
 use App\Http\Controllers\Admin\Invoice\InvoiceController;
 use App\Http\Controllers\Admin\PropositionController;
@@ -65,3 +66,8 @@ Route::get('/annuaire-sortie', GestionSortie::class)->name('gestion.sortie');
 Route::get('/calendrier', function () {
     return view('livewire.home');
 });
+
+
+Route::get('/artisan-export-excell', [InvoiceController::class, 'renderArisanAllExcell'])->name('artisan.export');
+
+Route::get('/artisan-export-pdf', [InvoiceController::class, 'renderArisanAllPDF'])->name('artisan.pdf');
