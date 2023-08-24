@@ -12,4 +12,17 @@ class TCommandeArticle extends Model
      protected $guarded = [];
 
     // protected $fillable  = ['designation', 'prix', 'quantite', 'total', 'commande_id'];
+
+
+    public function sommeCommande($items) {
+
+        $erroers = [] ;
+        if($items) {
+            $resultat = collect($items)->sum('total');
+        } else{
+            $erroers[] = "la valuer n'existepas";
+        }
+
+        return $resultat ;
+    }
 }

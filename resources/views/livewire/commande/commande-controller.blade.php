@@ -79,23 +79,61 @@
                                 </div>
 
 
-
-                                <div class="col-md-12 col-lg-8 col-xxl-6">
+                                <div class="col-md-6 col-lg-4 col-xxl-3">
                                     <div class="form-group">
-                                        <label class="form-label">Déscription  @error('description')
+                                        <label for="example-text-input" class="form-label">Désignation @error('designation')
                                             <span class="text-danger">{{$message}}</span>
-                                        @enderror </label>
-                                        <div class="form-control-wrap">
-                                            <div class="form-file">
-                                              <textarea  wire:model="description" class="form-control" id="" cols="30" rows="2"></textarea>
 
-                                            </div>
+                                          @enderror </label>
+                                          <input class="form-control"  wire:model="designation.0" type="text" placeholder="Ordinateur portable"  required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                    <div class="form-group">
+                                        <label for="example-search-input" class="form-label">Prix  @error('prix')
+                                            <span class="text-danger">{{$message}}</span>
+
+                                          @enderror</label>
+                                          <input class="form-control" wire:model="prix.0" type="number" placeholder="9000" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                    <div class="form-group">
+                                        <label for="example-week-input" class="form-label">Quantité  @error('status')
+                                            <span class="text-danger">{{$message}}</span>
+                                          @enderror</label>
+                                        <div class="form-control-wrap">
+                                            <input class="form-control" wire:model="quantite.0" type="number"  placeholder="2" required>
                                         </div>
                                     </div>
                                 </div>
 
+                                <div class="col-md-2 col-lg-2 col-xxl-2">
+                                    <div class="form-group">
+                                        <label for="example-week-input" class="form-label">Total  @error('amount')
+                                            <span class="text-danger">{{$message}}</span>
+                                          @enderror</label>
+                                        <div class="form-control-wrap">
+                                            <input class="form-control"  value="" type="number" readonly>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                <div class=" add-input">
+                                <div class="col-md-2 col-lg-2 col-xxl-1">
+                                    <div class="form-group">
+                                        <label for="example-week-input" class="form-label">Action</label>
+                                          <button class="btn text-white btn-info btn-sm" wire:click.prevent="add({{$i}})">Ajouter</button>
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+                                {{-- <div class=" add-input">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
@@ -116,10 +154,52 @@
                                             <button class="btn text-white btn-info btn-sm" wire:click.prevent="add({{$i}})">Ajouter</button>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 @foreach($inputs as $key => $value)
-            <div class=" add-input">
+
+                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-label">Désignation @error('designation')
+                                            <span class="text-danger">{{$message}}</span>
+
+                                          @enderror </label>
+                                          <input class="form-control"  wire:model="designation.{{ $value }}"  type="text" placeholder="Ordinateur portable"  required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                    <div class="form-group">
+                                        <label for="example-search-input" class="form-label">Prix  @error('prix')
+                                            <span class="text-danger">{{$message}}</span>
+
+                                          @enderror</label>
+                                          <input class="form-control" wire:model="prix.{{ $value }}" type="number"  placeholder="prix" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                    <div class="form-group">
+                                        <label for="example-week-input" class="form-label">Quantité  @error('status')
+                                            <span class="text-danger">{{$message}}</span>
+                                          @enderror</label>
+                                        <div class="form-control-wrap">
+                                            <input class="form-control"  wire:model="quantite.{{ $value }}"  type="number"  placeholder="2" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-lg-4 col-xxl-2">
+                                    <div class="form-group">
+                                        <label for="example-week-input" class="form-label">Total  @error('amount')
+                                            <span class="text-danger">{{$message}}</span>
+                                          @enderror</label>
+                                        <div class="form-control-wrap">
+                                            <input class="form-control"  value="{{ $value['prix'] * $value['quantite']}}}" type="number" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+            {{-- <div class=" add-input">
                 <div class="row">
                     <div class="col-md-5">
                         <div class="form-group">
@@ -139,7 +219,17 @@
                         <button class="btn btn-danger btn-sm" wire:click.prevent="remove({{$key}})">remove</button>
                     </div>
                 </div>
+            </div> --}}
+
+            <div class="col-md-2 col-lg-2 col-xxl-1">
+                <div class="form-group">
+                    <label for="example-week-input" class="form-label">Action</label>
+                    <button class="btn btn-danger btn-sm" wire:click.prevent="remove({{$key}})">remove</button>
+
+                </div>
             </div>
+
+
         @endforeach
 
                                 <div class="col-sm-12">
@@ -151,7 +241,7 @@
                         </div>
                     </form>
                 </div>
-                
+
 
                 {{-- @include('livewire.update-commande')
                 @include('livewire.commande.commandread') --}}

@@ -100,6 +100,8 @@
                                                 <td>{{$value->total}}</td>
                                             </tr>
                                             @endforeach
+
+
                                             <div class="row">
                                                 <div class="col-md-8">
 
@@ -107,7 +109,7 @@
                                                 <div class="col-md-4">
                                                     <tr>
                                                         <th scope="row" colspan="2" class="border-0 text-end">Total</th>
-                                                        <td class="border-0 text-end"><h4 class="m-0">$1010.00</h4></td>
+                                                        <td class="border-0 text-end"><h4 class="m-0"></h4>   {{ $value->sommeCommande($data)}} FCFA</td>
                                                     </tr>
                                                 </div>
 

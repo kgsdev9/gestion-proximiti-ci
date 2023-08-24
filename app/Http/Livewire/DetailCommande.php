@@ -12,5 +12,5 @@ class DetailCommande extends Component
     }
 
 
-    public function 
+
 }

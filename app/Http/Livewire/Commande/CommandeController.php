@@ -9,15 +9,15 @@ use App\Models\TCommandeArticle;
 class CommandeController extends Component
 {
     public $codeCommande ;
-    public $name;
+    public $designation ;
     public $email ;
+    public $prix ;
     public $quantite;
     public $telephone;
     public $addresfournisseur;
     public $nomfournisseur;
     public $description;
     public $status ;
-    public $updateMode = false;
     public $total;
     public $commande_id ;
 
@@ -30,6 +30,11 @@ class CommandeController extends Component
         $i = $i + 1;
         $this->i = $i;
         array_push($this->inputs ,$i);
+    }
+
+    public function calculatePrice() {
+        $somme = $this->prix * $this->quantite ;
+        return $somme ;
     }
 
 
@@ -46,7 +51,6 @@ class CommandeController extends Component
     public function store()
     {
          $order =Commande::create([
-         'designation' => 'sesssss',
         'codeCommande' => $this->codeCommande ?? "REF-".time(),
         'telephone' => $this->telephone,
         'status' => $this->status ?? 'programme',
@@ -56,8 +60,8 @@ class CommandeController extends Component
         'addresfournisseur' => $this->addresfournisseur,
         ]);
 
-        foreach ($this->name as $key => $value) {
-            TCommandeArticle::create(['designation' => $this->name[$key], 'prix' => $this->email[$key] , 'quantite' => 12, 'total' => 1234, 'commande_id'=> $order->id]);
+        foreach ($this->designation as $key => $value) {
+            TCommandeArticle::create(['designation' => $this->designation[$key], 'prix' => $this->prix[$key] , 'quantite' => $this->quantite[$key], 'total' => (int)$this->prix[$key] * (int)$this->quantite[$key], 'commande_id'=> $order->id]);
         }
 
         $this->inputs = [];
@@ -111,10 +115,6 @@ class CommandeController extends Component
 
     public function update()
     {
-        // $validatedDate = $this->validate([
-        //     'name' => 'required',
-        //     'email' => 'required|email',
-        // ]);
         if ($this->user_id) {
             $user = Commande::find($this->user_id);
             $user->update([
@@ -130,11 +130,6 @@ class CommandeController extends Component
                 'total' => $this->calculateAmount(),
             ]);
 
-            // $this->updateMode = false;
-            // session()->flash('message', 'Users Updated Successfully.');
-            // $this->resetInputFields();
-            $this->updateMode = false;
-
             $this->reset();
             // return redirect()->route('gestion.commande', ['succes'=> true]);
         }
@@ -146,7 +141,7 @@ class CommandeController extends Component
     {
         if($id){
            Commande::where('id',$id)->delete();
-            session()->flash('message', 'Users Deleted Successfully.');
+            session()->flash('message', 'Commande supprimée avec success.');
         }
     }
 
