@@ -7,12 +7,22 @@ use App\Models\Media;
 use App\Models\Artisan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Commande;
 use App\Models\Speciality;
+use App\Models\TCommandeArticle;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
+
+
+    public function detailCommande($id) {
+        $ressource=  Commande::findOrFail($id);
+
+        $data=TCommandeArticle::where('commande_id', '=', $ressource->id)->get();
+        return view('detailcommande',compact('ressource', 'data'));
+    }
     /**
      * Display a listing of the resource.
      *

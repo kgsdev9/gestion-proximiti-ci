@@ -16,6 +16,7 @@ use App\Http\Livewire\Auth\AuthController;
 use App\Http\Livewire\Caise\GestionEntre;
 use App\Http\Livewire\Caise\GestionSortie;
 use App\Http\Livewire\Commande\CommandeController;
+use App\Http\Livewire\Employees;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,3 +72,19 @@ Route::get('/calendrier', function () {
 Route::get('/artisan-export-excell', [InvoiceController::class, 'renderArisanAllExcell'])->name('artisan.export');
 
 Route::get('/artisan-export-pdf', [InvoiceController::class, 'renderArisanAllPDF'])->name('artisan.pdf');
+
+//routes tester les fonctinnalités
+
+
+
+// Route::get('/employees', function () {
+//     return view('livewire.employees');
+// });
+
+
+
+Route::get('/employees', Employees::class);
+
+Route::get('/detail/{id}', [HomeController::class, 'detailCommande']);
+
+

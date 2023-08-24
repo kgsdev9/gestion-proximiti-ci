@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEntreesTable extends Migration
+class CreateTCommandeArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateEntreesTable extends Migration
      */
     public function up()
     {
-        Schema::create('entrees', function (Blueprint $table) {
+        Schema::create('t_commande_articles', function (Blueprint $table) {
             $table->id();
             $table->string('designation');
-            $table->string('montant');
-            $table->string('description');
+            $table->integer('quantite');
+            $table->integer('prix');
+            $table->integer('total');
+            $table->unsignedBigInteger('commande_id');
+            $table->foreign('commande_id')->references('id')->on('commandes');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateEntreesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('entrees');
+        Schema::dropIfExists('t_commande_articles');
     }
 }

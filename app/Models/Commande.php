@@ -9,5 +9,12 @@ class Commande extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'designation', 'codeCommande', 'prix', 'quantite',  'telephone', 'status', 'email', 'description', 'total', 'nomfournisseur', 'addresfournisseur'];
+
+    protected $guarderd = [];
+
+    protected $fillable = ['designation', 'codeCommande',   'telephone', 'status', 'email', 'description', 'nomfournisseur', 'addresfournisseur'];
+
+    public function tcommandeArticle(){
+        return $this->hasMany(TCommandeArticle::class);
+    }
 }

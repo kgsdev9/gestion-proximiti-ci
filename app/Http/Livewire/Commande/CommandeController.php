@@ -4,71 +4,70 @@ namespace App\Http\Livewire\Commande;
 
 use Livewire\Component;
 use App\Models\Commande;
+use App\Models\TCommandeArticle;
 
 class CommandeController extends Component
 {
     public $codeCommande ;
-    public $user_id;
-    public $designation;
-    public $prix ;
+    public $name;
+    public $email ;
     public $quantite;
     public $telephone;
-    public $email;
     public $addresfournisseur;
     public $nomfournisseur;
     public $description;
     public $status ;
     public $updateMode = false;
+    public $total;
+    public $commande_id ;
 
-    protected $rules = [
-        'designation' => 'required',
-        'prix' => 'required|integer',
-        'quantite' => 'required|integer',
-        'codeCommande'  =>'required'
-    ];
+    public $inputs = [];
+    public $i = 1;
 
 
+    public function add($i)
+    {
+        $i = $i + 1;
+        $this->i = $i;
+        array_push($this->inputs ,$i);
+    }
+
+
+    public function remove($i)
+    {
+        unset($this->inputs[$i]);
+    }
 
 
     public function mount() {
         $this->codeCommande = "PROXIMITI". rand(1000, 2000);
     }
-    public function calculateAmount() {
-        $multiplace =  $this->prix * $this->quantite ;
-        return $multiplace ;
-     }
 
-
-     public function cancel()
-     {
-         $this->updateMode = false;
-         $this->reset();
-     }
-
-
-
-     public function save() {
-        $this->validate();
-        Commande::create([
+    public function store()
+    {
+         $order =Commande::create([
+         'designation' => 'sesssss',
         'codeCommande' => $this->codeCommande ?? "REF-".time(),
-        'designation' => $this->designation,
-        'prix' => $this->prix,
-        'quantite' => $this->quantite,
         'telephone' => $this->telephone,
-        'status' => $this->status,
-        'email' => $this->email,
+        'status' => $this->status ?? 'programme',
+        'email' => 'email',
         'description' => $this->description,
         'nomfournisseur' => $this->nomfournisseur,
         'addresfournisseur' => $this->addresfournisseur,
-        'total' => $this->calculateAmount(),
         ]);
+
+        foreach ($this->name as $key => $value) {
+            TCommandeArticle::create(['designation' => $this->name[$key], 'prix' => $this->email[$key] , 'quantite' => 12, 'total' => 1234, 'commande_id'=> $order->id]);
+        }
+
+        $this->inputs = [];
+
         $this->reset();
 
-        $this->emit('userStore'); //
+        // $this->resetInputFields();
 
-     }
-
-
+        session()->flash('message', 'Commande créé avec succes.');
+    }
 
 
     public function render()
@@ -79,35 +78,35 @@ class CommandeController extends Component
     }
 
 
-    public function edit($id) {
-        $this->updateMode = true;
-        $user = Commande::where('id',$id)->first();
-        $this->user_id = $id;
-        $this->designation = $user->designation;
-        $this->prix = $user->prix;
-        $this->quantite = $user->quantite;
-        $this->telephone = $user->telephone;
-        $this->status = $user->status;
-        $this->email = $user->email;
-        $this->description = $user->description;
-        $this->nomfournisseur = $user->nomfournisseur;
-        $this->addresfournisseur = $user->addresfournisseur;
-    }
+    // public function edit($id) {
+    //     $this->updateMode = true;
+    //     $user = Commande::where('id',$id)->first();
+    //     $this->user_id = $id;
+    //     $this->designation = $user->designation;
+    //     $this->prix = $user->prix;
+    //     $this->quantite = $user->quantite;
+    //     $this->telephone = $user->telephone;
+    //     $this->status = $user->status;
+    //     $this->email = $user->email;
+    //     $this->description = $user->description;
+    //     $this->nomfournisseur = $user->nomfournisseur;
+    //     $this->addresfournisseur = $user->addresfournisseur;
+    // }
 
 
-    public function show($id) {
-        $user = Commande::where('id',$id)->first();
-        $this->user_id = $id;
-        $this->designation = $user->designation;
-        $this->prix = $user->prix;
-        $this->quantite = $user->quantite;
-        $this->telephone = $user->telephone;
-        $this->status = $user->status;
-        $this->email = $user->email;
-        $this->description = $user->description;
-        $this->nomfournisseur = $user->nomfournisseur;
-        $this->addresfournisseur = $user->addresfournisseur;
-    }
+    // public function show($id) {
+    //     $user = Commande::where('id',$id)->first();
+    //     $this->user_id = $id;
+    //     $this->designation = $user->designation;
+    //     $this->prix = $user->prix;
+    //     $this->quantite = $user->quantite;
+    //     $this->telephone = $user->telephone;
+    //     $this->status = $user->status;
+    //     $this->email = $user->email;
+    //     $this->description = $user->description;
+    //     $this->nomfournisseur = $user->nomfournisseur;
+    //     $this->addresfournisseur = $user->addresfournisseur;
+    // }
 
 
     public function update()
