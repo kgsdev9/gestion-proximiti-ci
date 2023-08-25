@@ -51,9 +51,9 @@
                                                     Site : www.proximiti.ci
 												</p>
 
-                                                <h5>Identite client: Henry AITE</h5>
-                                                <span>Contact : +225 08 10 23 88</span>
-                                                <span>Adresse des travaux : Abidjan - Rivier </span>
+                                                <h5>Identite client: {{$commande->fullname}}</h5>
+                                                <span>Contact : {{$commande->telephone_client}}</span> <br>
+                                                <span>Adresse des travaux : {{$commande->adresse_intervention}} </span>
 											</div>
 										</div>
 										<div class="col-lg-4 col-md-12">
@@ -62,16 +62,16 @@
 										<div class="col-lg-4 col-md-12">
 											<div class="invoice-info invoice-info-one border-0">
 												<p>
-													Devis Numéro : #0010
+													Devis Numéro : 	{{$commande->codeCommande}}
 												</p>
 												<p>
-													Date : 30/07/2023
+													Date : {{date('d/m/Y', strtotime($commande->created_at))}}
 												</p>
 												<p>
-													Expiration le : 30/08/2023
+													Expiration le :	{{date('d/m/Y', strtotime($commande->expired_at))}}
 												</p>
 												<p>
-													Code Client : PX2407
+													Code Client : 	{{$commande->code_client}}
 												</p>
 
 											</div>

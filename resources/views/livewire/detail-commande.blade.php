@@ -1,18 +1,6 @@
 <div>
-
-
-
-
-
-
     <div class="main-content">
-
-        @include('livewire.modals.commande.viewcommande')
-        @include('livewire.update-commande')
         @include('livewire.commande.exempledetail')
-
-
-
         <div class="page-content">
             <div class="container-fluid">
 
@@ -20,12 +8,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <h4 class="mb-sm-0 font-size-18">Invoice Detail</h4>
+                            <h4 class="mb-sm-0 font-size-18">Detail bon de commande </h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Invoices</a></li>
-                                    <li class="breadcrumb-item active">Invoice Detail</li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Detail</a></li>
+                                    <li class="breadcrumb-item active">Bon de commande </li>
                                 </ol>
                             </div>
 
@@ -44,44 +32,43 @@
                                     <div class="d-flex align-items-start">
                                         <div class="flex-grow-1">
                                             <div class="mb-4">
-                                                <img src="assets/images/logo-sm.svg" alt="" height="24"><span class="logo-txt">Minia</span>
+                                                <img src="{{asset('logo_footer.png')}}" alt="" height="24"><span class="logo-txt">Proximiti</span>
                                             </div>
                                         </div>
                                         <div class="flex-shrink-0">
                                             <div class="mb-4">
-                                                <h4 class="float-end font-size-16">Invoice # 12345</h4>
+                                                <h4 class="float-end font-size-16">N°Commande {{$commande->codeCommande}}</h4>
                                             </div>
                                         </div>
                                     </div>
 
-
-                                    <p class="mb-1">1874 County Line Road City, FL 33566</p>
-                                    <p class="mb-1"><i class="mdi mdi-email align-middle me-1"></i> abc@123.com</p>
-                                    <p><i class="mdi mdi-phone align-middle me-1"></i> 012-345-6789</p>
                                 </div>
                                 <hr class="my-4">
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-10">
                                         <div>
-                                            <h5 class="font-size-15 mb-3">Billed To:</h5>
-                                            <h5 class="font-size-14 mb-2">Richard Saul</h5>
-                                            <p class="mb-1">1208 Sherwood Circle
-                                                Lafayette, LA 70506</p>
-                                            <p class="mb-1">RichardSaul@rhyta.com</p>
-                                            <p>337-256-9134</p>
+                                            <p class="mb-1">RCCM : CI-ABJ-03-2022-B13-05599</p>
+                                            <p class="mb-1"><i class="mdi mdi-email align-middle me-1"></i> SARLU au capital de 1.000.000 F CFA</p>
+                                            <p><i class="mdi mdi-phone align-middle me-1"></i>Lieu : Riviera Bonoumin - Rond point ADO</p>
+                                            <p><i class="mdi mdi-phone align-middle me-1"></i> Contact : +225 05 00 50 79 52</p>
+                                            <p><i class="mdi mdi-phone align-middle me-1"></i>  E-mail : contact@proximiti.ci</p>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+
+
+
+
+                                    <div class="col-sm-2">
                                         <div>
                                             <div>
-                                                <h5 class="font-size-15">Order Date:</h5>
-                                                <p>February 16, 2020</p>
+                                                <h5 class="font-size-15">CodeCommande: {{$commande->codeCommande}}</h5>
+                                                <p>Date  {{$commande->created_at}}</p>
                                             </div>
 
                                             <div class="mt-4">
-                                                <h5 class="font-size-15">Payment Method:</h5>
-                                                <p class="mb-1">Visa ending **** 4242</p>
-                                                <p>richards@email.com</p>
+                                                <h5 class="font-size-15">Expiration :</h5>
+                                                <p class="mb-1"> {{$commande->expired_at}}</p>
+                                                <p>Code client  {{$commande->code_client}} </p>
                                             </div>
                                         </div>
                                     </div>
