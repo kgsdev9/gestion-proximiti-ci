@@ -11,21 +11,9 @@ class Commande extends Model
     use HasFactory;
 
 
-    protected $guarderd = [];
+    // protected $guarded = [];
 
-    protected $fillable = ['designation', 'codeCommande',   'telephone', 'status', 'email', 'description', 'nomfournisseur', 'addresfournisseur'];
-
-
-    public function explodeAttribute($price , $quantite) {
-
-        $data = [];
-
-        $parametre =  array_push($data[$price], $data[$quantite]);
-
-        dd($parametre);
-
-
-    }
+    protected $fillable = ['fullname','code_client', 'telephone_client', 'codeCommande', 'adresse_intervention', 'expired_at'];
 
 
     public function sommeCommande($items) {

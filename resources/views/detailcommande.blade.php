@@ -123,7 +123,8 @@
                             <div class="d-print-none mt-3">
                                 <div class="float-end">
                                     <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light me-1"><i class="fa fa-print"></i></a>
-                                    <a href="#" class="btn btn-primary w-md waves-effect waves-light">Send</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#showModal" wire:click="show({{$}})" class="btn btn-primary">Consulter</button>
+                                    <a href="#" class="btn btn-primary w-md waves-effect waves-light">Transferer</a>
                                 </div>
                             </div>
                         </div>
@@ -136,20 +137,6 @@
     <!-- End Page-content -->
 
 
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script>2023 © Minia.
-                </div>
-                <div class="col-sm-6">
-                    <div class="text-sm-end d-none d-sm-block">
-                        Design &amp; Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
 
 

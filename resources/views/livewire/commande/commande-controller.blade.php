@@ -28,55 +28,62 @@
                 <div class="card-header">
                     <form wire:submit.prevent="store">
                         @csrf
-                        <h5>Bon de commande  </h5>
+
                         <div class="card-inner">
                             <div class="row gy-4">
 
+                                <div>
+                                    @if (session()->has('message'))
+                                        <div class="alert alert-success">
+                                            {{ session('message') }}
+                                        </div>
 
+                                        @elseif('message')
+                                        <div class="alert alert-success">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
+                                </div>
                                 <div class="col-md-6 col-lg-4 col-xxl-3">
                                     <div class="form-group">
-                                        <label for="example-date-input" class="form-label">Télephone  @error('telephone')
+                                        <label for="example-date-input" class="form-label"> Nom & Prénom du client  @error('fullname')
                                             <span class="text-danger">{{$message}}</span>
 
                                           @enderror </label>
-                                          <input class="form-control" type="tel" wire:model="telephone"  placeholder="0745645677" required>
+                                          <input class="form-control" type="tel" wire:model="fullname"  placeholder="Guy Stephane" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                    <div class="form-group">
+                                        <label for="example-week-input" class="form-label">Télephone du client  @error('telephone_client')
+                                            <span class="text-danger">{{$message}}</span>
+
+                                          @enderror</label>
+                                          <input class="form-control"  type="text" wire:model="telephone_client"  placeholder="+225075834656" required>
                                     </div>
                                 </div>
 
 
                                 <div class="col-md-6 col-lg-4 col-xxl-3">
                                     <div class="form-group">
-                                        <label for="example-week-input" class="form-label">Nom fournisseur  @error('date_adhesion')
+                                        <label for="example-week-input" class="form-label">Adresse d'intervention   @error('adresse_intervention')
                                             <span class="text-danger">{{$message}}</span>
-
                                           @enderror</label>
-                                          <input class="form-control" wire:model="nomfournisseur" type="text"  value="{{old('date_adhesion')}}" placeholder="15/23/2024" required>
+                                            <input type="text" class="form-control" wire:model="adresse_intervention" placeholder="Riviera rond point Ado" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-lg-4 col-xxl-3">
-                                    <div class="form-group">
-                                        <label for="example-week-input" class="form-label">Adresse  Fournisseur @error('adresse')
-                                            <span class="text-danger">{{$message}}</span>
-
-                                          @enderror</label>
-                                          <input class="form-control"  type="text" wire:model="addresfournisseur"  placeholder="Adresse" required>
-                                    </div>
-                                </div>
-
 
                                 <div class="col-md-6 col-lg-4 col-xxl-3">
                                     <div class="form-group">
-                                        <label for="example-week-input" class="form-label">Priorité du bon   @error('date_adhesion')
+                                        <label for="example-week-input" class="form-label">Date d'expiration   @error('date_expiration')
                                             <span class="text-danger">{{$message}}</span>
-
                                           @enderror</label>
-                                            <select wire:model="status"  class="form-control">
-                                                <option value="haute">Haute</option>
-                                                <option value="base">Base</option>
-                                                <option value="moyenne">Moyennne</option>
-                                            </select>
+                                            <input type="date" class="form-control" wire:model="date_expiration" required>
                                     </div>
                                 </div>
+
+
 
 
                                 <div class="col-md-6 col-lg-4 col-xxl-3">
@@ -108,16 +115,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-2 col-lg-2 col-xxl-2">
-                                    <div class="form-group">
-                                        <label for="example-week-input" class="form-label">Total  @error('amount')
-                                            <span class="text-danger">{{$message}}</span>
-                                          @enderror</label>
-                                        <div class="form-control-wrap">
-                                            <input class="form-control"  value="" type="number" readonly>
-                                        </div>
-                                    </div>
-                                </div>
+
 
                                 <div class="col-md-2 col-lg-2 col-xxl-1">
                                     <div class="form-group">
@@ -126,36 +124,6 @@
 
                                     </div>
                                 </div>
-
-
-
-
-
-
-
-                                {{-- <div class=" add-input">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Macbook pro 2015" wire:model="name.0">
-                                                @error('name.0') <span class="text-danger error">{{ $message }}</span>@enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" wire:model="email.0" placeholder="15000">
-                                                @error('email.0') <span class="text-danger error">{{ $message }}</span>@enderror
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="col-md-2">
-                                            <button class="btn text-white btn-info btn-sm" wire:click.prevent="add({{$i}})">Ajouter</button>
-                                        </div>
-                                    </div>
-                                </div> --}}
-
                                 @foreach($inputs as $key => $value)
 
                                 <div class="col-md-6 col-lg-4 col-xxl-3">
@@ -173,12 +141,12 @@
                                             <span class="text-danger">{{$message}}</span>
 
                                           @enderror</label>
-                                          <input class="form-control" wire:model="prix.{{ $value }}" type="number"  placeholder="prix" required>
+                                          <input class="form-control" wire:model="prix.{{ $value }}" type="number"  placeholder="9000" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 col-xxl-3">
                                     <div class="form-group">
-                                        <label for="example-week-input" class="form-label">Quantité  @error('status')
+                                        <label for="example-week-input" class="form-label">Quantité  @error('quantite')
                                             <span class="text-danger">{{$message}}</span>
                                           @enderror</label>
                                         <div class="form-control-wrap">
@@ -187,39 +155,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6 col-lg-4 col-xxl-2">
-                                    <div class="form-group">
-                                        <label for="example-week-input" class="form-label">Total  @error('amount')
-                                            <span class="text-danger">{{$message}}</span>
-                                          @enderror</label>
-                                        <div class="form-control-wrap">
-                                            <input class="form-control"  value="{{ $value['prix'] * $value['quantite']}}}" type="number" readonly>
-                                        </div>
-                                    </div>
-                                </div>
 
-
-            {{-- <div class=" add-input">
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Enter Name" wire:model="name.{{ $value }}">
-                            @error('name.'.$value) <span class="text-danger error">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <input type="number" class="form-control" wire:model="email.{{ $value }}" placeholder="kfgs@gmail.com">
-                            @error('email.'.$value) <span class="text-danger error">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-2">
-                        <button class="btn btn-danger btn-sm" wire:click.prevent="remove({{$key}})">remove</button>
-                    </div>
-                </div>
-            </div> --}}
 
             <div class="col-md-2 col-lg-2 col-xxl-1">
                 <div class="form-group">
@@ -242,9 +178,81 @@
                     </form>
                 </div>
 
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table align-middle datatable dt-responsive table-check nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px 8px; width: 100%;" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+                            <thead>
+                                <tr class="bg-transparent">
 
-                {{-- @include('livewire.update-commande')
-                @include('livewire.commande.commandread') --}}
+                                    <th style="width: 67px;" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Invoice ID: activate to sort column ascending">
+                                        CodeCommande
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 63px;">
+                                     Client
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Billing Name: activate to sort column ascending" style="width: 91px;">
+                                       Télephone
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Amount: activate to sort column ascending" style="width: 53px;">
+                                        Adresse d'intervention
+                                    </th>
+                                    <th style="width: 44px;" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach ($commandeRessource as $value)
+
+
+                                <tr class="odd">
+
+                                    <td>
+                                        <a href="javascript: void(0);" class="text-body fw-medium">{{$value->codeCommande}}</a>
+                                    </td>
+
+
+                                    <td class="">
+                                        {{$value->fullname}}
+                                    </td>
+                                    <td>
+                                        {{$value->telephone_client}}
+                                    </td>
+
+                                    <td>
+                                        {{$value->adresse_intervention}}
+                                    </td>
+
+
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-horizontal-rounded"></i></button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                      <li><a href="{{route('detail.commande', $value->id)}}" class="btn btn-primary">Consulter</a></li>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                      <li><button  wire:click="delete({{$value->id}})" onclick="confirm('Voulez-vous vraiment supprimer l\'utilisateur de ce groupe ?') || event.stopImmediatePropagation()">Supprimer</button></li>
+                                                    </div>
+
+                                                </div>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
 
               </div>

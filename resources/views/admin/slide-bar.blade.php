@@ -53,18 +53,7 @@
                 </li>
 
 
-                <li class="">
-                    <a href="javascript: void(0);" aria-expanded="false">
-                        <i class="fa fa-money" style="color:#fff;"></i>
-
-                        <span data-key="t-forms">CAISSES</span>
-                    </a>
-                    <ul class="sub-menu mm-collapse" aria-expanded="false" style="height: 0px;">
-                        <li><a href="{{route('gestion.entree')}}" data-key="t-form-elements">Gestion des sorties</a></li>
-                        <li><a href="{{route('gestion.sortie')}}" data-key="t-form-validation">Gestion des sorties</a></li>
-
-                    </ul>
-                </li>
+               
 
                 <li>
                     <a href="{{route('gestion.commande')}}" >

@@ -1,5 +1,5 @@
-<div wire:ignore.self class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-lg" role="document">
+<div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-body">
 				<div class="row justify-content-center">
@@ -10,15 +10,15 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="invoice-logo">
-												<img src="assets/img/logo.png" alt="logo">
+												<img src="{{asset('logo_footer.png')}}" alt="logo" style="height: 90px; width:90px;">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="invoice-info">
 												<div class="invoice-head">
-													<h2 class="text-primary">Invoice</h2>
+													<h2 class="text-primary">Numero de commande </h2>
 													<p>
-														Invoice Number : In983248782
+													{{$commande->codeCommande}}
 													</p>
 												</div>
 											</div>
@@ -33,55 +33,47 @@
 									<div class="row">
 										<div class="col-lg-4 col-md-12">
 											<div class="invoice-info">
-												<strong class="customer-text-one">Billed to</strong>
+
 												<h6 class="invoice-name">
-													Customer Name
+                                                    Compte Contribuable N° 2242525A
 												</h6>
 												<p class="invoice-details invoice-details-two">
-													9087484288
+													RCCM : CI-ABJ-03-2022-B13-05599
 													<br>
-													Address line 1,
+													SARLU au capital de 1.000.000 F CFA
 													<br>
-													Address line 2
+													Lieu : Riviera Bonoumin - Rond point ADO
 													<br>
-													Zip code ,City - Country
+													Contact : +225 05 00 50 79 52
+                                                    <br>
+                                                    E-mail : contact@proximiti.ci
+                                                    <br>
+                                                    Site : www.proximiti.ci
 												</p>
+
+                                                <h5>Identite client: Henry AITE</h5>
+                                                <span>Contact : +225 08 10 23 88</span>
+                                                <span>Adresse des travaux : Abidjan - Rivier </span>
 											</div>
 										</div>
 										<div class="col-lg-4 col-md-12">
-											<div class="invoice-info">
-												<strong class="customer-text-one">Invoice From</strong>
-												<h6 class="invoice-name">
-													Company Name
-												</h6>
-												<p class="invoice-details invoice-details-two">
-													9087484288
-													<br>
-													Address line 1,
-													<br>
-													Address line 2
-													<br>
-													Zip code ,City - Country
-												</p>
-											</div>
+
 										</div>
 										<div class="col-lg-4 col-md-12">
 											<div class="invoice-info invoice-info-one border-0">
 												<p>
-													Issue Date : 27 Jul 2022
+													Devis Numéro : #0010
 												</p>
 												<p>
-													Due Date : 27 Aug 2022
+													Date : 30/07/2023
 												</p>
 												<p>
-													Due Amount : $ 1,54,22
+													Expiration le : 30/08/2023
 												</p>
 												<p>
-													Recurring Invoice : 15 Months
+													Code Client : PX2407
 												</p>
-												<p class="mb-0">
-													PO Number : 54515454
-												</p>
+
 											</div>
 										</div>
 									</div>
@@ -94,86 +86,48 @@
 													<thead>
 														<tr>
 															<th>
-																Description
+																Désignation
+															</th>
+
+															<th>
+																Prix
 															</th>
 															<th>
-																Category
+																Quantité
 															</th>
 															<th>
-																Rate/Item
-															</th>
-															<th>
-																Quantity
-															</th>
-															<th>
-																Discount (%)
+																Remise (%)
 															</th>
 															<th class="text-end">
-																Amount
+																Ttoal
 															</th>
 														</tr>
 													</thead>
 													<tbody>
-														<tr>
+
+                                                        @foreach ($ressource as  $data)
+                                                        <tr>
 															<td>
-																Dell Laptop
+																{{$data->designation}}
 															</td>
 															<td>
-																Laptop
+																{{$data->prix}}
 															</td>
-															<td>
-																$1,110
-															</td>
+
 															<th>
-																2
+																{{$data->quantite}}
 															</th>
 															<th>
-																2%
-															</th>
-															<td class="text-end">
-																$400
-															</td>
-														</tr>
-														<tr>
-															<td>
-																HP Laptop
-															</td>
-															<td>
-																Laptop
-															</td>
-															<td>
-																$1,500
-															</td>
-															<th>
-																3
-															</th>
-															<th>
-																6%
+																0%
 															</th>
 															<td class="text-end">
-																$3,000
+																{{$data->total}}
 															</td>
 														</tr>
-														<tr>
-															<td>
-																Apple Ipad
-															</td>
-															<td>
-																Ipad
-															</td>
-															<td>
-																$11,500
-															</td>
-															<th>
-																1
-															</th>
-															<th>
-																10%
-															</th>
-															<td class="text-end">
-																$11,000
-															</td>
-														</tr>
+                                                        @endforeach
+
+
+
 													</tbody>
 												</table>
 											</div>
@@ -183,37 +137,27 @@
 								<div class="row align-items-center justify-content-center">
 									<div class="col-lg-6 col-md-6">
 										<div class="invoice-payment-box">
-											<h4>Payment Details</h4>
+											<h4>Mode de paiement  </h4>
 											<div class="payment-details">
 												<p>
-													Debit Card XXXXXXXXXXXX-2541 HDFC Bank
+												Espece <input class="form-check-input" type="checkbox" id="formCheck1">
+												</p>
+											</div>
+
+                                            <div class="payment-details">
+												<p>
+												Mobile money  <input class="form-check-input" type="checkbox" id="formCheck1">
 												</p>
 											</div>
 										</div>
+
 									</div>
 									<div class="col-lg-6 col-md-6">
 										<div class="invoice-total-card">
 											<div class="invoice-total-box">
-												<div class="invoice-total-inner">
-													<p>
-														Taxable
-														<span>$6,660.00</span>
-													</p>
-													<p>
-														Additional Charges
-														<span>$6,660.00</span>
-													</p>
-													<p>
-														Discount
-														<span>$3,300.00</span>
-													</p>
-													<p class="mb-0">
-														Sub total
-														<span>$3,300.00</span>
-													</p>
-												</div>
+
 												<div class="invoice-total-footer">
-													<h4>Total Amount <span>$143,300.00</span></h4>
+													<h4>Total du bon d'achat <span> {{$data->sommeCommande($ressource)}}</span></h4>
 												</div>
 											</div>
 										</div>
@@ -224,25 +168,23 @@
 										<div class="col-lg-8 col-md-8">
 											<div class="invoice-terms">
 												<h6>
-													Notes:
+													Condition de réglement :
 												</h6>
 												<p class="mb-0">
-													Enter customer notes or any other details
+													Accompte de 30% à la commande Solde à la livraison des travaux
 												</p>
 											</div>
 											<div class="invoice-terms mb-0">
 												<h6>
-													Terms and Conditions:
+													Si le devis vous convient, merci de nous le retourner signé et marqué de la mention "Bon pour accord et commande"
 												</h6>
-												<p class="mb-0">
-													Enter customer notes or any other details
-												</p>
+
 											</div>
 										</div>
 										<div class="col-lg-4 col-md-4">
 											<div class="invoice-sign text-end">
-												<img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
-												<span class="d-block">Harristemp</span>
+												{{-- <img class="img-fluid d-inline-block" src="{}" alt="sign"> --}}
+												<span class="d-block">Signature du client </span>
 											</div>
 										</div>
 									</div>

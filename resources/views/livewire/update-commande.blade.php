@@ -11,7 +11,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>  
+                    <form>
                         <div class="form-group">
                             <input type="hidden" wire:model="user_id">
                             <label for="exampleFormControlInput1">Désignation</label>
@@ -32,7 +32,7 @@
 
                         <div class="form-group">
                             <label for="exampleFormControlInput2">Total</label>
-                            <input class="form-control"  value="{{$prix * $quantite}}" type="number" readonly>
+                            <input class="form-control"  value="" type="number" readonly>
                             @error('email') <span class="text-danger">{{ $message }}</span>@enderror
                         </div>
 

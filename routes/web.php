@@ -16,6 +16,7 @@ use App\Http\Livewire\Auth\AuthController;
 use App\Http\Livewire\Caise\GestionEntre;
 use App\Http\Livewire\Caise\GestionSortie;
 use App\Http\Livewire\Commande\CommandeController;
+use App\Http\Livewire\DetailCommande;
 use App\Http\Livewire\Employees;
 
 /*
@@ -88,3 +89,4 @@ Route::get('/employees', Employees::class);
 Route::get('/detail/{id}', [HomeController::class, 'detailCommande']);
 
 
+Route::get('/detail/commande/{id}', DetailCommande::class)->name('detail.commande');

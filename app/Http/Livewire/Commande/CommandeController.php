@@ -9,18 +9,15 @@ use App\Models\TCommandeArticle;
 class CommandeController extends Component
 {
     public $codeCommande ;
-    public $designation ;
-    public $email ;
+    public $designation;
+    public $codeClient ;
+    public $fullname;
     public $prix ;
     public $quantite;
-    public $telephone;
-    public $addresfournisseur;
-    public $nomfournisseur;
-    public $description;
-    public $status ;
+    public $date_expiration;
+    public $telephone_client;
+    public $adresse_intervention;
     public $total;
-    public $commande_id ;
-
     public $inputs = [];
     public $i = 1;
 
@@ -46,18 +43,20 @@ class CommandeController extends Component
 
     public function mount() {
         $this->codeCommande = "PROXIMITI". rand(1000, 2000);
+        $this->codeClient = "PX".rand(1500, 2000);
+
     }
 
     public function store()
     {
          $order =Commande::create([
         'codeCommande' => $this->codeCommande ?? "REF-".time(),
-        'telephone' => $this->telephone,
-        'status' => $this->status ?? 'programme',
-        'email' => 'email',
-        'description' => $this->description,
-        'nomfournisseur' => $this->nomfournisseur,
-        'addresfournisseur' => $this->addresfournisseur,
+        'designation' => $this->designation,
+        'fullname' => $this->fullname,
+        'telephone_client' => $this->telephone_client,
+        'code_client' => $this->codeClient,
+        'adresse_intervention' => $this->adresse_intervention,
+        'expired_at' => $this->date_expiration,
         ]);
 
         foreach ($this->designation as $key => $value) {
@@ -68,11 +67,8 @@ class CommandeController extends Component
 
         $this->reset();
 
-        // $this->resetInputFields();
-
         session()->flash('message', 'Commande créé avec succes.');
     }
-
 
     public function render()
     {
@@ -82,66 +78,12 @@ class CommandeController extends Component
     }
 
 
-    // public function edit($id) {
-    //     $this->updateMode = true;
-    //     $user = Commande::where('id',$id)->first();
-    //     $this->user_id = $id;
-    //     $this->designation = $user->designation;
-    //     $this->prix = $user->prix;
-    //     $this->quantite = $user->quantite;
-    //     $this->telephone = $user->telephone;
-    //     $this->status = $user->status;
-    //     $this->email = $user->email;
-    //     $this->description = $user->description;
-    //     $this->nomfournisseur = $user->nomfournisseur;
-    //     $this->addresfournisseur = $user->addresfournisseur;
-    // }
-
-
-    // public function show($id) {
-    //     $user = Commande::where('id',$id)->first();
-    //     $this->user_id = $id;
-    //     $this->designation = $user->designation;
-    //     $this->prix = $user->prix;
-    //     $this->quantite = $user->quantite;
-    //     $this->telephone = $user->telephone;
-    //     $this->status = $user->status;
-    //     $this->email = $user->email;
-    //     $this->description = $user->description;
-    //     $this->nomfournisseur = $user->nomfournisseur;
-    //     $this->addresfournisseur = $user->addresfournisseur;
-    // }
-
-
-    public function update()
-    {
-        if ($this->user_id) {
-            $user = Commande::find($this->user_id);
-            $user->update([
-                'designation' => $this->designation,
-                'prix' => $this->prix,
-                'quantite' => $this->quantite,
-                'telephone' => $this->telephone,
-                'status' => $this->status,
-                'email' => $this->email,
-                'description' => $this->description,
-                'nomfournisseur' => $this->nomfournisseur,
-                'addresfournisseur' => $this->addresfournisseur,
-                'total' => $this->calculateAmount(),
-            ]);
-
-            $this->reset();
-            // return redirect()->route('gestion.commande', ['succes'=> true]);
-        }
-    }
-
-
 
     public function delete($id)
     {
         if($id){
            Commande::where('id',$id)->delete();
-            session()->flash('message', 'Commande supprimée avec success.');
+            session()->flash('error', 'Commande supprimée avec success.');
         }
     }
 
