@@ -5,16 +5,13 @@ use App\Http\Controllers\Admin\Artisan\ArtisanController;
 use App\Http\Controllers\Admin\Invoice\InvoiceController;
 use App\Http\Controllers\Admin\PropositionController;
 use App\Http\Controllers\Admin\Users\UserController;
-use App\Http\Controllers\AgendaMission;
 use App\Http\Controllers\AgendaMissionController;
 use App\Http\Controllers\Artisan\Specialite\SpecialiteController;
 use App\Http\Controllers\CharsController;
-use App\Http\Controllers\FullCalenderController;
+
 use App\Http\Controllers\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Auth\AuthController;
-use App\Http\Livewire\Caise\GestionEntre;
-use App\Http\Livewire\Caise\GestionSortie;
 use App\Http\Livewire\Commande\CommandeController;
 use App\Http\Livewire\DetailCommande;
 use App\Http\Livewire\Employees;
@@ -60,10 +57,6 @@ Route::delete('artisan-file/{id}', [HomeController::class, 'deletefile'])->name(
 Route::get('/annuaire-commande', CommandeController::class)->name('gestion.commande')->middleware('auth');
 
 
-Route::get('/annuaire-entree', GestionEntre::class)->name('gestion.entree');
-Route::get('/annuaire-sortie', GestionSortie::class)->name('gestion.sortie');
-
-
 
 Route::get('/calendrier', function () {
     return view('livewire.home');
@@ -95,4 +88,6 @@ Route::get('/detail/commande/{id}', DetailCommande::class)->name('detail.command
 Route::get('/download-order/{id}', [HomeController::class, 'invoiceOrder'])->name('invoice.order');
 
 
+
+Route::get('/send-invoice/{id}', [InvoiceController::class, 'sendInvoice'])->name('send.invoice');
 

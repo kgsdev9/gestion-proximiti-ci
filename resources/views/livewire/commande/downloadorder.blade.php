@@ -4,7 +4,7 @@
 <head>
     <title>Commande </title>
 </head>
-<style type="text/css">
+{{-- <style type="text/css">
     body{
         font-family: 'Roboto Condensed', sans-serif;
     }
@@ -123,9 +123,9 @@
             </td>
         </tr>
     </table>
-</div>
+</div> --}}
 
-<div class="table-section bill-tbl w-100 mt-10">
+{{-- <div class="table-section bill-tbl w-100 mt-10">
     <table class="table w-100 mt-10">
         <tr>
             <th class="w-50">Désignation</th>
@@ -153,5 +153,5 @@
             </td>
         </tr>
     </table>
-</div>
+</div> --}}
 </html>

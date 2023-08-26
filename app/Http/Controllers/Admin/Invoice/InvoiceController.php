@@ -9,10 +9,27 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 
 use App\Exports\ArtisanExportExport;
+use App\Mail\SendInvoiceMail;
+use App\Models\Commande;
+use App\Models\TCommandeArticle;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
 class InvoiceController extends Controller
 {
+
+
+
+    // public $emails = [] ;
+
+
+    // public function __construct()
+    // {
+    //     $this->emails = [];
+    // }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +44,7 @@ class InvoiceController extends Controller
     public function render($id) {
 
         $ressource = Artisan::find($id);
-        $pdf = Pdf::loadView('admin.invoice.artisans.fiche', [
+        $pdf = Pdf::loadView('livewire.commande.downloadorder', [
             'ressource' =>$ressource
         ])->setOptions(['defaultFont' => 'sans-serif']);;
         return $pdf->download('fiche.pdf');
@@ -51,6 +68,60 @@ class InvoiceController extends Controller
     }
 
 
+    // $commande=  Commande::findOrFail($id);
+    // $data=TCommandeArticle::where('commande_id', '=', $commande->id)->get();
+
+    // // dd($data);
+
+    // $pdf = Pdf::loadView('livewire.commande.downloadorder', [
+    //     'ressource' =>$data,
+    //     'commande' =>$commande
+    // ]);
+
+
+    public function attach_email($id){
+
+
+        $commande=  Commande::findOrFail($id);
+         $data=TCommandeArticle::where('commande_id', '=', $commande->id)->get();
+
+        $info = ['info'=>$data];
+
+        Mail::send(['text'=>'mail'], $info, function($message){
+
+            $pdf = PDF::loadView('livewire.commande.downloadorder');
+
+            $message->to('kgsdev8@gmail.com','KGSDEV')->subject('Send Mail from Laravel');
+
+            // $message->from('kgssss@gmail.com','The Sender');
+
+            $message->attachData($pdf->output(), 'filename.pdf');
+
+        });
+
+      }
+
+    public function sendInvoice($id) {
+      $commande=  Commande::findOrFail($id);
+      $data=TCommandeArticle::where('commande_id', '=', $commande->id)->get();
+
+         $commandes = Pdf::loadView('livewire.commande.downloadorder', [
+             'commande' =>$commande
+        ]);
+
+        $to_email = [
+            'kgsdev8@gmail.com',
+            'kahouoguystephane@gmail.com'
+        ];
+
+        Mail::to($to_email)->send(new SendInvoiceMail($commande));
+        return redirect()->back();
+      }
+
+    }
+
+
+
     // if($request->view_type === 'download') {
     //     $pdf = PDF::loadView('users.report', ['users' => $users]);
     //     return $pdf->download('users.pdf');
@@ -62,4 +133,4 @@ class InvoiceController extends Controller
     // }
 
 
-}
+

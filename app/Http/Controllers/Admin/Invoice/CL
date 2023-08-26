@@ -1,0 +1,17 @@
+   public function sendMailWithPDF(Request $request)
+    {
+        $data["email"] = "test@gmail.com";
+        $data["title"] = "Laravel 8 send email with attachment - Techsolutionstuff";
+        $data["body"] = "Laravel 8 send email with attachment";
+
+        $pdf = PDF::loadView('pdf_mail', $data);
+
+        Mail::send('pdf_mail', $data, function ($message) use ($data, $pdf) {
+            $message->to($data["email"], $data["email"])
+                ->subject($data["title"])
+                ->attachData($pdf->output(), "test.pdf");
+        });
+
+        echo "email send successfully !!";
+    }
+}

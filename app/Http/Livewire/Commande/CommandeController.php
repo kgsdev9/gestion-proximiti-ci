@@ -62,16 +62,8 @@ class CommandeController extends Component
         'designation.0.required' => 'ce champ est réquis',
         'prix.0.required' => 'ce champs est réquis',
         'quantite.0.required' => 'ce champs est réquis',
-        // 'designation.*.required' => 'designation est réquis',
-        // 'prix.*.required' => 'le prix est requis',
-        // 'quantite.*.required' => 'la quantite est réquis',
-
     ]
 );
-
-
-
-
          $order =Commande::create([
         'codeCommande' => $this->codeCommande ?? "REF-".time(),
         'designation' => $this->designation,

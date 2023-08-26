@@ -126,8 +126,9 @@
                                             <i class="fa fa-print"></i>
                                           </button>
                                         <a href="{{route('invoice.order', $commande->id)}}" class="btn btn-primary w-md waves-effect waves-light">Télecharger</a>
+                                        <a href="{{route('send.invoice', $commande->id)}}">TRANSFERT PAR EMAIL </a>
                                     </div>
-                                </div>
+                                </div>    
                             </div>
                         </div>
                     </div>
