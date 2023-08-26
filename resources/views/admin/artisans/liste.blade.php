@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-
+@section('title', 'Annuaire des artisans')
 @section('master')
 
 
@@ -187,7 +187,7 @@
                                <a href="{{route('artisan.export')}}"  class="btn btn-success">Excelle</a>
 
                                <a href="{{route('artisan.pdf')}}" class="btn btn-warning">PDF</a>
-                              
+
                             </div>
                         </div>
                     </div>

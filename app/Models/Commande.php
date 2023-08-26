@@ -13,7 +13,7 @@ class Commande extends Model
 
     // protected $guarded = [];
 
-    protected $fillable = ['fullname','code_client', 'telephone_client', 'codeCommande', 'adresse_intervention', 'expired_at'];
+    protected $fillable = ['fullname','telephone_client', 'codeCommande', 'adresse_intervention', 'expired_at'];
 
 
     public function sommeCommande($items) {
@@ -22,7 +22,7 @@ class Commande extends Model
         if($items) {
             $resultat = collect($items);
         } else{
-            $erroers[] = "la valuer n'existepas";
+            $erroers[] = "la valuer n'existe pas";
         }
 
         return $resultat ;

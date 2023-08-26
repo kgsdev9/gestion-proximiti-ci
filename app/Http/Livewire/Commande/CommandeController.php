@@ -10,7 +10,6 @@ class CommandeController extends Component
 {
     public $codeCommande ;
     public $designation;
-    public $codeClient ;
     public $fullname;
     public $prix ;
     public $quantite;
@@ -43,18 +42,41 @@ class CommandeController extends Component
 
     public function mount() {
         $this->codeCommande = "PROXIMITI". rand(1000, 2000);
-        $this->codeClient = "PX".rand(1500, 2000);
-
     }
 
     public function store()
     {
+
+    $validatedDate = $this->validate([
+        'codeCommande'=>'required',
+        'prix'=>'required',
+        'quantite'=>'required',
+        'designation.0' => 'required',
+        'prix.0' => 'required',
+        'quantite.0' => 'required',
+        'designation.*' => 'required',
+        'prix.*' => 'required',
+        'quantite.*' => 'required',
+    ],
+    [
+        'designation.0.required' => 'ce champ est réquis',
+        'prix.0.required' => 'ce champs est réquis',
+        'quantite.0.required' => 'ce champs est réquis',
+        // 'designation.*.required' => 'designation est réquis',
+        // 'prix.*.required' => 'le prix est requis',
+        // 'quantite.*.required' => 'la quantite est réquis',
+
+    ]
+);
+
+
+
+
          $order =Commande::create([
         'codeCommande' => $this->codeCommande ?? "REF-".time(),
         'designation' => $this->designation,
         'fullname' => $this->fullname,
         'telephone_client' => $this->telephone_client,
-        'code_client' => $this->codeClient,
         'adresse_intervention' => $this->adresse_intervention,
         'expired_at' => $this->date_expiration,
         ]);

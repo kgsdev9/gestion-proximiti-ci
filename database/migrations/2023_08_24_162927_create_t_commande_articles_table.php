@@ -17,8 +17,8 @@ class CreateTCommandeArticlesTable extends Migration
             $table->id();
             $table->string('designation');
             $table->integer('quantite');
-            $table->integer('prix');
-            $table->integer('total');
+            $table->string('prix');
+            $table->string('total');
             $table->unsignedBigInteger('commande_id');
             $table->foreign('commande_id')->references('id')->on('commandes')->onDelete('CASCADE');
             $table->timestamps();

@@ -1,3 +1,4 @@
+@section('title', $commande->codeCommande)
 <div>
     <div class="main-content">
         @include('livewire.commande.exempledetail')
@@ -8,7 +9,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <h4 class="mb-sm-0 font-size-18">Detail bon de commande </h4>
+                            <h4 class="mb-sm-0 font-size-18">Detail bon de commande  </h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
@@ -75,7 +76,7 @@
                                 </div>
 
                                 <div class="py-2 mt-3">
-                                    <h5 class="font-size-15">Order summary</h5>
+                                    <h5 class="font-size-15">Sommaire du bon d'achat</h5>
                                 </div>
                                 <div class="p-4 border rounded">
                                     <div class="table-responsive">
@@ -124,7 +125,7 @@
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" wire:click="show({{ $commande->id }})">
                                             <i class="fa fa-print"></i>
                                           </button>
-                                        {{-- <a href="#" class="btn btn-primary w-md waves-effect waves-light">Transferer</a> --}}
+                                        <a href="{{route('invoice.order', $commande->id)}}" class="btn btn-primary w-md waves-effect waves-light">Télecharger</a>
                                     </div>
                                 </div>
                             </div>

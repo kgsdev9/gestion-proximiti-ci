@@ -90,3 +90,9 @@ Route::get('/detail/{id}', [HomeController::class, 'detailCommande']);
 
 
 Route::get('/detail/commande/{id}', DetailCommande::class)->name('detail.commande');
+
+
+Route::get('/download-order/{id}', [HomeController::class, 'invoiceOrder'])->name('invoice.order');
+
+
+

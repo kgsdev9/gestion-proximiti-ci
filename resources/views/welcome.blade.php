@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-
+@section('title', 'Bienvenue sur gestion proximiti')
 @section('master')
 <div class="main-content">
 

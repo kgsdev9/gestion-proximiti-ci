@@ -1,3 +1,5 @@
+
+@section('title', 'Annuaire des commandes')
 <div>
 
     <div class="main-content">
@@ -36,11 +38,6 @@
                                     @if (session()->has('message'))
                                         <div class="alert alert-success">
                                             {{ session('message') }}
-                                        </div>
-
-                                        @elseif('message')
-                                        <div class="alert alert-success">
-                                            {{ session('error') }}
                                         </div>
                                     @endif
                                 </div>

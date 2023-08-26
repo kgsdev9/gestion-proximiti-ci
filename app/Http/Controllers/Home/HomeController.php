@@ -12,9 +12,29 @@ use App\Models\Speciality;
 use App\Models\TCommandeArticle;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cache;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class HomeController extends Controller
 {
+
+
+
+
+    public function invoiceOrder($id) {
+         $commande=  Commande::findOrFail($id);
+        $data=TCommandeArticle::where('commande_id', '=', $commande->id)->get();
+
+        // dd($data);
+
+        $pdf = Pdf::loadView('livewire.commande.downloadorder', [
+            'ressource' =>$data,
+            'commande' =>$commande
+        ]);
+        return $pdf->download('invoice.pdf');
+
+
+
+    }
 
 
     public function detailCommande($id) {
@@ -118,7 +138,9 @@ class HomeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     *
+     *  @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {

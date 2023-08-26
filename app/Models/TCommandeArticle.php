@@ -25,4 +25,21 @@ class TCommandeArticle extends Model
 
         return $resultat ;
     }
+
+
+    // public function generate() {
+    //     $data = Commande::all();
+
+    //     $pdf = Pdf::loadView('impression.rapportCommande', [
+    //         'data'  => $data
+    //     ]);
+    //     $to_email = [
+    //         'kgsdev8@gmail.com',
+    //         'kahouoguystephane@gmail.com'
+    //     ]  ;
+    //     Mail::to($to_email)->send(new SendPDFMail($pdf));
+    //     Alert::success('Success', 'Rapport Génerer avec suces consulter votre E-Mail');
+    //   return redirect()->back();
+    //   }
+
 }
