@@ -21,4 +21,12 @@ class FournisseurService
         return $this->fournisseurRepository->single($id);
      }
 
+     public function create(array $data) {
+        return $this->fournisseurRepository->create($data);
+     }
+
+     public function update(array $data, $id) {
+        return $this->fournisseurRepository->update($data, $id);
+     }
+
 }

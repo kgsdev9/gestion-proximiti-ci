@@ -92,7 +92,8 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                  <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                                    <a   class="btn btn-success" href="{{route('fournisseurs.edit', $value->id)}}"  style="cursor:pointer">ssss</a>
+                                                  {{-- <a href="{{route('fournisseurs.edit', $value->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a> --}}
                                                 </div>
                                                 <div class="col-md-1">
 

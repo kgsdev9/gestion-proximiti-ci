@@ -13,7 +13,7 @@ class FournisseurRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class FournisseurRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'designation'=> 'required|string',
+            'prix'=> 'required',
+            'adresse'=> 'required',
+            'commune'=> 'required',
+            'telephone'=> 'required',
+            'fax'=> 'required',
+            'email'=> 'required',
         ];
     }
 }

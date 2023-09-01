@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Fournisseur;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FournisseurRequest;
 use App\Services\FournisseurService;
-use Illuminate\Http\Request;
+
 
 class FournisseurController extends Controller
 {
@@ -14,6 +15,7 @@ class FournisseurController extends Controller
     public function __construct(FournisseurService $fournisseurService)
     {
         $this->fournisseurService = $fournisseurService ;
+        $this->middleware('auth');
     }
 
     /**
@@ -22,7 +24,7 @@ class FournisseurController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         return view('admin.Fournisseurs.liste', [
             'ressourceFournisseur' => $this->fournisseurService->all()
         ]);
@@ -35,7 +37,8 @@ class FournisseurController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.Fournisseurs.create');
     }
 
     /**
@@ -44,9 +47,11 @@ class FournisseurController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FournisseurRequest $request)
     {
-        //
+
+     $this->fournisseurService->create($request->all());
+       return redirect()->route('fournisseurs.index', ['success' => true]);
     }
 
     /**
@@ -62,13 +67,19 @@ class FournisseurController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     *  return view('categories/edit', [
+
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        return view('admin.Fournisseurs.edit',  [
+            'ressource' => $this->fournisseurService->single($id),
+            'method' => 'POST',
+            'action' => route('fournisseurs.update', $id)
+        ]);
     }
 
     /**
@@ -78,9 +89,12 @@ class FournisseurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FournisseurRequest $request, $id)
     {
-        //
+       $this->fournisseurService->update($request->all() ,$id);
+
+       return redirect()->route('fournisseurs.index',['edited' => true]);
+
     }
 
     /**
@@ -91,6 +105,10 @@ class FournisseurController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $ressource=  $this->fournisseurService->single($id);
+       if($ressource) {
+        $ressource->destroy();
+        return redirect()->back();
+       }
     }
 }
