@@ -8,13 +8,14 @@ use App\Http\Controllers\Admin\Users\UserController;
 use App\Http\Controllers\AgendaMissionController;
 use App\Http\Controllers\Artisan\Specialite\SpecialiteController;
 use App\Http\Controllers\CharsController;
-
+use App\Http\Controllers\Fournisseur\FournisseurController;
 use App\Http\Controllers\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Auth\AuthController;
 use App\Http\Livewire\Commande\CommandeController;
 use App\Http\Livewire\DetailCommande;
 use App\Http\Livewire\Employees;
+use App\Models\TFournisseur;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +41,8 @@ Route::resources([
     'artisan' => ArtisanController::class,
     'specialite'=> SpecialiteController::class,
     'agenda' => AgendaMissionController::class,
-    'proposition' => PropositionController::class
+    'proposition' => PropositionController::class,
+    'fournisseurs' => FournisseurController::class
  ]);
 
  Route::get('/chars' , [CharsController::class, 'googleLineChart']);

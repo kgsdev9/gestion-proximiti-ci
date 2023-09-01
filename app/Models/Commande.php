@@ -13,7 +13,7 @@ class Commande extends Model
 
     // protected $guarded = [];
 
-    protected $fillable = ['fullname','telephone_client', 'codeCommande', 'adresse_intervention', 'expired_at'];
+    protected $fillable = ['fullname','telephone_client', 'codeCommande', 'adresse_intervention', 'expired_at', 'artisan_id'];
 
 
     public function sommeCommande($items) {
@@ -26,6 +26,10 @@ class Commande extends Model
         }
 
         return $resultat ;
+    }
+
+    public function artisan() {
+        return $this->belongsTo(Artisan::class, 'artisan_id');
     }
 
 

@@ -20,6 +20,8 @@ class CreateTCommandeArticlesTable extends Migration
             $table->string('prix');
             $table->string('total');
             $table->unsignedBigInteger('commande_id');
+            $table->unsignedBigInteger('artisan_id')->nullable();
+            $table->foreign('artisan_id')->references('id')->on('artisans');
             $table->foreign('commande_id')->references('id')->on('commandes')->onDelete('CASCADE');
             $table->timestamps();
         });

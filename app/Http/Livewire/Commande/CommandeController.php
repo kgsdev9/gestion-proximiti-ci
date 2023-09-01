@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Commande;
 
+use App\Models\Artisan;
 use Livewire\Component;
 use App\Models\Commande;
 use App\Models\TCommandeArticle;
@@ -19,6 +20,17 @@ class CommandeController extends Component
     public $total;
     public $inputs = [];
     public $i = 1;
+    public $artisan_id;
+
+
+    public function show() {
+        $data  = [] ;
+        $ressource  =  Artisan::where('id', $this->artisan_id)->first();
+
+        $data[] = ['nom' => $ressource->nom];
+
+        return $data;
+    }
 
 
     public function add($i)
@@ -47,8 +59,10 @@ class CommandeController extends Component
     public function store()
     {
 
+        // dd($this->artisan_id);
     $validatedDate = $this->validate([
         'codeCommande'=>'required',
+        'artisan_id' => 'required|exists:artisans,id',
         'prix'=>'required',
         'quantite'=>'required',
         'designation.0' => 'required',
@@ -67,6 +81,7 @@ class CommandeController extends Component
          $order =Commande::create([
         'codeCommande' => $this->codeCommande ?? "REF-".time(),
         'designation' => $this->designation,
+        'artisan_id' => $this->artisan_id,
         'fullname' => $this->fullname,
         'telephone_client' => $this->telephone_client,
         'adresse_intervention' => $this->adresse_intervention,
@@ -87,7 +102,9 @@ class CommandeController extends Component
     public function render()
     {
         return view('livewire.commande.commande-controller', [
-        'commandeRessource'=> Commande::orderByDesc('created_at')->paginate(10)
+        'commandeRessource'=> Commande::orderByDesc('created_at')->paginate(10),
+        'ressourceArtisans' => Artisan::all(),
+        // 'showprofile' => $this->show(),
         ])->extends('admin.layouts.app')->section('master');
     }
 

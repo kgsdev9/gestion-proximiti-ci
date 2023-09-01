@@ -71,6 +71,8 @@
                                     </div>
                                 </div>
 
+
+
                                 <div class="col-md-6 col-lg-4 col-xxl-3">
                                     <div class="form-group">
                                         <label for="example-week-input" class="form-label">Date d'expiration   @error('date_expiration')
@@ -80,6 +82,21 @@
                                     </div>
                                 </div>
 
+                                <div class="col-md-6 col-lg-4 col-xxl-12">
+                                    <div class="form-group">
+                                        <label for="example-week-input" class="form-label"> Selectionner un artisan    @error('artisan_id')
+                                            <span class="text-danger">{{$message}}</span>
+                                          @enderror</label>
+                                           <select wire:model="artisan_id" class="form-control">
+                                                @foreach ($ressourceArtisans as $value)
+                                                <option value="{{$value->id}}">{{$value->name}}</option>
+                                                @endforeach
+
+
+                                                <span>{{$value->prenom}}</span>
+                                           </select>
+                                    </div>
+                                </div>
 
 
 
@@ -157,7 +174,7 @@
             <div class="col-md-2 col-lg-2 col-xxl-1">
                 <div class="form-group">
                     <label for="example-week-input" class="form-label">Action</label>
-                    <button class="btn btn-danger btn-sm" wire:click.prevent="remove({{$key}})">remove</button>
+                    <button class="btn btn-danger btn-sm" wire:click.prevent="remove({{$key}})">Supprimer</button>
 
                 </div>
             </div>
