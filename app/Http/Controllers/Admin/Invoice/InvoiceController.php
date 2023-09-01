@@ -105,7 +105,7 @@ class InvoiceController extends Controller
       $commande=  Commande::findOrFail($id);
       $data=TCommandeArticle::where('commande_id', '=', $commande->id)->get();
 
-         $commandes = Pdf::loadView('livewire.commande.downloadorder', [
+         $commandes = Pdf::loadView('livewire.commande.missionssendGmail', [
              'commande' =>$commande
         ]);
 
@@ -113,6 +113,7 @@ class InvoiceController extends Controller
             'kgsdev8@gmail.com',
             'kahouoguystephane@gmail.com'
         ];
+
 
         Mail::to($to_email)->send(new SendInvoiceMail($commande));
         return redirect()->back();

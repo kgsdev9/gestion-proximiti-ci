@@ -30,7 +30,7 @@ class SendInvoiceMail extends Mailable
     {
         return $this->from(env('MAIL_FROM_ADDRESS'))
         ->subject('Bon de   - commande')
-        ->view('livewire.commande.downloadorder');
+        ->view('livewire.commande.missionssendGmail');
         // ->attachData($this->pdf->output(), 'Bondecommande.pdf');
     }
 

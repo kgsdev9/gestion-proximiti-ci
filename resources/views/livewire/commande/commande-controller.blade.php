@@ -88,8 +88,9 @@
                                             <span class="text-danger">{{$message}}</span>
                                           @enderror</label>
                                            <select wire:model="artisan_id" class="form-control">
+                                            <option value="">Mission à attribuer à </option>
                                                 @foreach ($ressourceArtisans as $value)
-                                                <option value="{{$value->id}}">{{$value->name}}</option>
+                                                <option value="{{$value->id}}">{{$value->name}} {{$value->prenom}} -  Fonction: {{$value->specilaite->libelle}}</option>
                                                 @endforeach
 
 
@@ -319,7 +320,7 @@
                                                         </div>
                                                         <div class="col-md-2">
                                                                 <button  wire:click="delete({{$value->id}})" class="btn btn-danger" onclick="confirm('Voulez-vous vraiment supprimer l\'utilisateur de ce groupe ?') || event.stopImmediatePropagation()"> <i class="fa fa-trash"></i></button>
-                                                    
+
                                                         </div>
 
 

@@ -126,33 +126,5 @@
     </table>
 </div>
 
-<div class="table-section bill-tbl w-100 mt-10">
-    <table class="table w-100 mt-10">
-        <tr>
-            <th class="w-50">Désignation</th>
-            <th class="w-50">Prix</th>
-            <th class="w-50">Quantité</th>
-            <th class="w-50">Total</th>
-        </tr>
-        @foreach ($ressource as $data)
-        <tr align="center">
-            <td>{{$data->designation}}</td>
-            <td>{{$data->prix}}</td>
-            <td>{{$data->quantite}}</td>
-            <td>{{$data->total}}</td>
-        </tr>
-        @endforeach
 
-        <tr>
-            <td colspan="7">
-                <div class="total-part">
-                    <div class="total-right w-15 float-left text-bold" align="right">
-                        <p>{{$data->sommeCommande($ressource)}} </p>
-                    </div>
-                    <div style="clear: both;"></div>
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
 </html>

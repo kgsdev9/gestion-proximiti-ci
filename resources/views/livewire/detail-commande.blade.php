@@ -69,7 +69,7 @@
                                             <div class="mt-4">
                                                 <h5 class="font-size-15">Expiration :</h5>
                                                 <p class="mb-1"> {{$commande->expired_at}}</p>
-                                                <p>Code client  {{$commande->code_client}} </p>
+                                                <p>Attibution à   {{$commande->artisan->name}} {{$commande->artisan->prenom}}  {{$commande->artisan->specilaite->libelle}} </p>
                                             </div>
                                         </div>
                                     </div>
@@ -126,9 +126,9 @@
                                             <i class="fa fa-print"></i>
                                           </button>
                                         <a href="{{route('invoice.order', $commande->id)}}" class="btn btn-primary w-md waves-effect waves-light">Télecharger</a>
-                                        <a href="{{route('send.invoice', $commande->id)}}">TRANSFERT PAR EMAIL </a>
+                                        <a href="{{route('send.invoice', $commande->id)}}" class="btn btn-warning">TRANSFERT PAR EMAIL </a>
                                     </div>
-                                </div>    
+                                </div>
                             </div>
                         </div>
                     </div>
