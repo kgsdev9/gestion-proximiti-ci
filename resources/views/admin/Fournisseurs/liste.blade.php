@@ -92,15 +92,20 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <a   class="btn btn-success" href="{{route('fournisseurs.edit', $value->id)}}"  style="cursor:pointer">ssss</a>
-                                                  {{-- <a href="{{route('fournisseurs.edit', $value->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a> --}}
+                                                    <a class="btn btn-success" href="{{route('fournisseurs.edit', $value->id)}}" ><i class="fa fa-edit"></i></a>
+
                                                 </div>
                                                 <div class="col-md-1">
 
                                                 </div>
 
                                                 <div class="col-md-2">
-                                                  <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                    <form action="{{route('fournisseurs.destroy', $value->id)}}" method="POST">
+                                                         @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-danger" type="submit" onclick="return confirm('Voulez-vous supprimer le fournisseur?')"><i class="fa fa-trash"></i></button>
+                                                    </form>
+
                                                 </div>
 
                                             </div>

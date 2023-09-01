@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use MercurySeries\Flashy\Flashy;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -55,8 +56,15 @@ class UserController extends Controller
 
         public function destroy($id) {
             $ressource  = User::find($id);
-            $ressource->delete();
+
+            if($ressource->id  == Auth::user()->id) {
+                Flashy::message('Vous n\'avez pas le droit de le faire !');
+                return redirect()->back();
+            } else {
+                $ressource->delete();
              return  redirect()->back();
+            }
+
         }
 
         public function update(UserRequest $request , $id) {

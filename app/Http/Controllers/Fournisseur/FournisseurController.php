@@ -106,9 +106,8 @@ class FournisseurController extends Controller
     public function destroy($id)
     {
        $ressource=  $this->fournisseurService->single($id);
-       if($ressource) {
-        $ressource->destroy();
-        return redirect()->back();
-       }
+       $ressource->delete();
+       return redirect()->back();
     }
+
 }

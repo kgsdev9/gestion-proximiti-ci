@@ -193,7 +193,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-12">
+                    {{-- <div class="col-sm-12">
                         <table class="table align-middle datatable dt-responsive table-check nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px 8px; width: 100%;" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
                             <thead>
                                 <tr class="bg-transparent">
@@ -265,7 +265,83 @@
 
                             </tbody>
                         </table>
+                    </div> --}}
+                    <br>
+                    <div class="col-xl-12">
+                        <div class="card">
+
+
+                            <div class="card-body">
+                                <div class="table-responsive table-card">
+                                    <table class="table table-borderless table-centered align-middle table-nowrap mb-0" id="myTable">
+                                        <thead class="text-muted table-light">
+                                            <tr>
+                                                <th scope="col"> CodeCommande</th>
+                                                <th scope="col">Client</th>
+                                                <th scope="col"> Télephone</th>
+                                                <th scope="col">  Adresse d'intervention</th>
+
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($commandeRessource as $value)
+
+
+                                            <tr>
+
+
+                                                <td>
+                                                    {{$value->codeCommande}}
+                                                  </td>
+
+                                                  <td>
+                                                    {{$value->fullname}}
+                                                  </td>
+
+                                                  <td>
+                                                    {{$value->telephone_client}}
+                                                  </td>
+                                                  <td>
+                                                    {{$value->adresse_intervention	}}
+                                                  </td>
+
+
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-success" href="{{route('detail.commande', $value->id)}}" ><i class="fa fa-eye"></i></a>
+
+                                                        </div>
+
+                                                        <div class="col-md-1">
+
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                                <button  wire:click="delete({{$value->id}})" class="btn btn-danger" onclick="confirm('Voulez-vous vraiment supprimer l\'utilisateur de ce groupe ?') || event.stopImmediatePropagation()"> <i class="fa fa-trash"></i></button>
+                                                    
+                                                        </div>
+
+
+                                                    </div>
+                                                </td>
+
+
+
+
+
+                                            </tr><!-- end tr -->
+
+                                            @endforeach
+
+
+                                        </tbody><!-- end tbody -->
+                                    </table><!-- end table -->
+                                </div>
+                            </div>
+                        </div> <!-- .card-->
                     </div>
+
                 </div>
 
 

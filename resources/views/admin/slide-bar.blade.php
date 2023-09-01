@@ -8,7 +8,7 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
 
-                <li class="menu-title" data-key="t-menu" style="color:#fff;">Gestion proximity</li>
+                <li class="menu-title" data-key="t-menu" style="color:#fff;">Gestion proximiti</li>
 
 
                 <li>
@@ -53,8 +53,8 @@
                 </li>
 
                 <li>
-                    <a href="{{route('fournisseurs.index')}}" class="has-arrow">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                    <a href="{{route('fournisseurs.index')}}">
+                        <i class="fa fa-building-o" style="color:#fff;"></i>
                         <span data-key="t-components">Fournisseurs</span>
                     </a>
 
@@ -64,7 +64,7 @@
                 <li>
                     <a href="{{route('gestion.commande')}}" >
                         <i class="fa fa-book" style="color:#fff;"></i>
-                        <span data-key="t-pages">ANNUAIRE COMMANDES </span>
+                        <span data-key="t-pages">COMMANDES </span>
                     </a>
 
                 </li>
