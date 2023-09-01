@@ -10,6 +10,7 @@ use App\Http\Controllers\Artisan\Specialite\SpecialiteController;
 use App\Http\Controllers\CharsController;
 use App\Http\Controllers\Fournisseur\FournisseurController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Notifcation\PhoneNumberNotificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Auth\AuthController;
 use App\Http\Livewire\Commande\CommandeController;
@@ -42,8 +43,11 @@ Route::resources([
     'specialite'=> SpecialiteController::class,
     'agenda' => AgendaMissionController::class,
     'proposition' => PropositionController::class,
-    'fournisseurs' => FournisseurController::class
+    'fournisseurs' => FournisseurController::class,
+
  ]);
+
+Route::get('/send-sms-test', [PhoneNumberNotificationController::class, 'sendSms'])->name('send.sms');
 
  Route::get('/chars' , [CharsController::class, 'googleLineChart']);
 

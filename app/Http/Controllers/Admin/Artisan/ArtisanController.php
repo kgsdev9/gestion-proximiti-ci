@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Artisan;
 
-use App\Models\Artisan;
 use App\Models\Media;
+use App\Models\Artisan;
 use App\Models\Speciality;
 use Illuminate\Http\Request;
 use MercurySeries\Flashy\Flashy;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ArtisanRequest;
@@ -188,9 +189,12 @@ class ArtisanController extends Controller
         $ressource = Artisan::find($id);
         $path = 'artisans/photo/'.$ressource->photo;
 
+        DB::table('media')->where('artisan_id', '=', $ressource->id)->delete();
+
         if(File::exists($path)) {
         $docs =  File::delete($path) ;
         }
+
         $ressource->delete();
         return redirect()->route('artisan.index');
     }

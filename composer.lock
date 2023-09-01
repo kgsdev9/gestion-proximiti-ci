@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f1526a7205a2fd55077521a4840453a",
+    "content-hash": "13df7b868807682909d027cbb2a1b702",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6159,16 +6159,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "7.7.1",
+            "version": "7.9.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:twilio/twilio-php.git",
-                "reference": "4390f89081a1e0bf680d55f2f916f2a89dc6ae4e"
+                "reference": "e23666fbe0cf8c85cb3cbd182f119f6de642c65f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/4390f89081a1e0bf680d55f2f916f2a89dc6ae4e",
-                "reference": "4390f89081a1e0bf680d55f2f916f2a89dc6ae4e",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/e23666fbe0cf8c85cb3cbd182f119f6de642c65f",
+                "reference": "e23666fbe0cf8c85cb3cbd182f119f6de642c65f",
                 "shasum": ""
             },
             "require": {
@@ -6204,7 +6204,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2023-07-27T10:01:20+00:00"
+            "time": "2023-08-24T07:38:49+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
