@@ -194,12 +194,13 @@
                     <div class="row">
                         <div class="col-sm-12">
                 <table id="myTable" class="table table-condensed">
-                <thead class="thead-dark">
+                <thead class="text-muted table-light">
                 <tr role="row">
                     <th>Nom et prénom</th>
                     <th>Télephone</th>
                     <th>Commune</th>
                     <th>Spécialité</th>
+                    <th>Date d'ajout</th>
                     <th style="width:20px;">Status</th>
                     <th>Action</th>
                 </tr>
@@ -210,10 +211,8 @@
                   <td >{{$value->name}} {{$value->prenom}}</td>
                   <td>{{$value->telephone}}</td>
                   <td>{{$value->commune}}</td>
-                  <td>  {{$value->specilaite->libelle}}</td>
-
-
-
+                  <td> {{$value->specilaite->libelle}}</td>
+                  <td> {{$value->created_at->diffForHumans()}}</td>
                   <td>
                     <span class="badge bg-success">Disponible</span>
                 </td>
