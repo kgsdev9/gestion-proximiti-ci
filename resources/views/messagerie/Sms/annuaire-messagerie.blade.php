@@ -34,11 +34,11 @@
                         <div class="card-body">
                             <form action="{{route('send.sms')}}" method="POST">
                                 @csrf
-                                
+
                                 @if($errors->any())
                                 <ul>
                                @foreach($errors->all() as $error)
-                              <li> {{ $error }} </li>
+                              <div class="alert alert-success"> {{ $error }} </div>
                                @endforeach
                           @endif
 

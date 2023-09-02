@@ -51,7 +51,7 @@ class PhoneNumberNotificationController extends Controller
 
         }
 
-        return back()->with( 'success', $count . " messages sent!" );
+        return back()->with( 'success', $count . "Message énvoyé avec succes!" );
 
 
     }
