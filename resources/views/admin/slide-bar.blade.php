@@ -69,6 +69,14 @@
 
                 </li>
 
+                <li>
+                    <a href="{{route('annuaire.messagerie')}}">
+                        <i class="fa fa-building-o" style="color:#fff;"></i>
+                        <span data-key="t-components">Messagerie</span>
+                    </a>
+
+                </li>
+
 
             </ul>
 

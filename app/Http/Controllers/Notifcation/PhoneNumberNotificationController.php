@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Notifcation;
 
-use Illuminate\Http\Request;
 use Twilio\Rest\Client;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\PhoneNumberNotification;
 
 class PhoneNumberNotificationController extends Controller
 {
+    public function __construct()
+    {
+    $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,101 +20,42 @@ class PhoneNumberNotificationController extends Controller
      */
     public function index()
     {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return view('messagerie.Sms.annuaire-messagerie', [
+            'users' => PhoneNumberNotification::all()
+        ]);
     }
 
 
 
 
-    public function sendSms()
+    public function sendSms(Request $request)
     {
-        // $receiverNumber = "+33667795415";
-         $receiverNumber ="+2250708192382";
-        $message = "TESTE DE LA FONCTIONNALITES D'ENVOI SMS AUX ETUDIANTS APPLICATION GESTION INSTITUT ROOSVELET ENVOYE PAR GUY STEPHANE";
 
-        try {
+        $numbers_in_arrays = explode( ',' , $request->input( 'phone' ) );
+        $message = $request->input( 'editordata' );
+           $count = 0;
 
+        foreach($numbers_in_arrays as $number )
+
+        {
+            $count++;
             $account_sid = getenv("TWILIO_SID");
             $auth_token = getenv("TWILIO_AUTH_TOKEN");
             $twilio_number = getenv("TWILIO_NUMBER");
 
             $client = new Client($account_sid, $auth_token);
-            $client->messages->create($receiverNumber, [
+            $client->messages->create($number, [
                 'from' => $twilio_number,
                 'body' => $message]);
 
-            dd('SMS Sent Successfully.');
-
-        } catch (Exception $e) {
-            dd("Error: ". $e->getMessage());
         }
+
+        return back()->with( 'success', $count . " messages sent!" );
+
+
     }
 
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

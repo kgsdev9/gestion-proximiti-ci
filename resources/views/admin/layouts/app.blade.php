@@ -7,9 +7,12 @@
         <meta charset="utf-8" />
 
         <title>@yield('title')</title>
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{asset('logo_footer.png')}}">
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
@@ -131,7 +134,8 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-        <script src="{{asset('teste/libs/jquery/jquery.min.js')}}"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
         <script src="{{asset('teste/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{asset('teste/libs/metismenu/metisMenu.min.js')}}"></script>
         <script src="{{asset('teste/libs/simplebar/simplebar.min.js')}}"></script>
@@ -140,10 +144,13 @@
         <!-- pace js -->
         <script src="{{asset('teste/libs/pace-js/pace.min.js')}}"></script>
 
+
+        <script src="{{asset('teste/libs/pace-js/pace.min.js')}}"></script>
         <!-- Required datatable js -->
         <script src="{{asset('teste/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
         <script src="{{asset('teste/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
         <!-- Buttons examples -->
+        <script src="{{asset('teste/libs/pace-js/pace.min.js')}}"></script>
         <script src="{{asset('teste/libs/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
         <script src="{{asset('teste/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}"></script>
         <script src="{{asset('teste/libs/jszip/jszip.min.js')}}"></script>
@@ -152,11 +159,15 @@
         <script src="{{asset('teste/libs/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
         <script src="{{asset('teste/libs/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
         <script src="{{asset('teste/libs/datatables.net-buttons/js/buttons.colVis.min.js')}}"></script>
-
+        <script>
+            $(document).ready(function() {
+            $('#summernote').summernote();
+            });
+        </script>
         <!-- Responsive examples -->
         <script src="{{asset('teste/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
         <script src="{{asset('teste/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
         <!-- Datatable init js -->
         <script src="{{asset('teste/js/pages/datatables.init.js')}}"></script>
 

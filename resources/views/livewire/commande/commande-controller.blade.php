@@ -94,7 +94,7 @@
                                                 @endforeach
 
 
-                                                <span>{{$value->prenom}}</span>
+                                             
                                            </select>
                                     </div>
                                 </div>

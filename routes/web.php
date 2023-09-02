@@ -11,6 +11,7 @@ use App\Http\Controllers\CharsController;
 use App\Http\Controllers\Fournisseur\FournisseurController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Notifcation\PhoneNumberNotificationController;
+use App\Http\Controllers\Notification\Phone\PhoneNotificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Auth\AuthController;
 use App\Http\Livewire\Commande\CommandeController;
@@ -44,10 +45,14 @@ Route::resources([
     'agenda' => AgendaMissionController::class,
     'proposition' => PropositionController::class,
     'fournisseurs' => FournisseurController::class,
+    'phonenumber' => PhoneNotificationController::class
 
  ]);
 
-Route::get('/send-sms-test', [PhoneNumberNotificationController::class, 'sendSms'])->name('send.sms');
+ Route::get('/annuaire-messagerie', [PhoneNumberNotificationController::class, 'index'])->name('annuaire.messagerie');
+
+
+Route::post('/send-sms-test', [PhoneNumberNotificationController::class, 'sendSms'])->name('send.sms');
 
  Route::get('/chars' , [CharsController::class, 'googleLineChart']);
 
