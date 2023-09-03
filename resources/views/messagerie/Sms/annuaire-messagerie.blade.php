@@ -46,6 +46,13 @@
                                {{ session( 'success' ) }}
                           @endif
 
+
+                          <div class="form-group">
+                            <label for="">Entrer votre numero </label>
+                           <input type="text" class="form-control" name="phone" value="{{old('phone')}}">
+                        </div>
+
+                        
                           <div class="form-group">
                             <label for="">Selectionner un objet</label>
                             <select name="objet" id="" class="form-control">
@@ -55,20 +62,13 @@
                             </select>
                              </div>
 
-                            <div class="form-group">
-                                <label for="">Entrer votre numero </label>
-                               <input type="text" class="form-control" name="phone" value="{{old('phone')}}">
-                            </div>
-
-
 
 
 
 
                             <div class="form-group">
                                 <label for="">Entrer votre message </label>
-                                <textarea class="form-control"  name="editordata" ></textarea>
-
+                                <textarea class="form-control"  name="message" >Dépannage en plombérie à la riviera bonoumin. Appelez au 0500507952 pour confirmer la mission Pxti1243</textarea>
                             </div>
                             <br>
                             <button type="submit" class="btn btn-dark">Enregistrer</button>

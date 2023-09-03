@@ -45,7 +45,7 @@
 
 
                 <li>
-                    <a href="#" >
+                    <a href="{{route('calendrier')}}" >
                         <i class="fa fa-briefcase" style="color:#fff;"></i>
                         <span data-key="t-pages">Agenda M</span>
                     </a>

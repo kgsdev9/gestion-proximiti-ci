@@ -32,8 +32,11 @@ class PhoneNumberNotificationController extends Controller
     public function sendSms(Request $request)
     {
 
+        dd($request->all());
+
+
         $numbers_in_arrays = explode( ',' , $request->input( 'phone' ) );
-        $message = $request->input( 'editordata' );
+        $message  =$request->objet .nl2br($request->input( 'message' ));
            $count = 0;
 
         foreach($numbers_in_arrays as $number )
