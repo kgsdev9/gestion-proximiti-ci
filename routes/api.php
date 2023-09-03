@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\Events\IndexController;
+use App\Http\Controllers\Api\Mission\MissionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(static function(): void  {
+    Route::get('agenda', IndexController::class)->name('agenda');
+    Route::put('suscribe', MissionController::class)->name('suscribe');
+
 });

@@ -1,13 +1,12 @@
 <?php
 
-use App\Exports\ArtisanExport;
 use App\Http\Controllers\Admin\Artisan\ArtisanController;
 use App\Http\Controllers\Admin\Invoice\InvoiceController;
 use App\Http\Controllers\Admin\PropositionController;
 use App\Http\Controllers\Admin\Users\UserController;
 use App\Http\Controllers\AgendaMissionController;
 use App\Http\Controllers\Artisan\Specialite\SpecialiteController;
-use App\Http\Controllers\CharsController;
+use App\Http\Controllers\Calendar\CalendarController;
 use App\Http\Controllers\Fournisseur\FournisseurController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Notifcation\PhoneNumberNotificationController;
@@ -17,7 +16,8 @@ use App\Http\Livewire\Auth\AuthController;
 use App\Http\Livewire\Commande\CommandeController;
 use App\Http\Livewire\DetailCommande;
 use App\Http\Livewire\Employees;
-use App\Models\TFournisseur;
+use App\Http\Livewire\PortailAutrise;
+use App\Models\Mission;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,23 +68,12 @@ Route::delete('artisan-file/{id}', [HomeController::class, 'deletefile'])->name(
 Route::get('/annuaire-commande', CommandeController::class)->name('gestion.commande')->middleware('auth');
 
 
-
-Route::get('/calendrier', function () {
-    return view('livewire.home');
-});
+Route::get('/calendrier', [CalendarController::class, 'calendrier'])->name('calendrier');
 
 
 Route::get('/artisan-export-excell', [InvoiceController::class, 'renderArisanAllExcell'])->name('artisan.export');
 
 Route::get('/artisan-export-pdf', [InvoiceController::class, 'renderArisanAllPDF'])->name('artisan.pdf');
-
-//routes tester les fonctinnalités
-
-
-
-// Route::get('/employees', function () {
-//     return view('livewire.employees');
-// });
 
 
 
@@ -102,3 +91,14 @@ Route::get('/download-order/{id}', [HomeController::class, 'invoiceOrder'])->nam
 
 Route::get('/send-invoice/{id}', [InvoiceController::class, 'sendInvoice'])->name('send.invoice');
 
+
+Route::get('/code-authorise-access', PortailAutrise::class);
+
+
+
+Route::get('/chars', [ChartsController::class, 'index'])->name('chars');
+
+
+Route::get('/testesss', function () {
+    return view('make');
+});

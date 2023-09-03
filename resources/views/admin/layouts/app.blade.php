@@ -7,6 +7,10 @@
         <meta charset="utf-8" />
 
         <title>@yield('title')</title>
+        <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
@@ -144,7 +148,7 @@
         <!-- pace js -->
         <script src="{{asset('teste/libs/pace-js/pace.min.js')}}"></script>
 
-
+        
         <script src="{{asset('teste/libs/pace-js/pace.min.js')}}"></script>
         <!-- Required datatable js -->
         <script src="{{asset('teste/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>

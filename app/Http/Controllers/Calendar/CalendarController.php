@@ -1,32 +1,46 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Calendar;
 
-use App\Http\Controllers\Controller;
+use App\Models\Mission;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class AuthController extends Controller
+class CalendarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function verification()
-    {
 
-        return view('livewire.portail-autrise');
+
+    public function calendrier()
+    {
+        $events = [];
+
+        $appointments =  Mission::orderBy('libelle')->get();
+
+        foreach ($appointments as $appointment) {
+            $events[] = [
+                'title' => $appointment->libelle,
+                'start' => $appointment->date_debut,
+                'end' => $appointment->data_fin,
+            ];
+        }
+
+        return view('livewire.home', compact('events'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
+
+
+    //  public function calendrier() {
+    //     $agenda =  json_encode(Mission::all());
+
+    //     return view('livewire.home', [
+    //         'events' => $agenda
+    //     ]);
+    // }
+
+
+
+
 
     /**
      * Store a newly created resource in storage.

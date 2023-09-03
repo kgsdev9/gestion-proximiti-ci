@@ -1,21 +1,45 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Charts;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AuthController extends Controller
+class ChartsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function verification()
+    public function index()
     {
+        $students = Student::all();
 
-        return view('livewire.portail-autrise');
+        $dataPoints = [];
+
+        foreach ($students as $student) {
+
+            $dataPoints[] = array(
+                "name" => $student['name'],
+                "data" => [
+                    intval($student['term1_marks']),
+                    intval($student['term2_marks']),
+                    intval($student['term3_marks']),
+                    intval($student['term4_marks']),
+                ],
+            );
+        }
+
+        return view("line-chart", [
+            "data" => json_encode($dataPoints),
+            "terms" => json_encode(array(
+                "Term 1",
+                "Term 2",
+                "Term 3",
+                "Term 4",
+            )),
+        ]);
     }
 
     /**

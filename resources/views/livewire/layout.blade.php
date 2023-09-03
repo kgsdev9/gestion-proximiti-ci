@@ -1,9 +1,7 @@
 
 <!doctype html>
 <html lang="en">
-
     <head>
-
         <meta charset="utf-8" />
         <title>Espace d'authnetification</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,17 +12,16 @@
 
         <!-- preloader css -->
         <link rel="stylesheet" href="{{asset('assetsauth/css/preloader.min.css')}}" type="text/css" />
-
+        <script src='https://www.google.com/recaptcha/api.js'></script>
         <!-- Bootstrap Css -->
         <link rel="stylesheet" href="{{asset('assetsauth/css/bootstrap.min.css')}}">
         <!-- Icons Css -->
-       
+
         <link href="{{asset('teste/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link rel="stylesheet" href="{{asset('assetsauth/css/app.min.css')}}">
         @livewireStyles
     </head>
-
     <body>
 
     <!-- <body data-layout="horizontal"> -->
