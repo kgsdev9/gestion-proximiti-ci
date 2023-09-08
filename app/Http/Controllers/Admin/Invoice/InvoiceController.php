@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Exports\ArtisanExportExport;
 use App\Mail\SendInvoiceMail;
 use App\Models\Commande;
+use App\Models\Mission;
 use App\Models\TCommandeArticle;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
@@ -18,15 +19,15 @@ use Maatwebsite\Excel\Facades\Excel;
 class InvoiceController extends Controller
 {
 
+    public function invoiceMission($id) {
+        $ressource = Mission::find($id);
 
 
-    // public $emails = [] ;
-
-
-    // public function __construct()
-    // {
-    //     $this->emails = [];
-    // }
+        $pdf = Pdf::loadView('missions.invoices.mission', [
+            'ressource' =>$ressource
+        ])->setOptions(['defaultFont' => 'sans-serif', 'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
+        return $pdf->download('mission.pdf');
+    }
 
 
 

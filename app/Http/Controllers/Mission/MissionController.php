@@ -1,45 +1,34 @@
 <?php
 
-namespace App\Http\Controllers\Charts;
+namespace App\Http\Controllers\Mission;
 
 use App\Http\Controllers\Controller;
+use App\Services\ArtisanService;
+use App\Models\Client;
+use App\Services\MissionService;
 use Illuminate\Http\Request;
 
-class ChartsController extends Controller
+class MissionController extends Controller
 {
+    protected $missionService ;
+    protected $artisanService;
+
+    public function __construct(MissionService $missionService, ArtisanService $artisanService )
+    {
+        $this->missionService = $missionService;
+        $this->artisanService = $artisanService;
+        $this->middleware('auth');
+
+    }
+
     /**
-     * Display a listing of the resource.
+     * Affichage de toutes les missions.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $students = Student::all();
-
-        $dataPoints = [];
-
-        foreach ($students as $student) {
-
-            $dataPoints[] = array(
-                "name" => $student['name'],
-                "data" => [
-                    intval($student['term1_marks']),
-                    intval($student['term2_marks']),
-                    intval($student['term3_marks']),
-                    intval($student['term4_marks']),
-                ],
-            );
-        }
-
-        return view("line-chart", [
-            "data" => json_encode($dataPoints),
-            "terms" => json_encode(array(
-                "Term 1",
-                "Term 2",
-                "Term 3",
-                "Term 4",
-            )),
-        ]);
+        return view('livewire.commande.missionssendGmail');
     }
 
     /**
@@ -49,7 +38,11 @@ class ChartsController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('missions.create', [
+            'allArtisan' =>  $this->artisanService->all(),
+            'AllSuplliers' => Client::all()
+        ]);
     }
 
     /**
@@ -60,7 +53,7 @@ class ChartsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

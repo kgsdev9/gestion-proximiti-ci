@@ -32,18 +32,18 @@ class AuthController extends Component
 
 
         if($ressource = Auth::attempt(array('email' => $this->email, 'password' => $this->password))){
-            $phone = Auth::user()->phone;
-            $id = Auth::user()->id ;
+            // $phone = Auth::user()->phone;
+            // $id = Auth::user()->id ;
 
-            $user = User::whereId($id)->first();
+            // $user = User::whereId($id)->first();
 
-            $ressource = CodeAuthoriseToken::create([
-                'user_id' => $user->id,
-                'code' => rand(123456, 999999),
-                'expire_at' => Carbon::now()->addMinutes(10)
-            ]);
+            // $ressource = CodeAuthoriseToken::create([
+            //     'user_id' => $user->id,
+            //     'code' => rand(123456, 999999),
+            //     'expire_at' => Carbon::now()->addMinutes(10)
+            // ]);
 
-            $message =  "Votre code D'authentification est". $ressource->code ;
+            // $message =  "Votre code D'authentification est". $ressource->code ;
 
 
                  return redirect()->route('home');

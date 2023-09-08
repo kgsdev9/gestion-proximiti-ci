@@ -7,6 +7,13 @@
         <meta charset="utf-8" />
 
         <title>@yield('title')</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap" rel="stylesheet">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+
         <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.css" rel="stylesheet" />
@@ -15,20 +22,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{asset('logo_footer.png')}}">
-        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
         <!-- plugin css -->
-        <link href="teste/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        {{-- selec2 cdn --}}
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- preloader css -->
-        <link rel="stylesheet" href="teste/css/preloader.min.css" type="text/css" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,100;1,400;1,500&display=swap" rel="stylesheet">
-        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <!-- Bootstrap Css -->
         <link href="{{asset('teste/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
@@ -39,7 +44,7 @@
 
     </head>
 
-    <body  style="font-family: 'Roboto', sans-serif;">
+    <body  style="font-family: 'Inter', sans-serif;">
 
     <!-- <body data-layout="horizontal"> -->
 
@@ -148,21 +153,15 @@
         <!-- pace js -->
         <script src="{{asset('teste/libs/pace-js/pace.min.js')}}"></script>
 
-        
+
         <script src="{{asset('teste/libs/pace-js/pace.min.js')}}"></script>
         <!-- Required datatable js -->
         <script src="{{asset('teste/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
         <script src="{{asset('teste/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
         <!-- Buttons examples -->
-        <script src="{{asset('teste/libs/pace-js/pace.min.js')}}"></script>
         <script src="{{asset('teste/libs/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
         <script src="{{asset('teste/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}"></script>
-        <script src="{{asset('teste/libs/jszip/jszip.min.js')}}"></script>
-        <script src="{{asset('teste/libs/pdfmake/build/pdfmake.min.js')}}"></script>
-        <script src="{{asset('teste/libs/pdfmake/build/vfs_fonts.js')}}"></script>
-        <script src="{{asset('teste/libs/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-        <script src="{{asset('teste/libs/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
-        <script src="{{asset('teste/libs/datatables.net-buttons/js/buttons.colVis.min.js')}}"></script>
+
         <script>
             $(document).ready(function() {
             $('#summernote').summernote();
@@ -183,7 +182,20 @@
         </script>
         @include('flashy::message')
         @livewireScripts
+        <script src="{{asset('custome/mast.js')}}"></script>
 
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <script>
+          $(document).ready(function() {
+              $('.select2-multiple').select2({
+                  placeholder: "Selectionner le type de mission",
+                  allowClear: true
+              });
+
+          });
+
+      </script>
     </body>
 
 </html>

@@ -3,18 +3,29 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Services\ClientService;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
+    protected $clientService ;
+
+    public function __construct(ClientService $clientService)
+    {
+        $this->clientService = $clientService ;
+    }
+
+
     /**
-     * Display a listing of the resource.
+     * Affichage des listes des ressources.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return view('clients.liste', [
+            'allClients' => $this->clientService->collectionFilters()
+        ]);
     }
 
     /**

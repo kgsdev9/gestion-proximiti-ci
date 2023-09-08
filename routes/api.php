@@ -17,7 +17,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(static function(): void  {
-    Route::get('agenda', IndexController::class)->name('agenda');
-    Route::put('suscribe', MissionController::class)->name('suscribe');
 
 });

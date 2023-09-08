@@ -4,9 +4,10 @@ use App\Http\Controllers\Admin\Artisan\ArtisanController;
 use App\Http\Controllers\Admin\Invoice\InvoiceController;
 use App\Http\Controllers\Admin\PropositionController;
 use App\Http\Controllers\Admin\Users\UserController;
-use App\Http\Controllers\AgendaMissionController;
+use App\Http\Controllers\Api\Mission\MissionController;
 use App\Http\Controllers\Artisan\Specialite\SpecialiteController;
 use App\Http\Controllers\Calendar\CalendarController;
+use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Fournisseur\FournisseurController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Notifcation\PhoneNumberNotificationController;
@@ -15,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Auth\AuthController;
 use App\Http\Livewire\Commande\CommandeController;
 use App\Http\Livewire\DetailCommande;
-use App\Http\Livewire\Employees;
 use App\Http\Livewire\PortailAutrise;
-use App\Models\Mission;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,18 +35,17 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/login', AuthController::class)->name('auth.login')->middleware('guest');
 
-// Route::get('/register',)
 
 
 Route::resources([
     'users' => UserController::class,
     'artisan' => ArtisanController::class,
     'specialite'=> SpecialiteController::class,
-    'agenda' => AgendaMissionController::class,
     'proposition' => PropositionController::class,
     'fournisseurs' => FournisseurController::class,
-    'phonenumber' => PhoneNotificationController::class
-
+    'clients' => ClientController::class,
+    'phonenumber' => PhoneNotificationController::class,
+    'missions' => MissionController::class
  ]);
 
  Route::get('/annuaire-messagerie', [PhoneNumberNotificationController::class, 'index'])->name('annuaire.messagerie');
@@ -77,8 +76,6 @@ Route::get('/artisan-export-pdf', [InvoiceController::class, 'renderArisanAllPDF
 
 
 
-Route::get('/employees', Employees::class);
-
 Route::get('/detail/{id}', [HomeController::class, 'detailCommande']);
 
 
@@ -102,3 +99,7 @@ Route::get('/chars', [ChartsController::class, 'index'])->name('chars');
 Route::get('/testesss', function () {
     return view('make');
 });
+
+
+Route::get('/invoice-mission/{id}', [InvoiceController::class, 'invoiceMission'])->name('invoice.missions');
+

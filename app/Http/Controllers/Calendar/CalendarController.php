@@ -15,12 +15,13 @@ class CalendarController extends Controller
         $events = [];
 
         $appointments =  Mission::orderBy('libelle')->get();
+        // dd($appointments);
 
         foreach ($appointments as $appointment) {
             $events[] = [
                 'title' => $appointment->libelle,
                 'start' => $appointment->date_debut,
-                'end' => $appointment->data_fin,
+                'end' => $appointment->date_fin,
             ];
         }
 

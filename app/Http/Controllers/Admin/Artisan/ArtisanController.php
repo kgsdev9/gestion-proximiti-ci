@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ArtisanRequest;
+use App\Models\Mission;
 
 class ArtisanController extends Controller
 {
@@ -105,7 +106,9 @@ class ArtisanController extends Controller
     {
         $ressource = Artisan::find($id);
         $fileRessource = Media::where('artisan_id', $ressource->id)->first();
-        return view('admin.artisans.detail', compact('ressource', 'fileRessource'));
+        $AllMissionArtisan = Mission::where('artisan_id', $ressource->id)->get();
+        // dd($AllMissionArtisan);
+        return view('admin.artisans.detail', compact('ressource', 'fileRessource', 'AllMissionArtisan'));
     }
 
     /**
@@ -189,13 +192,13 @@ class ArtisanController extends Controller
         $ressource = Artisan::find($id);
         $path = 'artisans/photo/'.$ressource->photo;
 
-        DB::table('media')->where('artisan_id', '=', $ressource->id)->delete();
+        // DB::table('media')->where('artisan_id', '=', $ressource->id)->delete();
 
         if(File::exists($path)) {
         $docs =  File::delete($path) ;
         }
-
         $ressource->delete();
+        Flashy::message('action effécuté avec succes!');
         return redirect()->route('artisan.index');
     }
 }

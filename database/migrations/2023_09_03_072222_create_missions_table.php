@@ -18,9 +18,13 @@ class CreateMissionsTable extends Migration
             $table->string('libelle');
             $table->dateTime('date_debut');
             $table->dateTime('date_fin');
-            $table->string('description')->nullable();
+            $table->enum('type', ['devis', 'facture']);
+            $table->enum('status', ['En attente', 'Términe', 'Suspendu']);
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('artisan_id');
+            $table->unsignedBigInteger('client_id');
             $table->foreign('artisan_id')->references('id')->on('artisans');
+            $table->foreign('client_id')->references('id')->on('clients');
             $table->timestamps();
         });
     }
