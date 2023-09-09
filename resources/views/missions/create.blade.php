@@ -2,12 +2,9 @@
 @section('title', ' Nouvelle Mission')
 @section('master')
 
-
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
-
     <!-- Main content -->
     <section class="content" style="margin-top:-5px;">
       <div class="row">
@@ -16,14 +13,12 @@
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                         <h4 class="mb-sm-0 font-size-18">Bienvenue {{Auth::user()->name}}</h4>
-
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Accueil</a></li>
                                 <li class="breadcrumb-item active">Tableau de bord </li>
                             </ol>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -71,8 +66,6 @@
                                       @enderror</label>
                                     <div class="form-control-wrap">
                                         <input class="form-control" name="date_fin" type="date" value="{{old('date_fin')}}" value="{{old('date_fin')}}" required>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +108,6 @@
                                         </select>
                                 </div>
                             </div>
-
                             <div class="col-md-6 col-lg-4 col-xxl-3">
                                 <div class="form-group">
                                     <label for="example-week-input" class="form-label"> Type   @error('type')
@@ -127,9 +119,6 @@
                                         </select>
                                 </div>
                             </div>
-
-
-
                             <div class="col-md-6 col-lg-4 col-xxl-12">
                                 <div class="form-group">
                                     <label for="example-week-input" class="form-label"> Description    @error('description')
@@ -138,7 +127,6 @@
                                        <textarea name="description" id="" cols="30" rows="2" class="form-control"></textarea>
                                 </div>
                             </div>
-
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Enregistrer la mission </button>
@@ -160,6 +148,19 @@
     <!-- /.content -->
   </div>
 
+
+  @push('scripts')
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        $('.select2-multiple').select2({
+            placeholder: "Selectionner le type de mission",
+            allowClear: true
+        });
+
+    });
+</script>
+  @endpush
 
 
 @endsection

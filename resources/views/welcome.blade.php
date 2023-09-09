@@ -124,6 +124,65 @@
                     </div><!-- end card -->
                 </div><!-- end col -->
 
+                  <div class="col-xl-3 col-md-6">
+                    <!-- card -->
+                    <div class="card card-h-100">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+                                    <span class="text-muted mb-3 lh-3 d-block text-truncate">TOTAL EQUIPEMENT </span>
+                                    <h4 class="mb-3">
+                                        <span class="counter-value" data-target="">0</span>
+                                    </h4>
+                                </div>
+
+                            </div>
+
+                        </div><!-- end card body -->
+                    </div><!-- end card -->
+                </div><!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <!-- card -->
+                    <div class="card card-h-100">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+                                    <span class="text-muted mb-3 lh-3 d-block text-truncate">TOTAL MISSION </span>
+                                    <h4 class="mb-3">
+                                        <span class="counter-value" data-target="">0</span>
+                                    </h4>
+                                </div>
+
+                            </div>
+
+                        </div><!-- end card body -->
+                    </div><!-- end card -->
+                </div><!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <!-- card -->
+                    <div class="card card-h-100">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+                                    <span class="text-muted mb-3 lh-3 d-block text-truncate">TOTAL COMMANDE </span>
+                                    <h4 class="mb-3">
+                                        <span class="counter-value" data-target="">0</span>
+                                    </h4>
+                                </div>
+
+                            </div>
+
+                        </div><!-- end card body -->
+                    </div><!-- end card -->
+                </div><!-- end col -->
+
+
+
 
 
 
