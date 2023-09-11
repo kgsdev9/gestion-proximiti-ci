@@ -16,6 +16,7 @@ class Client extends Model
     'email',
     'codeClient',
     'mode_contact',
-    'premimum'
+    'premimum',
+    'date_contact'
     ];
 }

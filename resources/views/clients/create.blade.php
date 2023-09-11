@@ -54,11 +54,11 @@
                             </div>
                             <div class="col-md-6 col-lg-4 col-xxl-3">
                                 <div class="form-group">
-                                    <label for="example-search-input" class="form-label">adresse  @error('adresse')
+                                    <label for="example-search-input" class="form-label">Email @error('email')
                                         <span class="text-danger">{{$message}}</span>
 
                                       @enderror</label>
-                                      <input class="form-control" name="adresse" type="adresse" value="{{old('adresse')}}" placeholder="adresse fournisseur" required>
+                                      <input class="form-control" name="email" type="email" value="{{old('email')}}" placeholder="kgsdev8@gmail.com" required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4 col-xxl-3">
@@ -90,11 +90,11 @@
                             </div>
                             <div class="col-md-6 col-lg-4 col-xxl-3">
                                 <div class="form-group">
-                                    <label for="example-month-input" class="form-label">Date  @error('mode_contact')
+                                    <label for="example-month-input" class="form-label">Date  @error('date_contact')
                                         <span class="text-danger">{{$message}}</span>
 
                                       @enderror</label>
-                                      <input class="form-control" type="date" name="mode_contact" value="{{old('mode_contact')}}" placeholder="0745645677" required>
+                                      <input class="form-control" type="date" name="date_contact" value="{{old('date_contact')}}" required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4 col-xxl-3">
@@ -102,7 +102,7 @@
                                     <label for="example-week-input" class="form-label">Adresse  @error('adresse')
                                         <span class="text-danger">{{$message}}</span>
                                       @enderror</label>
-                                      <input class="form-control" name="adresse" type="adresse"  value="{{old('adresse')}}" placeholder="adresse" required>
+                                      <input class="form-control" name="adresse" type="text"  value="{{old('adresse')}}" placeholder="Adresse" required>
                                 </div>
                             </div>
 

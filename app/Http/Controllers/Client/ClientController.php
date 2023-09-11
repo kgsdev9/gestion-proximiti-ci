@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
 use App\Services\ClientService;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,19 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
+        Client::create([
+            'nom' => $request->input('nom'),
+            'email' => $request->input('email'),
+            'codeClient' => $request->input('code_client'),
+            'prenom' => $request->input('nom'),
+            'adresse' => $request->input('adresse'),
+            'code_client' => $request->input('code_client'),
+            'mode_contact' => $request->input('mode_contact'),
+            'date_contact' => $request->input('date_contact'),
+            'premimum' => $request->input('premimum') ?? 'non',
+        ]);
+        return redirect()->route('clients.store',  ['succes'=> true]);
     }
 
     /**
