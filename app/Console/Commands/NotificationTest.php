@@ -44,11 +44,10 @@ class NotificationTest extends Command
         $users = User::all();
 
         foreach ($users as  $user) {
-            Mail::to('beugredatchasimonpierre@gmail.com')->send(new NotificationConnexionUser($user));
+            Mail::to('kgsdev8@gmail.com')->send(new NotificationConnexionUser($user));
         }
 
     }
-
 
 
     }

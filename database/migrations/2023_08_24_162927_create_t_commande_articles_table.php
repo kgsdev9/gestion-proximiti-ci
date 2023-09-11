@@ -13,18 +13,24 @@ class CreateTCommandeArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('t_commande_articles', function (Blueprint $table) {
-            $table->id();
-            $table->string('designation');
-            $table->integer('quantite');
-            $table->string('prix');
-            $table->string('total');
-            $table->unsignedBigInteger('commande_id');
-            $table->unsignedBigInteger('artisan_id')->nullable();
-            $table->foreign('artisan_id')->references('id')->on('artisans');
-            $table->foreign('commande_id')->references('id')->on('commandes')->onDelete('CASCADE');
-            $table->timestamps();
-        });
+
+        if (!Schema::hasTable('t_commande_articles'))
+        {
+            Schema::create('t_commande_articles', function (Blueprint $table) {
+                $table->id();
+                $table->string('designation');
+                $table->integer('quantite');
+                $table->string('prix');
+                $table->string('total');
+                $table->unsignedBigInteger('commande_id');
+                $table->unsignedBigInteger('artisan_id')->nullable();
+                $table->foreign('artisan_id')->references('id')->on('artisans');
+                $table->foreign('commande_id')->references('id')->on('commandes')->onDelete('CASCADE');
+                $table->timestamps();
+            });
+        }
+
+
     }
 
     /**

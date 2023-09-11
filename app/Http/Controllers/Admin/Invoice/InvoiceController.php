@@ -9,15 +9,41 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 
 use App\Exports\ArtisanExportExport;
+use App\Exports\CollectionEquipment;
+use App\Exports\CollectionEuipment;
 use App\Mail\SendInvoiceMail;
 use App\Models\Commande;
 use App\Models\Mission;
 use App\Models\TCommandeArticle;
+use App\Services\EquipmentService;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
 class InvoiceController extends Controller
 {
+
+        protected $equipmentService  ;
+
+        public function __construct(EquipmentService $equipmentService)
+        {
+            $this->equipmentService = $equipmentService ;
+        }
+
+
+        public function invoiceAllEquipmentExcell() {
+            return Excel::download(New CollectionEquipment, 'equipments.xlsx');
+            return Excel::download(new ArtisanExport, 'artisan.xlsx');
+        }
+
+        public function invoiceAllEquipment(){
+
+            $pdf = Pdf::loadView('livewire.equipement.invoice.liste', [
+                'allEquipments' =>$this->equipmentService->all()
+            ])->setOptions(['defaultFont' => 'sans-serif']);;
+            return $pdf->download('equipements.pdf');
+        }
+
+
 
     public function invoiceMission($id) {
         $ressource = Mission::find($id);

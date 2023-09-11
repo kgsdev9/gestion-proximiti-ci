@@ -114,7 +114,7 @@
 
                                         <div class="mb-3">
 
-                                            <label for="example-week-input" class="form-label">Specialtite  @error('speciality_id')
+                                            <label for="example-week-input" class="form-label">Status  @error('status')
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror</label>

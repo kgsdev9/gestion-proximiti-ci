@@ -10,11 +10,7 @@ class Commande extends Model
 {
     use HasFactory;
 
-
-    // protected $guarded = [];
-
     protected $fillable = ['fullname','telephone_client', 'codeCommande', 'adresse_intervention', 'expired_at', 'artisan_id'];
-
 
     public function sommeCommande($items) {
 

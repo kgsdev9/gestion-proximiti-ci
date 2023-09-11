@@ -54,12 +54,6 @@
                                       <input class="form-control" name="prenom" type="text" value="{{old('prenom')}}" placeholder="Prénom de l'artisan" required>
                                 </div>
                             </div>
-
-
-
-                            <input type="text" data-format="(***) ***-****" class="form-control" data-mask="(xxx) xxxxx-xxxx-xxxx">
-
-
                             <div class="col-md-6 col-lg-4 col-xxl-3">
                                 <div class="form-group">
                                     <label for="example-week-input" class="form-label">Statut  de l'artisan  @error('status')

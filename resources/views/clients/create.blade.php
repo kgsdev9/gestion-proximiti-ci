@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Catalogue client')
+@section('title', 'Nouveau client')
 @section('master')
 
 
@@ -29,45 +29,45 @@
             </div>
           <div class="card">
             <div class="card-header">
-                <form action="{{route('fournisseurs.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('clients.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-inner">
                         <div class="row gy-4">
                             <div class="col-md-6 col-lg-4 col-xxl-3">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-label">Désignation @error('designation')
+                                    <label for="example-text-input" class="form-label">Nom  @error('nom')
                                         <span class="text-danger">{{$message}}</span>
 
                                       @enderror </label>
-                                      <input class="form-control" name="designation" type="text"  value="{{old('designation')}}" placeholder="Désignation" required>
+                                      <input class="form-control" name="nom" type="text"  value="{{old('nom')}}" placeholder="Désignation" required>
                                 </div>
                             </div>
 
                             <div class="col-md-6 col-lg-4 col-xxl-3">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-label">Prix @error('prix')
+                                    <label for="example-text-input" class="form-label">Prénom @error('prenom')
                                         <span class="text-danger">{{$message}}</span>
 
                                       @enderror </label>
-                                      <input class="form-control" name="prix" type="number"  value="{{old('prix')}}" placeholder="123444" required>
+                                      <input class="form-control" name="prenom" type="text"  value="{{old('prenom')}}" placeholder="123444" required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4 col-xxl-3">
                                 <div class="form-group">
-                                    <label for="example-search-input" class="form-label">Adresse  @error('adresse')
+                                    <label for="example-search-input" class="form-label">adresse  @error('adresse')
                                         <span class="text-danger">{{$message}}</span>
 
                                       @enderror</label>
-                                      <input class="form-control" name="adresse" type="text" value="{{old('adresse')}}" placeholder="Adresse fournisseur" required>
+                                      <input class="form-control" name="adresse" type="adresse" value="{{old('adresse')}}" placeholder="adresse fournisseur" required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4 col-xxl-3">
                                 <div class="form-group">
-                                    <label for="example-week-input" class="form-label"> Commune  @error('commune')
+                                    <label for="example-week-input" class="form-label"> Code Client  @error('code_client')
                                         <span class="text-danger">{{$message}}</span>
                                       @enderror</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" name="commune" value="{{old('commune')}}" placeholder="Abobo-Dokui">
+                                        <input type="text" class="form-control" name="code_client" value="{{old('code_client')}}" placeholder="PR5567678">
                                         </select>
 
                                     </div>
@@ -75,31 +75,46 @@
                             </div>
                             <div class="col-md-6 col-lg-4 col-xxl-3">
                                 <div class="form-group">
-                                    <label for="example-date-input" class="form-label">Télephone  @error('telephone')
+                                    <label for="example-date-input" class="form-label">Mode Contact  @error('telephone')
                                         <span class="text-danger">{{$message}}</span>
 
                                       @enderror </label>
-                                      <input class="form-control" type="tel" name="telephone"  value="{{old('telephone')}}" placeholder="0745645677" required>
+                                   <select name="mode_contact" id="" class="form-control">
+                                    <option value="facebook">Facebook</option>
+                                    <option value="instagram">Instagram</option>
+                                    <option value="appel">Appel Télephonique</option>
+                                    <option value="whatsApp">WhatsApp</option>
+                                    <option value="site">Site Web </option>
+                                   </select>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4 col-xxl-3">
                                 <div class="form-group">
-                                    <label for="example-month-input" class="form-label">Fixe  @error('fax')
+                                    <label for="example-month-input" class="form-label">Date  @error('mode_contact')
                                         <span class="text-danger">{{$message}}</span>
 
                                       @enderror</label>
-                                      <input class="form-control" type="tel" name="fax" value="{{old('fax')}}" placeholder="0745645677" required>
+                                      <input class="form-control" type="date" name="mode_contact" value="{{old('mode_contact')}}" placeholder="0745645677" required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4 col-xxl-3">
                                 <div class="form-group">
-                                    <label for="example-week-input" class="form-label">email  @error('email')
+                                    <label for="example-week-input" class="form-label">Adresse  @error('adresse')
                                         <span class="text-danger">{{$message}}</span>
                                       @enderror</label>
-                                      <input class="form-control" name="email" type="email"  value="{{old('email')}}" placeholder="Adresse" required>
+                                      <input class="form-control" name="adresse" type="adresse"  value="{{old('adresse')}}" placeholder="adresse" required>
                                 </div>
                             </div>
 
+
+                            <div class="col-md-6 col-lg-4 col-xxl-3">
+                                <div class="form-check form-switch">
+                                    <br><br>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault" >Premium </label>
+                                <input class="form-check-input" name="premimum" type="checkbox" id="flexSwitchCheckDefault" value="oui">
+
+                                  </div>
+                            </div>
 
 
 

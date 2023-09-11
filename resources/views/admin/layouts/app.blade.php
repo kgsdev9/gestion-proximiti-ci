@@ -32,7 +32,7 @@
         @livewireStyles
     </head>
 
-    <body  style="font-family: 'Inter', sans-serif;">
+    <body  style="font-family: 'Inter',sans-serif;">
 
     <!-- <body data-layout="horizontal"> -->
 

@@ -23,23 +23,23 @@ class FournisseurController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('admin.Fournisseurs.liste', [
-            'ressourceFournisseur' => $this->fournisseurService->all()
-        ]);
-    }
+    // public function index()
+    // {
+    //     return view('admin.Fournisseurs.liste', [
+    //         'ressourceFournisseur' => $this->fournisseurService->all()
+    //     ]);
+    // }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    // public function create()
+    // {
 
-        return view('admin.Fournisseurs.create');
-    }
+    //     return view('admin.Fournisseurs.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -47,12 +47,12 @@ class FournisseurController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FournisseurRequest $request)
-    {
+    // public function store(FournisseurRequest $request)
+    // {
 
-     $this->fournisseurService->create($request->all());
-       return redirect()->route('fournisseurs.index', ['success' => true]);
-    }
+    //  $this->fournisseurService->create($request->all());
+    //    return redirect()->route('fournisseurs.index', ['success' => true]);
+    // }
 
     /**
      * Display the specified resource.
@@ -73,14 +73,14 @@ class FournisseurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        return view('admin.Fournisseurs.edit',  [
-            'ressource' => $this->fournisseurService->single($id),
-            'method' => 'POST',
-            'action' => route('fournisseurs.update', $id)
-        ]);
-    }
+    // public function edit($id)
+    // {
+    //     return view('admin.Fournisseurs.edit',  [
+    //         'ressource' => $this->fournisseurService->single($id),
+    //         'method' => 'POST',
+    //         'action' => route('fournisseurs.update', $id)
+    //     ]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -89,13 +89,13 @@ class FournisseurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(FournisseurRequest $request, $id)
-    {
-       $this->fournisseurService->update($request->all() ,$id);
+    // public function update(FournisseurRequest $request, $id)
+    // {
+    //    $this->fournisseurService->update($request->all() ,$id);
 
-       return redirect()->route('fournisseurs.index',['edited' => true]);
+    //    return redirect()->route('fournisseurs.index',['edited' => true]);
 
-    }
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -103,11 +103,11 @@ class FournisseurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-       $ressource=  $this->fournisseurService->single($id);
-       $ressource->delete();
-       return redirect()->back();
-    }
+    // public function destroy($id)
+    // {
+    //    $ressource=  $this->fournisseurService->single($id);
+    //    $ressource->delete();
+    //    return redirect()->back();
+    // }
 
 }

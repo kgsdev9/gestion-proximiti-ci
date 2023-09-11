@@ -13,14 +13,20 @@ class CreateMissionSpecialiteTable extends Migration
      */
     public function up()
     {
-        Schema::create('mission_specialite', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('mission_id')->nullable();
-            $table->unsignedBigInteger('speciality_id')->nullable();
-            $table->foreign('mission_id')->references('id')->on('missions')->onDelete('CASCADE');
-            $table->foreign('specialite_id')->references('id')->on('specialities')->onDelete('CASCADE');
-            $table->timestamps();
-        });
+
+        if (!Schema::hasTable('mission_specialite'))
+        {
+            Schema::create('mission_specialite', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('mission_id')->nullable();
+                $table->unsignedBigInteger('speciality_id')->nullable();
+                $table->foreign('mission_id')->references('id')->on('missions')->onDelete('CASCADE');
+                $table->foreign('specialite_id')->references('id')->on('specialities')->onDelete('CASCADE');
+                $table->timestamps();
+            });
+        }
+
+
     }
 
     /**

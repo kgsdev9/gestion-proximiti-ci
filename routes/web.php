@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Auth\AuthController;
 use App\Http\Livewire\Commande\CommandeController;
 use App\Http\Livewire\DetailCommande;
+use App\Http\Livewire\Equipement\EquipementRessource;
 use App\Http\Livewire\PortailAutrise;
 
 
@@ -42,11 +43,14 @@ Route::resources([
     'artisan' => ArtisanController::class,
     'specialite'=> SpecialiteController::class,
     'proposition' => PropositionController::class,
-    'fournisseurs' => FournisseurController::class,
     'clients' => ClientController::class,
     'phonenumber' => PhoneNotificationController::class,
     'missions' => MissionController::class
  ]);
+
+
+ Route::get('/equipement', EquipementRessource::class)->name('equipement');
+
 
  Route::get('/annuaire-messagerie', [PhoneNumberNotificationController::class, 'index'])->name('annuaire.messagerie');
 
@@ -102,4 +106,10 @@ Route::get('/testesss', function () {
 
 
 Route::get('/invoice-mission/{id}', [InvoiceController::class, 'invoiceMission'])->name('invoice.missions');
+
+Route::get('/donwload/all/equipment/excell', [InvoiceController::class, 'invoiceAllEquipment'])->name('equipment.download');
+Route::get('/donwload/all/equipment/exell', [InvoiceController::class, 'invoiceAllEquipmentExcell'])->name('equipment.excell');
+
+
+
 

@@ -18,8 +18,4 @@ class Client extends Model
     'mode_contact',
     'premimum'
     ];
-
-
-
-
 }

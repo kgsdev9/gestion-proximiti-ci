@@ -28,20 +28,23 @@
             <!-- end page title -->
 
             <div class="row">
+
+
+
                 <div class="col-xl-3 col-md-6">
                     <!-- card -->
                     <div class="card card-h-100">
                         <!-- card body -->
                         <div class="card-body">
                             <div class="row align-items-center">
-                                <div class="col-6">
+                                <div class="col-md-6">
                                     <span class="text-muted mb-3 lh-1 d-block text-truncate">TOTAL ARTISAN </span>
                                     <h4 class="mb-3">
                                         <span class="counter-value" data-target="{{$candidats}}">{{$candidats}}</span>
                                     </h4>
                                 </div>
 
-
+                        
                             </div>
 
                         </div><!-- end card body -->
