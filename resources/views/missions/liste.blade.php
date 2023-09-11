@@ -36,9 +36,9 @@
                                         <h5>Comment rechercher une mission ?</h5>
                                         <p class="text-muted">Une mission possede  un code d'intervention unique ce code permet d'identifier la missions </p>
                                         <div>
-                                            <button type="button" class="btn btn-primary mt-2 me-2 waves-effect waves-light">
+                                            <a  href="{{route('missions.create')}}" class="btn btn-primary mt-2 me-2 waves-effect waves-light">
                                                Nouvelle Mission
-                                            </button>
+                                            </a>
                                         </div>
                                         <div class="row justify-content-center">
                                             <div class="col-xl-10">
@@ -134,98 +134,12 @@
                                       </div>
                                   </div>
                                 @endforeach
-                                <!-- end col -->
-                                <div class="col-xl-4 col-sm-6">
-                                    <div class="card">
-                                        <div class="card-body overflow-hidden position-relative">
-                                            <div>
-                                                <i class="bx bx-help-circle widget-box-1-icon text-primary"></i>
-                                            </div>
-                                            <div class="faq-count">
-                                                <h5 class="text-primary">02.</h5>
-                                             </div>
-                                            <h5 class="mt-3">Where does it come from?</h5>
-                                            <p class="text-muted mt-3 mb-0">Everyone realizes why a new common language would be desirable one could refuse to pay expensive translators.</p>
-                                        </div>
-                                        <!-- end card body -->
-                                    </div>
-                                    <!-- end card -->
-                                </div>
-                                <!-- end col -->
 
-                                <div class="col-xl-4 col-sm-6">
-                                    <div class="card">
-                                        <div class="card-body overflow-hidden position-relative">
-                                            <div>
-                                                <i class="bx bx-help-circle widget-box-1-icon text-primary"></i>
-                                            </div>
-                                            <div class="faq-count">
-                                                <h5 class="text-primary">03.</h5>
-                                             </div>
-                                            <h5 class="mt-3">Where can I get some?</h5>
-                                            <p class="text-muted mt-3 mb-0">If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.</p>
-                                        </div>
-                                        <!-- end card body -->
-                                    </div>
-                                    <!-- end card -->
-                                </div>
-                                <!-- end col -->
 
-                                <div class="col-xl-4 col-sm-6">
-                                    <div class="card">
-                                        <div class="card-body overflow-hidden position-relative">
-                                            <div>
-                                                <i class="bx bx-help-circle widget-box-1-icon text-primary"></i>
-                                            </div>
-                                            <div class="faq-count">
-                                                <h5 class="text-primary">04.</h5>
-                                             </div>
-                                            <h5 class="mt-3">Why do we use it?</h5>
-                                            <p class="text-muted mt-3 mb-0">Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary.</p>
-                                        </div>
-                                        <!-- end card body -->
-                                    </div>
-                                    <!-- end card -->
-                                </div>
-                                <!-- end col -->
 
-                                <div class="col-xl-4 col-sm-6">
-                                    <div class="card">
-                                        <div class="card-body overflow-hidden position-relative">
-                                            <div>
-                                                <i class="bx bx-help-circle widget-box-1-icon text-primary"></i>
-                                            </div>
-                                            <div class="faq-count">
-                                                <h5 class="text-primary">05.</h5>
-                                             </div>
-                                            <h5 class="mt-3">
-                                                Where can I get some?</h5>
-                                            <p class="text-muted mt-3 mb-0">The point of using Lorem Ipsum is that it has a
-                                                more-or-less normal they distribution of letters opposed to using content here.</p>
-                                        </div>
-                                        <!-- end card body -->
-                                    </div>
-                                    <!-- end card -->
-                                </div>
-                                <!-- end col -->
 
-                                <div class="col-xl-4 col-sm-6">
-                                    <div class="card">
-                                        <div class="card-body overflow-hidden position-relative">
-                                            <div>
-                                                <i class="bx bx-help-circle widget-box-1-icon text-primary"></i>
-                                            </div>
-                                            <div class="faq-count">
-                                                <h5 class="text-primary">06.</h5>
-                                             </div>
-                                            <h5 class="mt-3">What is Lorem Ipsum?</h5>
-                                            <p class="text-muted mt-3 mb-0">To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental</p>
-                                        </div>
-                                        <!-- end card body -->
-                                    </div>
-                                    <!-- end card -->
-                                </div>
-                                <!-- end col -->
+
+
                             </div>
                             <!-- end row -->
                         </div>
