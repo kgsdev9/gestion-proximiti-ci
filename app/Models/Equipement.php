@@ -9,5 +9,11 @@ class Equipement extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['designation', 'quantite', 'fournisseur', 'description'];
+    protected $fillable = [
+        'designation',
+         'quantite',
+         'fournisseur',
+          'description',
+         'price'
+        ];
 }

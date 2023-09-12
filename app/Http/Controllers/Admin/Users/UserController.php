@@ -2,61 +2,56 @@
 
 namespace App\Http\Controllers\Admin\Users;
 
-use App\Models\Role;
-use App\Models\User;
-use Illuminate\Http\Request;
 use MercurySeries\Flashy\Flashy;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
+use App\Services\RoleService;
+use App\Services\UserService;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
 
+    protected $userService ;
+    protected $roleService ;
 
-    public function __construct()
+    public function __construct(UserService $userService, RoleService $roleService)
     {
         $this->middleware('auth');
+        $this->userService = $userService;
+        $this->roleService = $roleService;
     }
 
     public function index()
     {
-        $users = User::all();
-        return view('admin.users.liste', compact('users'));
+        return view('admin.users.liste', [
+            'allUsers' => $this->userService->all()
+        ]);
     }
 
     public function create() {
 
-        $roles = Role::all();
-        return view('admin.users.create', compact('roles'));
+
+        return view('admin.users.create', [
+            'allRoles'=> $this->roleService->all()
+        ]);
     }
 
-    public function store(UserRequest  $request) {
-        {
-
-            $data = $request->input();
-             User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                 'role_id' =>$data['role_id'],
-                'password' => Hash::make($data['password']),
-            ]);
-            Flashy::message('Utilisateur crée avec succes');
-            return redirect()->route('users.index');
-    }
-
-}
+    public function store(UserRequest  $request)
+         {
+        $this->userService->createNewUser($request);
+        return redirect()->route('users.index', ['success' => true]);
+        }
 
         public function edit($id) {
-            $ressource  = User::find($id);
-            $roles = Role::all();
-            return view('admin.users.edit', compact('ressource', 'roles'));
+            return view('admin.users.edit', [
+                'singleUser'=> $this->userService->single($id),
+                'allRoles'=> $this->roleService->all()
+            ]);
         }
 
         public function destroy($id) {
-            $ressource  = User::find($id);
-
+            $ressource  = $this->userService->single($id) ;
             if($ressource->id  == Auth::user()->id) {
                 Flashy::message('Vous n\'avez pas le droit de le faire !');
                 return redirect()->back();
@@ -68,16 +63,9 @@ class UserController extends Controller
         }
 
         public function update(UserRequest $request , $id) {
-            $ressource  = User::find($id);
-            $ressource->name =  $request->input('name');
-            $ressource->email  = $request->input('email');
-            $ressource->role_id = $request->input('role_id');
-            $ressource->password = Hash::make($request->input('password'));
-            $ressource->update();
+             $this->userService->update($request, $id);
             Flashy::message('Utilisateur modifié avec succes');
             return redirect()->route('users.index');
 
         }
-
-
 }

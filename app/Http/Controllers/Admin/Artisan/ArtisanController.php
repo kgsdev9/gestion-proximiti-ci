@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Artisan;
 
-use App\Models\Media;
-use App\Models\Artisan;
-use App\Services\ArtisanService;
+
 use MercurySeries\Flashy\Flashy;
 use App\Services\SpecialiteService;
+use App\Services\ArtisanService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ArtisanRequest;
@@ -95,23 +94,7 @@ class ArtisanController extends Controller
         ]);
     }
 
-    public function display(string $photo, Object $files) {
-        $collectionRessource = [];
-        if($photo) {
-            $pathPhoto = "artisans/photo/".$photo;
 
-        }
-
-        if($files) {
-            $value = 0;
-            foreach($files as $file) {
-                $pathfile = "programme/".$file->image;
-                 $value+=1 ;
-            }
-        }
-          $collectionRessource = [$pathPhoto,  $pathfile ?? '[]'];
-          return $collectionRessource;
-    }
 
     /**
      * Update the specified resource in storage.

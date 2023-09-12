@@ -148,5 +148,23 @@ class ArtisanRepository {
 
     }
 
+    public function display(string $photo, Object $files) {
+        $collectionRessource = [];
+        if($photo) {
+            $pathPhoto = "artisans/photo/".$photo;
+
+        }
+
+        if($files) {
+            $value = 0;
+            foreach($files as $file) {
+                $pathfile = "programme/".$file->image;
+                 $value+=1 ;
+            }
+        }
+          $collectionRessource = [$pathPhoto,  $pathfile ?? '[]'];
+          return $collectionRessource;
+    }
+
 
 }

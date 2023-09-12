@@ -223,12 +223,19 @@
                             <a href="{{route('artisan.edit', $value->id)}}" class="btn btn-primary text-white"> <i class="fa fa-edit"></i></a>
                         </div>
 
+                        <div class="col-md-1">
+
+                        </div>
+
                         <div class="col-md-2">
                             <form action="{{route('artisan.destroy', $value->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit" onclick="return confirm('Voulez-vous vraiment supprimer?')"><i class="fa fa-trash"></i></button>
                              </form>
+                        </div>
+                        <div class="col-md-1">
+
                         </div>
                         <div class="col-md-2">
                             <a href="{{route('artisan.show', $value->id)}}" class="btn btn-success text-white"> <i class="fa fa-eye"></i></a>

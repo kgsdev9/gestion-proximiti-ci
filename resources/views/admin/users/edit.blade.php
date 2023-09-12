@@ -23,7 +23,7 @@
                         <div class="card-body p-4">
 
 
-                            <form action="{{route('users.update', $ressource->id)}}" method="POST">
+                            <form action="{{route('users.update', $singleUser->id)}}" method="POST">
                                 @method('PATCH')
                                 @csrf
                                 <div class="col-lg-12">
@@ -32,7 +32,7 @@
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror</label>
-                                            <input class="form-control" name="name" type="text" value="{{$ressource->name}}"  required>
+                                            <input class="form-control" name="name" type="text" value="{{$singleUser->name}}"  required>
 
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror</label>
-                                            <input class="form-control" name="email" type="email" value="{{$ressource->email}}"   required>
+                                            <input class="form-control" name="email" type="email" value="{{$singleUser->email}}"   required>
 
                                     </div>
                                 </div>
@@ -61,8 +61,8 @@
                                               @enderror</label>
                                             <select name="role_id"  required class="form-control">
                                                 <option value="">Attribuer un role  </option>
-                                                @foreach ($roles as $value)
-                                                <option value="{{$value->id}}" {{$value->id == $ressource->role_id ? 'selected': ''}}>{{$value->name }}</option>
+                                                @foreach ($allRoles as $value)
+                                                <option value="{{$value->id}}" {{$value->id == $singleUser->role_id ? 'selected': ''}}>{{$value->name }}</option>
                                                 @endforeach
                                             </select>
 
@@ -80,7 +80,7 @@
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror</label>
-                                            <input class="form-control" name="password" type="password"  required value="{{$ressource->password}}">
+                                            <input class="form-control" name="password" type="password"  required value="{{$singleUser->password}}">
 
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror</label>
-                                            <input class="form-control" name="password_confirmation" type="password"  value="{{$ressource->password}}">
+                                            <input class="form-control" name="password_confirmation" type="password"  value="{{$singleUser->password}}">
 
                                     </div>
                                 </div>

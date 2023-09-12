@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Nouvelle  Specilaitée')
+@section('title', 'Nouveau utilisateur')
 
 @section('master')
 
@@ -62,7 +62,7 @@
                                               @enderror</label>
                                             <select name="role_id"  required class="form-control">
                                                 <option value="">Attribuer un role  </option>
-                                                @foreach ($roles as $value)
+                                                @foreach ($allRoles as $value)
                                                     <option value="{{$value->id}}">{{$value->name}}</option>
                                                 @endforeach
                                             </select>

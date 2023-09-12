@@ -11,7 +11,6 @@ use App\Models\Commande;
 use App\Models\Speciality;
 use App\Models\TCommandeArticle;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Cache;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class HomeController extends Controller
