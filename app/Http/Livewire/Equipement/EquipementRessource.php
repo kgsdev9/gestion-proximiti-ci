@@ -13,6 +13,7 @@ class EquipementRessource extends Component
     public $fournisseur;
     public $description;
     public $equipmentID ;
+    public $price;
     public $search;
 
     public function render()
@@ -31,6 +32,7 @@ class EquipementRessource extends Component
         'quantite' => 'required',
         'fournisseur' => 'required',
         'description' => 'required',
+        'price'=> 'required'
     ];
 
 
@@ -40,6 +42,7 @@ class EquipementRessource extends Component
         $this->quantite = '';
         $this->fournisseur = '';
         $this->description = '';
+        $this->price = '';
     }
 
     public function addEquipment()
@@ -49,6 +52,7 @@ class EquipementRessource extends Component
             'quantite' => $this->quantite,
             'fournisseur' => $this->fournisseur,
             'description' => $this->description,
+            'price' => $this->price,
             ]);
 
            $this->resetFields();
@@ -77,6 +81,7 @@ class EquipementRessource extends Component
         $this->equipmentID = $id;
         $this->designation = $singleEquipment->designation;
         $this->quantite = $singleEquipment->quantite;
+        $this->price = $singleEquipment->price;
         $this->fournisseur = $singleEquipment->fournisseur;
         $this->description = $singleEquipment->description;
 
@@ -98,7 +103,7 @@ class EquipementRessource extends Component
 
     public function updateEquipment()
     {
- 
+
         if ($this->equipmentID) {
             $equipment = Equipement::find($this->equipmentID);
             $equipment->update([

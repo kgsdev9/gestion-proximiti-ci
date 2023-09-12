@@ -136,7 +136,7 @@
                                 <div class="col-6">
                                     <span class="text-muted mb-3 lh-3 d-block text-truncate">TOTAL EQUIPEMENT </span>
                                     <h4 class="mb-3">
-                                        <span class="counter-value" data-target="">0</span>
+                                        <span class="counter-value" data-target="{{$equipment}}">{{$equipment}}</span>
                                     </h4>
                                 </div>
 
@@ -155,7 +155,7 @@
                                 <div class="col-6">
                                     <span class="text-muted mb-3 lh-3 d-block text-truncate">TOTAL MISSION </span>
                                     <h4 class="mb-3">
-                                        <span class="counter-value" data-target="">0</span>
+                                        <span class="counter-value" data-target="{{$missions}}">{{$missions}}</span>
                                     </h4>
                                 </div>
 
@@ -174,7 +174,7 @@
                                 <div class="col-6">
                                     <span class="text-muted mb-3 lh-3 d-block text-truncate">TOTAL COMMANDE </span>
                                     <h4 class="mb-3">
-                                        <span class="counter-value" data-target="">0</span>
+                                        <span class="counter-value" data-target="">{{$commande}}</span>
                                     </h4>
                                 </div>
 
@@ -240,7 +240,9 @@
         <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
-
+    <div>
+        <canvas id="myChart">sssssssssss</canvas>
+      </div>
 
     <footer class="footer">
         <div class="container-fluid">
@@ -257,5 +259,7 @@
         </div>
     </footer>
 </div>
+
+
 
 @endsection

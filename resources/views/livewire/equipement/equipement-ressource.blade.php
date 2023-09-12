@@ -70,6 +70,7 @@
                                         <th scope="col">Désignation</th>
                                         <th scope="col">Quantite</th>
                                         <th scope="col">fournisseur</th>
+                                        <th scope="col">prix</th>
                                         <th scope="col">Description</th>
                                         <th></th>
                                     </tr>
@@ -79,8 +80,6 @@
 
 
                                     <tr>
-
-
                                         <td>
                                             {{$value->designation}}
                                           </td>
@@ -93,44 +92,28 @@
                                             {{$value->fournisseur}}
                                           </td>
                                           <td>
+                                            {{$value->price}}FCFA
+                                          </td>
+                                          <td>
                                             {{$value->description}}
                                           </td>
-
-
-
-
                                         <td>
                                             <div class="row">
                                                 <div class="col-md-2">
-
-
                                                 </div>
                                                 <div class="col-md-1">
-
                                                 </div>
-
                                                 <div class="col-md-2">
-
                                                         <button class="btn btn-danger" type="submit" onclick="return confirm('Voulez-vous supprimer le fournisseur?')"><i class="fa fa-trash"></i></button>
                                                         <button type="button"   data-bs-toggle="modal" data-bs-target="#EquipementeditModal" wire:click="editEquipment({{$value->id}})" class="btn btn-primary">
                                                             <i class="fa fa-edit"></i>
                                                             </button>
                                                     </form>
-
                                                 </div>
-
                                             </div>
                                         </td>
-
-
-
-
-
                                     </tr><!-- end tr -->
-
                                     @endforeach
-
-
                                 </tbody><!-- end tbody -->
                             </table><!-- end table -->
                         </div>

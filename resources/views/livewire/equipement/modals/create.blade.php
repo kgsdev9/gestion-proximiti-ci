@@ -14,6 +14,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="" class="form-label">Prix</label>
+                    <input type="number" wire:model="price" class="form-control">
+                </div>
+
+                <div class="form-group">
                     <label for="" class="form-label">Quantite</label>
                     <input type="number" wire:model="quantite" class="form-control">
                 </div>
