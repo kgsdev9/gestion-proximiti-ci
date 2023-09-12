@@ -44,7 +44,7 @@
                                     </h4>
                                 </div>
 
-                        
+
                             </div>
 
                         </div><!-- end card body -->
@@ -203,7 +203,11 @@
 
 
                             <div class="mx-auto mb-4">
+                                @if($value->photo == null)
+                                <img src="{{asset('logo_footer.png')}}" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                @else
                                 <img src="{{asset('artisans/photo/'.$value->photo)}}" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                @endif
                             </div>
                             <h5 class="font-size-16 mb-1"><a href="{{route('artisan.show', $value->id)}}" class="text-body">{{$value->name}} {{$value->prenom}}</a></h5>
                             <p class="text-muted mb-2">{{$value->specilaite->libelle}}</p>

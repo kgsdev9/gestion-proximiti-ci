@@ -4,111 +4,81 @@ namespace App\Http\Controllers\Admin\Artisan;
 
 use App\Models\Media;
 use App\Models\Artisan;
-use App\Models\Speciality;
-use Illuminate\Http\Request;
+use App\Services\ArtisanService;
 use MercurySeries\Flashy\Flashy;
-use Illuminate\Support\Facades\DB;
+use App\Services\SpecialiteService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ArtisanRequest;
-use App\Models\Mission;
 
 class ArtisanController extends Controller
 {
+    protected $specialiteService ;
+    protected $artisanService ;
 
-    public function __construct()
+    public function __construct(SpecialiteService $specialiteService, ArtisanService $artisanService)
     {
         $this->middleware('auth');
+        $this->specialiteService = $specialiteService ;
+        $this->artisanService = $artisanService ;
     }
 
     /**
-     * Display a listing of the resource.
+     * Affichage des entités  ressources.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $artisans = Artisan::orderByDesc('created_at')->get();
-        $specialites = Speciality::orderBYDesc('libelle')->get();
-        return view('admin.artisans.liste', compact('artisans', 'specialites'));
+
+
+
+        return view('admin.artisans.liste', [
+            'allArtisans' => $this->artisanService->all(),
+            'allSpecialites'=> $this->specialiteService->all()
+        ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Affichage du formulaire pour affichage de la ressource .
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        $specialites = Speciality::orderBYDesc('libelle')->get();
-        return view('admin.artisans.create', compact('specialites'));
+
+
+
+        return view('admin.artisans.create', [
+            'allSpecialites' => $this->specialiteService->all()
+        ]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Enregistrement de la ressource dans la base de données.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ArtisanRequest $request)
-    {
 
-        if($request->hasfile('photo')) {
-            $filetwo = $request->file('photo');
-            $filenametwo  = $request->file('photo')->getClientOriginalName() ;
-            $filetwo->move(public_path('artisans/photo'), $filenametwo);
-
-            }
-
-
-      $artisan  =   Artisan::create([
-            'name' => $request->input('name'),
-            'slug' => \Str::limit($request->input('name')),
-            'prenom' => $request->input('prenom'),
-            'telephone' => $request->input('telephone'),
-            'status' => $request->input('status'),
-            'num_whattsapp' => $request->input('num_whattsap'),
-            'adresse' => $request->input('adresse'),
-            'speciality_id' => $request->input('speciality_id'),
-            'photo'=>$filenametwo,
-            'email' => $request->input('email'),
-            'description' => $request->input('description'),
-            'commune' => $request->input('commune'),
-            'date_adhesion' => $request->input('date_adhesion'),
-            'zone_intervention' => $request->input('zone_intervention'),
-
-        ]);
-
-        if( $request->hasfile('file')) {
-            $file = $request->file('file');
-            // $filename = time().'.'.$extention;
-            foreach($file as $informations) {
-                $filename = time().'_'.$informations->getClientOriginalName();
-                $informations->move(\public_path("programme"), $filename);
-                Media::create([
-                'artisan_id' => $artisan->id,
-                'image' => $filename
-                 ]);
-            }
-        }
-
+    public function store(ArtisanRequest $request) {
+        $this->artisanService->save($request);
         Flashy::message('Artisan ajouté avec succes!');
-        return redirect()->route('artisan.index');
+        return redirect()->back();
     }
 
     /**
-     * Display the specified resource.
+     * Affichage d'une seule ressource spécifique.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $ressource = Artisan::find($id);
-        $fileRessource = Media::where('artisan_id', $ressource->id)->first();
-        $AllMissionArtisan = Mission::where('artisan_id', $ressource->id)->get();
-        // dd($AllMissionArtisan);
-        return view('admin.artisans.detail', compact('ressource', 'fileRessource', 'AllMissionArtisan'));
+        return view('admin.artisans.detail', [
+            'singleRessourceArtisan' =>  $this->artisanService->single($id),
+            'allMediaArtisan'=>  $this->artisanService->getMediaArtisan($id)
+        ]);
     }
 
     /**
@@ -119,11 +89,28 @@ class ArtisanController extends Controller
      */
     public function edit($id)
     {
+        return view('admin.artisans.edit', [
+            'allSpecialites'=> $this->specialiteService->all(),
+            'singleRessource'=> $this->artisanService->single($id)
+        ]);
+    }
 
-        $ressource = Artisan::find($id);
-        $specialites = Speciality::all();
+    public function display(string $photo, Object $files) {
+        $collectionRessource = [];
+        if($photo) {
+            $pathPhoto = "artisans/photo/".$photo;
 
-        return view('admin.artisans.edit', compact('ressource', 'specialites'));
+        }
+
+        if($files) {
+            $value = 0;
+            foreach($files as $file) {
+                $pathfile = "programme/".$file->image;
+                 $value+=1 ;
+            }
+        }
+          $collectionRessource = [$pathPhoto,  $pathfile ?? '[]'];
+          return $collectionRessource;
     }
 
     /**
@@ -133,72 +120,49 @@ class ArtisanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ArtisanRequest $request, $id)
-    {
-        $ressource  = Artisan::find($id);
 
+     public function update(ArtisanRequest $request, $id) {
+         $this->artisanService->update($request, $id);
+         Flashy::message('Action effécutée avec succes!');
+         return redirect()->back();
+     }
 
-        $ressource->name = $request->input('name');
-        $ressource->slug = \Str::slug($request->input('name'));
-        $ressource->telephone = $request->input('telephone');
-        $ressource->num_whattsapp = $request->input('num_whattsap');
-        $ressource->adresse = $request->input('adresse');
-        $ressource->email = $request->input('email');
-        $ressource->status = $request->input('statut');
-        $ressource->commune = $request->input('commune');
-        $ressource->date_adhesion = $request->input('date_adhesion');
-        $ressource->zone_intervention = $request->input('zone_intervention');
-        $ressource->speciality_id = $request->input('speciality_id');
-        $ressource->description = $request->input('description');
+     public function getPathPhoto(string $photo, Object $files) {
+        $collectionRessource = [];
+        if($photo) {
+            File::exists("artisans/photo". $photo);
+            File::delete("artisans/photo". $photo);
 
-        if($request->hasFile('photo')) {
-            $chemin = 'artisans/photo/'.$ressource->cover_image;
-            if(File::exists($chemin)) {
-            $docs =    File::delete($chemin) ;
-            }
-            $file = $request->file('photo');
-            $name = $request->file('photo')->getClientOriginalName();
-            $file->move(public_path('artisans/photo/'),$name);
-            $ressource->photo = $name;
-         }
-
-        $ressource->update();
-
-        if($request->hasFile('file')) {
-            $files = $request->file('file');
-            foreach ($files as $file) {
-            $image = time().'_'.$file->getClientOriginalName();
-            $file->move(\public_path("programme"), $image);
-            Media::create([
-                'artisan_id' => $ressource->id,
-                'image' => $image
-                 ]);
+        }
+        if($files) {
+            $value = 0;
+            foreach($files as $file) {
+                if(File::exists("programme". $file->image)) {
+                    File::delete("programme". $file->image);
+                    $value+=1 ;
+                }
             }
         }
 
-        Flashy::message('Fiche artisan modifiée avec succes!');
-        // return redirect()->route('artisan.index');
-        return redirect()->back();
+      return   $collectionRessource =  [];
     }
 
+
+
+
+
+
     /**
-     * Remove the specified resource from storage.
+     * Suppression de la ressource spéficique dans le storage et dans la base de données .
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $ressource = Artisan::find($id);
-        $path = 'artisans/photo/'.$ressource->photo;
-
-        // DB::table('media')->where('artisan_id', '=', $ressource->id)->delete();
-
-        if(File::exists($path)) {
-        $docs =  File::delete($path) ;
-        }
-        $ressource->delete();
+        $this->artisanService->single($id)->delete();
         Flashy::message('action effécuté avec succes!');
-        return redirect()->route('artisan.index');
+        return redirect()->back();
+
     }
 }

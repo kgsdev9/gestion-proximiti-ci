@@ -109,7 +109,7 @@
                                       @enderror</label>
                                       <select id="specialite" class="form-control" name="speciality_id" required>
                                         <option value="">Choisir la spécialité de l'artisan</option>
-                                        @foreach ($specialites as $value)
+                                        @foreach ($allSpecialites as $value)
                                         <option value="{{$value->id}}">{{$value->libelle}}</option>
                                         @endforeach
                                     </select>
@@ -206,7 +206,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($artisans as $value)
+                    @foreach ($allArtisans as $value)
                 <tr role="row">
                   <td >{{$value->name}} {{$value->prenom}}</td>
                   <td>{{$value->telephone}}</td>

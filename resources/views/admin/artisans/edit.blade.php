@@ -14,11 +14,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edition de {{$ressource->name}}  </h4>
+                            <h4 class="card-title">Edition de {{$singleRessource->name}}  </h4>
 
                         </div>
                         <div class="card-body p-4">
-                            <form action="{{route('artisan.update', $ressource->id)}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('artisan.update', $singleRessource->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
                             <div class="row">
@@ -30,21 +30,21 @@
                                               <span class="text-danger">{{$message}}</span>
 
                                             @enderror </label>
-                                            <input class="form-control" name="name" type="text"  value="{{$ressource->name}}">
+                                            <input class="form-control" name="name" type="text"  value="{{$singleRessource->name}}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="example-search-input" class="form-label">Prenom  @error('prenom')
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror</label>
-                                            <input class="form-control" name="prenom" type="text" value="{{$ressource->prenom}}">
+                                            <input class="form-control" name="prenom" type="text" value="{{$singleRessource->prenom}}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="example-email-input" class="form-label">Email  @error('email')
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror</label>
-                                            <input class="form-control" type="email" name="email" value="{{$ressource->email}}">
+                                            <input class="form-control" type="email" name="email" value="{{$singleRessource->email}}">
                                         </div>
 
                                         <div class="mb-3">
@@ -52,7 +52,7 @@
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror</label>
-                                            <input class="form-control" type="text" name="commune" value="{{$ressource->commune}}">
+                                            <input class="form-control" type="text" name="commune" value="{{$singleRessource->commune}}">
                                         </div>
 
                                         <div class="mb-3">
@@ -60,7 +60,7 @@
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror</label>
-                                            <input class="form-control" type="text" name="zone_intervention" value="{{$ressource->zone_intervention}}">
+                                            <input class="form-control" type="text" name="zone_intervention" value="{{$singleRessource->zone_intervention}}">
                                         </div>
 
                                         <div class="mb-3">
@@ -80,21 +80,21 @@
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror </label>
-                                            <input class="form-control" type="tel" name="telephone"  value="{{$ressource->telephone}}">
+                                            <input class="form-control" type="tel" name="telephone"  value="{{$singleRessource->telephone}}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="example-month-input" class="form-label">N° WhattSapp  @error('num_whattsap')
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror</label>
-                                            <input class="form-control" type="tel" name="num_whattsap" value="{{$ressource->num_whattsapp}}">
+                                            <input class="form-control" type="tel" name="num_whattsap" value="{{$singleRessource->num_whattsapp}}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="example-week-input" class="form-label">Adresse  @error('adresse')
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror</label>
-                                            <input class="form-control" name="adresse" type="text"  value="{{$ressource->adresse}}">
+                                            <input class="form-control" name="adresse" type="text"  value="{{$singleRessource->adresse}}">
                                         </div>
 
                                         <div class="mb-3">
@@ -104,8 +104,8 @@
 
                                               @enderror</label>
                                               <select name="speciality_id"  class="form-control">
-                                                @foreach ($specialites as $value)
-                                                <option value="{{$value->id}}" {{$value->id ==$ressource->speciality_id ? 'selected': ''}}>{{$value->libelle }}</option>
+                                                @foreach ($allSpecialites as $value)
+                                                <option value="{{$value->id}}" {{$value->id ==$singleRessource->speciality_id ? 'selected': ''}}>{{$value->libelle }}</option>
                                                 @endforeach
 
                                               </select>
@@ -119,11 +119,11 @@
 
                                               @enderror</label>
                                               <select name="statut"  class="form-control">
-                                                <option value="Disponible" {{($ressource->status === 'Disponible') ? 'selected' : ''}}>Disponible</option>
-                                                <option value="Absent" {{($ressource->status === 'Absent') ? 'selected' : ''}}>Absent</option>
-                                                <option value="maladie" {{($ressource->status === 'maladie') ? 'selected' : ''}}>Maladie</option>
-                                                <option value="intervention" {{($ressource->status === 'intervention') ? 'selected' : ''}}>En intervention</option>
-                                                <option value="radie" {{($ressource->status === 'radie') ? 'selected' : ''}}>Radié</option>
+                                                <option value="Disponible" {{($singleRessource->status === 'Disponible') ? 'selected' : ''}}>Disponible</option>
+                                                <option value="Absent" {{($singleRessource->status === 'Absent') ? 'selected' : ''}}>Absent</option>
+                                                <option value="maladie" {{($singleRessource->status === 'maladie') ? 'selected' : ''}}>Maladie</option>
+                                                <option value="intervention" {{($singleRessource->status === 'intervention') ? 'selected' : ''}}>En intervention</option>
+                                                <option value="radie" {{($singleRessource->status === 'radie') ? 'selected' : ''}}>Radié</option>
 
                                               </select>
 
@@ -134,7 +134,7 @@
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror</label>
-                                            <input class="form-control" name="date_adhesion" type="date"  value="{{$ressource->date_adhesion}}">
+                                            <input class="form-control" name="date_adhesion" type="date"  value="{{$singleRessource->date_adhesion}}">
                                         </div>
 
 
@@ -143,7 +143,7 @@
                                                 <span class="text-danger">{{$message}}</span>
 
                                               @enderror</label>
-                                          <textarea name="description" id="" cols="30" rows="2" class="form-control">{{$ressource->description}}</textarea>
+                                          <textarea name="description" id="" cols="30" rows="2" class="form-control">{{$singleRessource->description}}</textarea>
                                         </div>
 
 
@@ -173,12 +173,12 @@
                             <div class="col-xl-4">
                                 <div class="card p-1 mb-xl-0">
                                     <div class="position-relative">
-                                        <img src="{{asset('artisans/photo/'.$ressource->photo)}}" alt="" class="img-thumbnail">
+                                        <img src="{{asset('artisans/photo/'.$singleRessource->photo)}}" alt="" class="img-thumbnail">
                                     </div>
                                 </div>
                             </div>
                             <!-- end col -->
-                            @foreach ($ressource->medias as $value)
+                            @foreach ($singleRessource->medias as $value)
                             <form action="{{route('unique.files', $value->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')

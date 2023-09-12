@@ -33,13 +33,13 @@
                                     <div class="d-flex align-items-start mt-3 mt-sm-0">
                                         <div class="flex-shrink-0">
                                             <div class="avatar-xl me-3">
-                                                <img src="{{asset('artisans/photo/'.$ressource->photo)}}" alt="" class="img-fluid rounded-circle d-block">
+                                                <img src="{{asset('artisans/photo/'.$singleRessourceArtisan->photo)}}" alt="" class="img-fluid rounded-circle d-block">
                                             </div>
                                         </div>
                                         <div class="flex-grow-1">
                                             <div>
-                                                <h5 class="font-size-16 mb-1">{{$ressource->name}}  {{$ressource->prenom}}</h5>
-                                                <p class="text-muted font-size-13">{{$ressource->specilaite->libelle  }}</p>
+                                                <h5 class="font-size-16 mb-1">{{$singleRessourceArtisan->name}}  {{$singleRessourceArtisan->prenom}}</h5>
+                                                <p class="text-muted font-size-13">{{$singleRessourceArtisan->specilaite->libelle  }}</p>
 
 
                                             </div>
@@ -80,7 +80,7 @@
                                                 </div>
                                                 <div class="col-xl">
                                                     <div class="text-muted">
-                                                        <p class="mb-2">{{$ressource->name}}     {{$ressource->prenom}}</p>
+                                                        <p class="mb-2">{{$singleRessourceArtisan->name}}     {{$singleRessourceArtisan->prenom}}</p>
 
                                                     </div>
                                                 </div>
@@ -93,7 +93,7 @@
                                                 </div>
                                                 <div class="col-xl">
                                                     <div class="text-muted">
-                                                        <p class="mb-2"> {{$ressource->specilaite->libelle  }} </p>
+                                                        <p class="mb-2"> {{$singleRessourceArtisan->specilaite->libelle  }} </p>
 
                                                     </div>
                                                 </div>
@@ -110,7 +110,7 @@
                                                 </div>
                                                 <div class="col-xl">
                                                     <div class="text-muted">
-                                                        <p> {{$ressource->telephone}}</p>
+                                                        <p> {{$singleRessourceArtisan->telephone}}</p>
                                                     </div>
                                                 </div>
 
@@ -122,7 +122,7 @@
 
                                                 <div class="col-xl">
                                                     <div class="text-muted">
-                                                        <p>  {{$ressource->num_whattsapp}}</p>
+                                                        <p>  {{$singleRessourceArtisan->num_whattsapp}}</p>
                                                     </div>
                                                 </div>
 
@@ -141,7 +141,7 @@
                                                 </div>
                                                 <div class="col-xl">
                                                     <div class="text-muted">
-                                                        <p>  {{$ressource->adresse}}</p>
+                                                        <p>  {{$singleRessourceArtisan->adresse}}</p>
                                                     </div>
                                                 </div>
 
@@ -153,7 +153,7 @@
 
                                                 <div class="col-xl">
                                                     <div class="text-muted">
-                                                        <p>  {{$ressource->commune}}</p>
+                                                        <p>  {{$singleRessourceArtisan->commune}}</p>
                                                     </div>
                                                 </div>
 
@@ -172,7 +172,7 @@
                                                 </div>
                                                 <div class="col-xl">
                                                     <div class="text-muted">
-                                                        <p>  {{$ressource->zone_intervention}}</p>
+                                                        <p>  {{$singleRessourceArtisan->zone_intervention}}</p>
                                                     </div>
                                                 </div>
 
@@ -184,7 +184,7 @@
 
                                                 <div class="col-xl">
                                                     <div class="text-muted">
-                                                        <p>  {{$ressource->date_adhesion}}</p>
+                                                        <p>  {{$singleRessourceArtisan->date_adhesion}}</p>
                                                     </div>
                                                 </div>
 
@@ -216,7 +216,7 @@
                                     <div>
                                         <div class="pb-3">
 
-                                            @foreach ($ressource->medias as $value )
+                                            @foreach ($singleRessourceArtisan->medias as $value )
 
                                             <a href=""><iframe src="{{asset('programme/'.$value->image)}}"  frameborder="0" style="height:700px; width:900px;"></iframe></a>
                                              @endforeach
@@ -231,7 +231,7 @@
                         </div>
                         <!-- end tab pane -->
 
-                        
+
                         <!-- end tab pane -->
                     </div>
                     <!-- end tab content -->
