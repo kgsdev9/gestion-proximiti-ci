@@ -18,9 +18,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class HomeController extends Controller
 {
 
-
-
-
+    
     public function invoiceOrder($id) {
         $commande=  Commande::findOrFail($id);
         $data=TCommandeArticle::where('commande_id', '=', $commande->id)->get();

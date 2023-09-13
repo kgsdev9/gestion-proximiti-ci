@@ -2,9 +2,9 @@
 	<div class="modal-dialog modal-lg">
         <form wire:submit.prevent="updateEquipment">
 		<div class="modal-content">
-            @if(session()->has('erreur'))
-            <div class="alert alert-success" role="alert">
-                {{ session()->get('success') }}
+            @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
             </div>
         @endif
 			<div class="modal-body">

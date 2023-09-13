@@ -1,12 +1,15 @@
 <div wire:ignore.self class="modal fade" id="EquipementcreateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
         <form wire:submit.prevent="addEquipment">
+
 		<div class="modal-content">
-            @if(session()->has('erreur'))
-            <div class="alert alert-success" role="alert">
-                {{ session()->get('success') }}
+            <div>
+                @if (session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
             </div>
-        @endif
 			<div class="modal-body">
 				<div class="form-group">
                     <label for="" class="form-label">Désignation</label>

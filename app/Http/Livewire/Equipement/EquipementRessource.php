@@ -47,6 +47,7 @@ class EquipementRessource extends Component
 
     public function addEquipment()
     {
+        $this->validate();
         Equipement::create([
             'designation' => $this->designation,
             'quantite' => $this->quantite,
@@ -54,25 +55,12 @@ class EquipementRessource extends Component
             'description' => $this->description,
             'price' => $this->price,
             ]);
+            session()->flash('message', 'Equipement ajouté avec succes.');
 
            $this->resetFields();
 
-        // $this->validate();
-        // try {
-        //     Equipement::create([
-        //         'designation' => $this->designation,
-        //         'quantite' => $this->quantite,
-        //         'fournisseur' => $this->fournisseur,
-        //         ]);
-        //     session()->flash('success','Equipment ajouté avec succes!!');
-        //     $this->resetFields();
-        // } catch (\Exception $ex) {
-        //     session()->flash('error','Quelsue chose ne va pas !!');
-        // }
+
     }
-
-
-
 
 
     public function editEquipment(string $id) {
@@ -85,24 +73,13 @@ class EquipementRessource extends Component
         $this->fournisseur = $singleEquipment->fournisseur;
         $this->description = $singleEquipment->description;
 
-        // try  {
-        //     $equipmentRessource = Equipement::findOrFail($id);
-        //     if(!$equipmentRessource) {
-        //         session()->flash('erreur','Aucun equipement trouvé');
-        //     } else {
-        //         $equipmentRessource->designation = $this->designation;
-        //         $equipmentRessource->quantite = $this->quantite;
-        //         $equipmentRessource->fournisseur = $this->fournisseur;
-        //     }
-
-        // }catch(\Exception $e) {
-        //     session()->flash('erreur','Quelque chose ne va pas!!');
-        // }
     }
 
 
     public function updateEquipment()
     {
+
+        $this->validate();
 
         if ($this->equipmentID) {
             $equipment = Equipement::find($this->equipmentID);
@@ -113,31 +90,11 @@ class EquipementRessource extends Component
                 'description' => $this->description,
             ]);
 
-            session()->flash('message', 'Users Updated Successfully.');
+            session()->flash('message', 'Equipement modifié avec succes.');
             $this->resetFields();
         }
     }
 
-
-    // public function updateEquipment($id)
-    // {
-    //     $this->equipmentID = Equipement::where('id', $id)->first();
-    //     // $this->validate();
-
-
-    //     try {
-    //         Equipement::whereId($this->equipmentID->id)->update([
-    //             'designation' => $this->designation,
-    //             'quantite' => $this->quantite,
-    //             'fournisseur' => $this->fournisseur,
-    //             'description' => $this->description,
-    //         ]);
-    //         session()->flash('success','Equipement modifié avec succes!!');
-    //         $this->resetFields();
-    //     } catch (\Exception $ex) {
-    //         session()->flash('success','quelque chose ne va pas!!');
-    //     }
-    // }
 
 
 }
