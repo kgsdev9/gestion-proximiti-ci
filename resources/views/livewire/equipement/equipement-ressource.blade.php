@@ -104,8 +104,8 @@
                                                 <div class="col-md-1">
                                                 </div>
                                                 <div class="col-md-2">
-                                                        <button class="btn btn-danger" type="submit" onclick="return confirm('Voulez-vous supprimer le fournisseur?')"><i class="fa fa-trash"></i></button>
-                                                        <button type="button"   data-bs-toggle="modal" data-bs-target="#EquipementeditModal" wire:click="editEquipment({{$value->id}})" class="btn btn-primary">
+                                                        <button class="btn btn-danger" onclick="confirm('Voulez-vous vraiment l\'equipment ?') || event.stopImmediatePropagation()" wire:click="delete({{$value->id}})"><i class="fa fa-trash"></i></button>
+                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#EquipementeditModal" wire:click="editEquipment({{$value->id}})" class="btn btn-primary">
                                                             <i class="fa fa-edit"></i>
                                                             </button>
                                                     </form>

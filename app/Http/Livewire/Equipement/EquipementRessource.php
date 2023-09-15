@@ -55,9 +55,8 @@ class EquipementRessource extends Component
             'description' => $this->description,
             'price' => $this->price,
             ]);
-            session()->flash('message', 'Equipement ajouté avec succes.');
-
-           $this->resetFields();
+        session()->flash('message', 'Equipement ajouté avec succes.');
+        $this->resetFields();
 
 
     }
@@ -95,6 +94,12 @@ class EquipementRessource extends Component
         }
     }
 
+    public function delete(string $id) {
+        $ressource = Equipement::find($id);
+        $ressource->delete();
+        session()->flash('message', 'equipement supprimé avec succec');
+
+    }
 
 
 }

@@ -19,6 +19,10 @@ class ClientService
         return $this->clientRepository->collectionFilters();
       }
 
-      
+
+      public function single(string $id) {
+        return $this->clientRepository->single($id);
+      }
+
 
 }

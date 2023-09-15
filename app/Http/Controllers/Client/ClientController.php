@@ -47,7 +47,6 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         Client::create([
             'nom' => $request->input('nom'),
             'email' => $request->input('email'),
@@ -70,7 +69,9 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('clients.edit', [
+            'ressourceClient'=> $this->clientService->single($id)
+        ]);
     }
 
     /**
@@ -81,8 +82,11 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('clients.edit', [
+            'ressourceClient'=> $this->clientService->single($id)
+        ]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -93,7 +97,16 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $ressource=  Client::find($id);
+       $ressource->nom = $request->input('nom');
+       $ressource->prenom = $request->input('prenom');
+       $ressource->email = $request->input('email');
+       $ressource->codeClient = $request->input('code_client');
+       $ressource->mode_contact	 = $request->input('mode_contact');
+       $ressource->date_contact	 = $request->input('date_contact');
+       $ressource->premimum	 = $request->input('premimum') ?? 'non';
+       $ressource->update();
+       return redirect()->route('clients.index', ['edited' => true]);
     }
 
     /**
@@ -104,6 +117,8 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $ressource = $this->clientService->single($id);
+      $ressource->delete();
+      return redirect()->back();
     }
 }

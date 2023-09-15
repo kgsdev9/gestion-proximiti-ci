@@ -26,5 +26,6 @@ class ClientRepository {
         return $this->client->find($id);
     }
 
+    
 
 }
