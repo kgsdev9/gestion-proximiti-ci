@@ -84,8 +84,8 @@
                                             <thead>
                                                 <tr>
                                                     <th >Désignation</th>
-                                                    <th>Quantite</th>
                                                     <th>Prix</th>
+                                                    <th>Quantite</th>
                                                     <th >TOTAL</th>
                                                 </tr>
                                             </thead>
@@ -95,9 +95,9 @@
                                                     <td>
                                                       {{$value->designation}}
                                                     </td>
-                                                    <td>{{$value->quantite}} FCFA</td>
-                                                    <td>{{$value->prix}}</td>
-                                                    <td>{{$value->total}}</td>
+                                                    <td>{{$value->prix}} FCFA</td>
+                                                    <td>{{$value->quantite}} </td>
+                                                    <td>{{$value->total}} FCFA</td>
                                                 </tr>
                                                 @endforeach
 

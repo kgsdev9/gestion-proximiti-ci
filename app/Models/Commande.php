@@ -10,7 +10,7 @@ class Commande extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['fullname','telephone_client', 'codeCommande', 'adresse_intervention', 'expired_at', 'artisan_id'];
+    protected $fillable = ['codeCommande','expired_at', 'artisan_id', 'client_id'];
 
     public function sommeCommande($items) {
 
@@ -28,5 +28,8 @@ class Commande extends Model
         return $this->belongsTo(Artisan::class, 'artisan_id');
     }
 
+    public function client() {
+        return $this->belongsTo(Client::class ,'client_id');
+    }
 
 }

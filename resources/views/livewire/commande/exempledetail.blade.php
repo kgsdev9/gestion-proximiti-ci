@@ -71,7 +71,7 @@
 													Expiration le :	{{date('d/m/Y', strtotime($commande->expired_at))}}
 												</p>
 												<p>
-													Code Client : 	{{$commande->code_client}}
+													Code Client : 	{{$commande->client->codeClient}}
 												</p>
 
 											</div>
@@ -95,9 +95,7 @@
 															<th>
 																Quantité
 															</th>
-															<th>
-																Remise (%)
-															</th>
+
 															<th class="text-end">
 																Ttoal
 															</th>
@@ -111,17 +109,15 @@
 																{{$data->designation}}
 															</td>
 															<td>
-																{{$data->prix}}
+																{{$data->prix}} FCFA
 															</td>
 
 															<th>
 																{{$data->quantite}}
 															</th>
-															<th>
-																0%
-															</th>
+
 															<td class="text-end">
-																{{$data->total}}
+																{{$data->total}} FCFA
 															</td>
 														</tr>
                                                         @endforeach
@@ -135,23 +131,7 @@
 									</div>
 								</div>
 								<div class="row align-items-center justify-content-center">
-									<div class="col-lg-6 col-md-6">
-										<div class="invoice-payment-box">
-											<h4>Mode de paiement  </h4>
-											<div class="payment-details">
-												<p>
-												Espece <input class="form-check-input" type="checkbox" id="formCheck1">
-												</p>
-											</div>
 
-                                            <div class="payment-details">
-												<p>
-												Mobile money  <input class="form-check-input" type="checkbox" id="formCheck1">
-												</p>
-											</div>
-										</div>
-
-									</div>
 									<div class="col-lg-6 col-md-6">
 										<div class="invoice-total-card">
 											<div class="invoice-total-box">
@@ -181,12 +161,7 @@
 
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4">
-											<div class="invoice-sign text-end">
-												{{-- <img class="img-fluid d-inline-block" src="{}" alt="sign"> --}}
-												<span class="d-block">Signature du client </span>
-											</div>
-										</div>
+
 									</div>
 								</div>
 							</div>

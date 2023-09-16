@@ -46,7 +46,9 @@ class UserController extends Controller
         public function edit($id) {
             return view('admin.users.edit', [
                 'singleUser'=> $this->userService->single($id),
-                'allRoles'=> $this->roleService->all()
+                'allRoles'=> $this->roleService->all(),
+                'method'=> 'POST',
+                'action' => route('users.edit',$id)
             ]);
         }
 

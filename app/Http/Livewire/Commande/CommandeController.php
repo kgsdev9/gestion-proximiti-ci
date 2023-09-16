@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Commande;
 
+use App\Models\Client;
 use App\Models\Artisan;
 use Livewire\Component;
 use App\Models\Commande;
@@ -11,16 +12,15 @@ class CommandeController extends Component
 {
     public $codeCommande ;
     public $designation;
-    public $fullname;
     public $prix ;
     public $quantite;
     public $date_expiration;
-    public $telephone_client;
-    public $adresse_intervention;
     public $total;
     public $inputs = [];
     public $i = 1;
     public $artisan_id;
+    public $client_id;
+    public $search ;
 
 
     public function show() {
@@ -59,10 +59,10 @@ class CommandeController extends Component
     public function store()
     {
 
-        // dd($this->artisan_id);
     $validatedDate = $this->validate([
         'codeCommande'=>'required',
         'artisan_id' => 'required|exists:artisans,id',
+        'client_id' => 'required|exists:clients,id',
         'prix'=>'required',
         'quantite'=>'required',
         'designation.0' => 'required',
@@ -79,12 +79,10 @@ class CommandeController extends Component
     ]
 );
          $order =Commande::create([
-        'codeCommande' => $this->codeCommande ?? "REF-".time(),
+        'codeCommande' => $this->codeCommande ?? "PROXI-".time(),
         'designation' => $this->designation,
         'artisan_id' => $this->artisan_id,
-        'fullname' => $this->fullname,
-        'telephone_client' => $this->telephone_client,
-        'adresse_intervention' => $this->adresse_intervention,
+        'client_id' => $this->client_id,
         'expired_at' => $this->date_expiration,
         ]);
 
@@ -93,18 +91,17 @@ class CommandeController extends Component
         }
 
         $this->inputs = [];
-
         $this->reset();
-
         session()->flash('message', 'Commande créé avec succes.');
     }
 
     public function render()
     {
         return view('livewire.commande.commande-controller', [
-        'commandeRessource'=> Commande::orderByDesc('created_at')->paginate(10),
+        'allCommandes'=> Commande::where('codeCommande', 'like', '%'. $this->search. '%')->paginate(10),
+
         'ressourceArtisans' => Artisan::all(),
-        // 'showprofile' => $this->show(),
+        'allClients' => Client::all()
         ])->extends('admin.layouts.app')->section('master');
     }
 

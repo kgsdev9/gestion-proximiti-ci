@@ -90,34 +90,23 @@
                                         <div class="card-body">
                                           <div class="d-flex align-items-center flex-wrap">
                                             <div class="bg-lighter px-2 py-1 rounded-2 me-auto mb-3">
-                                              <p class="mb-1"><span class="fw-medium text-heading">$24.8k</span> <span>/ $18.2k</span></p>
-                                              <span class="text-body">Total Budget</span>
+                                              <p class="mb-1"><span class="fw-medium text-heading">Début:</span> <span></span></p>
+                                              <span class="text-body"> Fin  </span>
                                             </div>
                                             <div class="text-end mb-3">
-                                              <p class="mb-1"><span class="text-heading fw-medium">Début: </span> <span>{{date('d/m/Y',strtotime($value->date_debut))}}</span></p>
-                                              <p class="mb-1"><span class="text-heading fw-medium">Fin: </span> <span>{{date('d/m/Y',strtotime($value->date_fin))}}</span></p>
+                                              <p class="mb-1"><span class="text-heading fw-medium"></span> <span>{{date('d/m/Y',strtotime($value->date_debut))}}</span></p>
+                                              <p class="mb-1"><span class="text-heading fw-medium"></span> <span>{{date('d/m/Y',strtotime($value->date_fin))}}</span></p>
                                             </div>
                                           </div>
                                           <p class="mb-0">{{Str::limit($value->description, 200)}}</p>
                                         </div>
                                         <div class="card-body border-top">
-                                          <div class="d-flex align-items-center mb-3">
-                                            <p class="mb-1"><span class="text-heading fw-medium">Estimation de fin  </span> Estimation <span></span></p>
 
-                                          </div>
-                                          <div class="d-flex justify-content-between align-items-center mb-2">
-                                            <small class="text-body">Tache: 50/1O0</small>
-                                            <small class="text-body">95% Completed</small>
-                                          </div>
-                                          <div class="progress mb-3 rounded rounded" style="height: 8px;">
-                                            <div class="progress-bar rounded" role="progressbar" style="width: 40%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                                          </div>
+
                                           <div class="d-flex align-items-center">
                                             <div class="d-flex align-items-center">
                                               <ul class="list-unstyled d-flex align-items-center avatar-group mb-0 zindex-2">
                                                 @foreach ($value->specialites as $specialite)
-
-
                                                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-sm pull-up" aria-label="Vinnie Mostowy" data-bs-original-title="Vinnie Mostowy">
                                                     <i class="far fa-fw fa-file-word"></i>
                                                 </li>
@@ -156,20 +145,7 @@
     <!-- End Page-content -->
 
 
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script>2023 © Minia.
-                </div>
-                <div class="col-sm-6">
-                    <div class="text-sm-end d-none d-sm-block">
-                        Design &amp; Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+
 </div>
 
 

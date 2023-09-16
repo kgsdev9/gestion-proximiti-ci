@@ -9,20 +9,20 @@ use Illuminate\Support\Facades\Hash;
 
 class UserRepository {
 
-    protected $User ;
+    protected $user ;
 
     public function __construct(User $User)
     {
-        $this->User = $User;
+        $this->user = $User;
     }
 
     public function all() {
-        return $this->User->all();
+        return $this->user->all();
     }
 
 
     public function single($id) {
-        return $this->User->find($id);
+        return $this->user->find($id);
     }
 
     public function createNewUser(UserRequest $request) {

@@ -47,6 +47,10 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+
+        
+
+
         Client::create([
             'nom' => $request->input('nom'),
             'email' => $request->input('email'),

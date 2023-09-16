@@ -73,16 +73,14 @@
                                          <td>
                                              <div class="row">
                                                  <div class="col-md-2">
-                                                     <a class="btn btn-success" href="{{route('users.edit', $value->id)}}" ><i class="fa fa-edit"></i></a>
-
+                                                     <a class="btn btn-success" href="{{route('specialite.edit', $value->id)}}" ><i class="fa fa-edit"></i></a>
                                                  </div>
-                                               
 
                                                  <div class="col-md-2">
-                                                     <form action="{{route('users.destroy', $value->id)}}" method="POST">
+                                                     <form action="{{route('specialite.destroy', $value->id)}}" method="POST">
                                                           @csrf
                                                          @method('DELETE')
-                                                         <button class="btn btn-danger" type="submit" onclick="return confirm('Voulez-vous supprimer le fournisseur?')"><i class="fa fa-trash"></i></button>
+                                                         <button class="btn btn-danger" type="submit" onclick="return confirm('Voulez-vous supprimer la spécialites?')"><i class="fa fa-trash"></i></button>
                                                      </form>
 
                                                  </div>

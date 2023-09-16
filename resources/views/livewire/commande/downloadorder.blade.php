@@ -113,12 +113,9 @@
                     <p>Devis Numéro : </p>
                     <p>Date : {{date('d/m/Y', strtotime($commande->created_at))}} </p>
                     <p>Expiration le : {{date('d/m/Y', strtotime($commande->expire_at))}}</p>
-                    <p>Code Client : {{$commande->code_client}}</p>
-                    <p>Gujarat</p>
-                    <p>Contact : 1234567890</p>
-                    <p><strong>Identite client: {{$commande->fullname}}</strong></p>
-                    <p>Contact : {{$commande->telephone_client}}</p>
-                    <p>Adresse des travaux :  {{$commande->adresse_intervention}} </p>
+                    <p>Code Client : {{$commande->client->codeClient}}</p>
+                    <p><strong>Identite client: {{$commande->client->nom}}  {{$commande->client->prenom}}</strong></p>
+                    <p>Adresse des travaux :  {{$commande->client->adresse}} </p>
                     <p> Attribution à {{$commande->artisan->name}} {{$commande->artisan->prenom}}  {{$commande->artisan->specilaite->libelle}}</p>
                 </div>
             </td>
@@ -137,9 +134,9 @@
         @foreach ($ressource as $data)
         <tr align="center">
             <td>{{$data->designation}}</td>
-            <td>{{$data->prix}}</td>
+            <td>{{$data->prix}} FCFA</td>
             <td>{{$data->quantite}}</td>
-            <td>{{$data->total}}</td>
+            <td>{{$data->total}} FCFA </td>
         </tr>
         @endforeach
 
@@ -147,7 +144,7 @@
             <td colspan="7">
                 <div class="total-part">
                     <div class="total-right w-15 float-left text-bold" align="right">
-                        <p>{{$data->sommeCommande($ressource)}} </p>
+                        <p>{{$data->sommeCommande($ressource)}} <br> FCFA </p>
                     </div>
                     <div style="clear: both;"></div>
                 </div>

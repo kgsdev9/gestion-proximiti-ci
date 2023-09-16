@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
                                     <h3 class="text-primary"><i class="fas fa-paint-brush"></i>Attribution à l'artisan </h3>
-                                    <img class="img-circle img-bordered-sm" src="{{asset('artisans/photo/'.$ressource->artisan->photo)}}" alt="user image">
+                                    <img class="img-circle img-bordered-sm" src="{{asset('artisans/photo/'.$ressource->artisan->photo)}}" alt="user image" style="height: 100px;">
 
 
                                     <br>
@@ -64,7 +64,7 @@
                                     </ul>
                                     <div class="text-center mt-5 mb-3">
                                         <a href="{{route('invoice.missions', $ressource->id)}}" class="btn btn-sm btn-primary">Télecharger</a>
-                                        <a href="#" class="btn btn-sm btn-warning">Transferer</a>
+
                                     </div>
                                 </div>
                             </div>

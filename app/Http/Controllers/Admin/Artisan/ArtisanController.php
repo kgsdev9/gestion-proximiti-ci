@@ -47,7 +47,6 @@ class ArtisanController extends Controller
     {
 
 
-
         return view('admin.artisans.create', [
             'allSpecialites' => $this->specialiteService->all()
         ]);

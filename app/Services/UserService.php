@@ -22,7 +22,7 @@ use App\Repositories\UserRepository;
         return $this->UserRepository->createNewUser($data);
      }
 
-     public function single(int $id) {
+     public function single($id) {
         return $this->UserRepository->single($id);
      }
 

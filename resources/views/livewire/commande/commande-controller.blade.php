@@ -41,39 +41,22 @@
                                         </div>
                                     @endif
                                 </div>
-                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                <div class="col-md-6 col-lg-4 col-xxl-6">
                                     <div class="form-group">
-                                        <label for="example-date-input" class="form-label"> Nom & Prénom du client  @error('fullname')
+                                        <label for="example-date-input" class="form-label"> Selectionner le client @error('client_id')
                                             <span class="text-danger">{{$message}}</span>
 
                                           @enderror </label>
-                                          <input class="form-control" type="tel" wire:model="fullname"  placeholder="Guy Stephane" required>
+                                         <select wire:model="client_id" class="form-control @error('client_id')is-invalid @enderror ">
+                                            @foreach ($allClients as $value)
+                                            <option value="{{$value->id}}">{{$value->nom}}</option>
+                                            @endforeach
+
+                                         </select>
                                     </div>
                                 </div>
 
-                                <div class="col-md-6 col-lg-4 col-xxl-3">
-                                    <div class="form-group">
-                                        <label for="example-week-input" class="form-label">Télephone du client  @error('telephone_client')
-                                            <span class="text-danger">{{$message}}</span>
-
-                                          @enderror</label>
-                                          <input class="form-control"  type="text" wire:model="telephone_client"  placeholder="+225075834656" required>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6 col-lg-4 col-xxl-3">
-                                    <div class="form-group">
-                                        <label for="example-week-input" class="form-label">Adresse d'intervention   @error('adresse_intervention')
-                                            <span class="text-danger">{{$message}}</span>
-                                          @enderror</label>
-                                            <input type="text" class="form-control" wire:model="adresse_intervention" placeholder="Riviera rond point Ado" required>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                <div class="col-md-6 col-lg-4 col-xxl-6">
                                     <div class="form-group">
                                         <label for="example-week-input" class="form-label">Date d'expiration   @error('date_expiration')
                                             <span class="text-danger">{{$message}}</span>
@@ -193,10 +176,91 @@
                     </form>
                 </div>
 
-           
+
 
               </div>
               <!-- /.card -->
+
+              <div class="col-xl-12">
+                <div class="card">
+                  <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4 class="card-title mb-0 flex-grow-1">Liste des commandes</h4>
+                            </div>
+                            <div class="col-md-6">
+
+                            </div>
+
+                            <div class="col-md-2">
+                               <input type="search" wire:model="search" class="form-control form-control-sm" placeholder="Rechercher...">
+                            </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="flex-shrink-0">
+
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive table-card">
+                            <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
+                                <thead class="text-muted table-light">
+                                    <tr>
+                                        <th scope="col">CodeCommande</th>
+                                        <th scope="col">Client</th>
+                                        <th scope="col">Adresse</th>
+                                        <th scope="col">Intervenant</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ($allCommandes as $value)
+
+
+                                    <tr>
+                                        <td>
+                                            {{$value->codeCommande}}
+                                          </td>
+
+                                          <td>
+                                           {{$value->client->nom}}   {{$value->client->prenom}}
+                                          </td>
+
+                                          <td>
+                                            {{$value->client->adresse}}
+                                          </td>
+
+                                          <td>
+                                            {{$value->artisan->name}} {{$value->artisan->prenom}}
+                                          </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                </div>
+                                                <div class="col-md-1">
+                                                </div>
+                                                <div class="col-md-2">
+                                                        <button class="btn btn-danger" onclick="confirm('Voulez-vous vraiment supprimer la commande  ?') || event.stopImmediatePropagation()" wire:click="delete({{$value->id}})"><i class="fa fa-trash"></i></button>
+                                                        <a href="{{route('detail.commande', $value->id)}}"   class="btn btn-primary">
+                                                            <i class="fa fa-eye"></i>
+                                                        </a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr><!-- end tr -->
+                                    @endforeach
+                                    </tbody><!-- end tbody -->
+                            </table><!-- end table -->
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /.col -->
           </div>
