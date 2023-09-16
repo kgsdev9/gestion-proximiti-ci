@@ -26,5 +26,10 @@ class MissionRepository {
         return $this->mission->find($id);
     }
 
+    public function singleAssigmentArtisan(int $id) {
+        return $this->mission->where('artisan_id', $id)
+                             ->orderByDesc('created_at')
+                             ->paginate(10);
+    }
 
 }

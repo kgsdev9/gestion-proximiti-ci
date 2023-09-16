@@ -18,6 +18,7 @@ class MissionService
       public function  collectionFilters() {
         return $this->missionRepository->collectionFilters();
       }
-
-
+      public function singleAssigmentArtisan(int $id) {
+        return $this->missionRepository->singleAssigmentArtisan($id);
+    }
 }

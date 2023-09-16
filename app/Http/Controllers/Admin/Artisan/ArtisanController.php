@@ -75,7 +75,8 @@ class ArtisanController extends Controller
     {
         return view('admin.artisans.detail', [
             'singleRessourceArtisan' =>  $this->artisanService->single($id),
-            'allMediaArtisan'=>  $this->artisanService->getMediaArtisan($id)
+            'allMediaArtisan'=>  $this->artisanService->getMediaArtisan($id),
+            'allMissions' =>$this->artisanService->singleAssignementArtisan($id)
         ]);
     }
 

@@ -8,11 +8,13 @@ class ArtisanService
 {
     protected $artisanRepositories ;
     protected $mediaService ;
+    protected $missionService ;
 
-     public function __construct(ArtisanRepository $artisanRepositories, MediaService $mediaService)
+     public function __construct(ArtisanRepository $artisanRepositories, MediaService $mediaService, MissionService $missionService)
      {
         $this->artisanRepositories = $artisanRepositories;
         $this->mediaService = $mediaService;
+        $this->missionService = $missionService;
      }
 
      public function all() {
@@ -38,5 +40,9 @@ class ArtisanService
 
     public function destroy(int $id) {
         return $this->artisanRepositories->destroy($id);
+    }
+
+    public function singleAssignementArtisan(int $id) {
+        return $this->missionService->singleAssigmentArtisan($id);
     }
 }
