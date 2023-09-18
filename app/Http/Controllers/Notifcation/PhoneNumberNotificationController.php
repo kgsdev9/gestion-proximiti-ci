@@ -30,9 +30,11 @@ class PhoneNumberNotificationController extends Controller
 
 
     public function sendSms(Request $request)
-    {
+    {   
 
-        $numbers_in_arrays = explode( ',' , $request->input( 'phone' ) );
+
+
+        $numbers_in_arrays = explode( ',', $request->input( 'phone' ) );
         $message  =$request->objet .nl2br($request->input( 'message' ));
            $count = 0;
 
@@ -45,7 +47,7 @@ class PhoneNumberNotificationController extends Controller
             $twilio_number = getenv("TWILIO_NUMBER");
 
             $client = new Client($account_sid, $auth_token);
-            $client->messages->create($number, [
+            $client->messages->create('+225'.$number, [
                 'from' => $twilio_number,
                 'body' => $message]);
 
