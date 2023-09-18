@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClientRequest;
 use App\Models\Client;
 use App\Services\ClientService;
 use Illuminate\Http\Request;
@@ -10,12 +11,13 @@ use Illuminate\Http\Request;
 class ClientController extends Controller
 {
     protected $clientService ;
+    public $codeClient ; 
 
     public function __construct(ClientService $clientService)
     {
         $this->clientService = $clientService ;
+        $this->codeClient = "PROXI-".rand(10000, 2350000);
     }
-
 
     /**
      * Affichage des listes des ressources.
@@ -45,19 +47,16 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
-
-        
-
 
         Client::create([
             'nom' => $request->input('nom'),
             'email' => $request->input('email'),
-            'codeClient' => $request->input('code_client'),
+            'codeClient' => $this->codeClient,
             'prenom' => $request->input('nom'),
+            'telephone' => $request->input('telephone'),
             'adresse' => $request->input('adresse'),
-            'code_client' => $request->input('code_client'),
             'mode_contact' => $request->input('mode_contact'),
             'date_contact' => $request->input('date_contact'),
             'premimum' => $request->input('premimum') ?? 'non',
@@ -99,13 +98,13 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ClientRequest $request, $id)
     {
        $ressource=  Client::find($id);
        $ressource->nom = $request->input('nom');
        $ressource->prenom = $request->input('prenom');
+       $ressource->telephone = $request->input('telephone');
        $ressource->email = $request->input('email');
-       $ressource->codeClient = $request->input('code_client');
        $ressource->mode_contact	 = $request->input('mode_contact');
        $ressource->date_contact	 = $request->input('date_contact');
        $ressource->premimum	 = $request->input('premimum') ?? 'non';

@@ -39,7 +39,7 @@
                                         <span class="text-danger">{{$message}}</span>
 
                                       @enderror </label>
-                                      <input class="form-control" name="nom" type="text"  value="{{old('nom')}}" placeholder="Désignation" required>
+                                      <input class="form-control" name="nom" type="text"  value="{{old('nom')}}" placeholder="Nom" required>
                                 </div>
                             </div>
 
@@ -49,7 +49,7 @@
                                         <span class="text-danger">{{$message}}</span>
 
                                       @enderror </label>
-                                      <input class="form-control" name="prenom" type="text"  value="{{old('prenom')}}" placeholder="123444" required>
+                                      <input class="form-control" name="prenom" type="text"  value="{{old('prenom')}}" placeholder="Prénom  " required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4 col-xxl-3">
@@ -63,11 +63,11 @@
                             </div>
                             <div class="col-md-6 col-lg-4 col-xxl-3">
                                 <div class="form-group">
-                                    <label for="example-week-input" class="form-label"> Code Client  @error('code_client')
+                                    <label for="example-week-input" class="form-label">Télephone  @error('telephone')
                                         <span class="text-danger">{{$message}}</span>
                                       @enderror</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" name="code_client" value="{{old('code_client')}}" placeholder="PR5567678">
+                                        <input type="text" class="form-control" name="telephone" value="{{old('telephone')}}" placeholder="0768365866">
                                         </select>
 
                                     </div>

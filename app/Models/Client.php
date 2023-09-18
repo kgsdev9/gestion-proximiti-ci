@@ -17,6 +17,7 @@ class Client extends Model
     'codeClient',
     'mode_contact',
     'premimum',
-    'date_contact'
+    'date_contact',
+    'telephone'
     ];
 }

@@ -55,6 +55,7 @@
                                         <th scope="col">CodeClient</th>
                                         <th scope="col">ModeContact</th>
                                         <th scope="col">DateContact</th>
+                                        <th scope="col">Telephone</th>
                                         <th scope="col">Souscription</th>
                                         <th></th>
                                     </tr>
@@ -85,6 +86,10 @@
                                           </td>
 
                                           <td>
+                                            {{$value->telephone}}
+                                          </td>
+
+                                          <td>
                                             {{$value->premimum}}
                                           </td>
                                         <td>
@@ -101,7 +106,7 @@
                                                     <form action="{{route('clients.destroy', $value->id)}}" method="POST">
                                                          @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-danger" type="submit" onclick="return confirm('Voulez-vous supprimer le fournisseur?')"><i class="fa fa-trash"></i></button>
+                                                        <button class="btn btn-danger" type="submit" onclick="return confirm('Voulez-vous supprimer le  client  y compris ses missions?')"><i class="fa fa-trash"></i></button>
                                                     </form>
 
                                                 </div>
