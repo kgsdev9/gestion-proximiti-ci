@@ -21,7 +21,7 @@ class CreateMissionSpecialiteTable extends Migration
                 $table->unsignedBigInteger('mission_id')->nullable();
                 $table->unsignedBigInteger('speciality_id')->nullable();
                 $table->foreign('mission_id')->references('id')->on('missions')->onDelete('CASCADE');
-                $table->foreign('specialite_id')->references('id')->on('specialities')->onDelete('CASCADE');
+                $table->foreign('speciality_id')->references('id')->on('specialities')->onDelete('CASCADE');
                 $table->timestamps();
             });
         }

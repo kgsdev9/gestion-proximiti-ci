@@ -21,7 +21,7 @@ class ArtisanService
         return $this->artisanRepositories->all();
     }
 
-    public function single(int $id) {
+    public function single($id) {
         return $this->artisanRepositories->single($id);
     }
 

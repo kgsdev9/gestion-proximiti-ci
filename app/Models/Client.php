@@ -18,6 +18,7 @@ class Client extends Model
     'mode_contact',
     'premimum',
     'date_contact',
-    'telephone'
+    'telephone',
+    'commune'
     ];
 }

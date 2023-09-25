@@ -13,9 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(RoleSeeder::class);
+        $this->call(RoleSeeder::class);
         // $this->call(MissionSeeder::class);
-        // \App\Models\User::factory(10)->create();
-        \App\Models\Client::factory(40)->create();
+        \App\Models\User::factory(10)->create();
+        // \App\Models\Client::factory(40)->create();
     }
 }

@@ -87,12 +87,11 @@
                                                     <span class="text-danger">{{$message}}</span>
 
                                                   @enderror</label>
-                                                  <select id="specialite" class="form-control" name="speciality_id" required>
-                                                    <option value="">Choisir la spécialité de l'artisan</option>
+                                                  <select class="select2-multiple form-control" name="speciality_id[]" multiple="multiple" id="select2Multiple" required>
                                                     @foreach ($allSpecialites as $value)
                                                     <option value="{{$value->id}}">{{$value->libelle}}</option>
                                                     @endforeach
-                                                </select>
+                                                  </select>
                                             </div>
                                         </div>
 
@@ -137,6 +136,29 @@
                                                 <input class="form-control" type="text" name="commune" value="{{old('commune')}}" placeholder="Treichville" required>
                                             </div>
                                         </div>
+
+
+
+                                        <div class="col-md-6 col-lg-4 col-xxl-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="total-person">Réferent @error('referent')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                @enderror</label>
+                                                <input class="form-control" type="text" name="referent" value="{{old('referent')}}" placeholder="referent" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-lg-4 col-xxl-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="total-person">Numero  @error('numero')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                @enderror</label>
+                                                <input class="form-control" type="text" name="numero" value="{{old('numero')}}" placeholder="numero referent" required>
+                                            </div>
+                                        </div>
+
+
+
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="form-label" for="default-textarea">Commentaire @error('description')
@@ -147,6 +169,11 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
+
+
+
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary">Enregistrer l'artisan </button>
@@ -164,5 +191,24 @@
     </div>
     <!-- End Page-content -->
 </div>
+
+
+
+@push('scripts')
+
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        $('.select2-multiple').select2({
+            placeholder: "Selectionner plusieurs spécialités",
+            allowClear: true
+        });
+
+    });
+</script>
+  @endpush
+
+
 @endsection
+
 

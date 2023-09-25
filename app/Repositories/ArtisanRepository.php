@@ -52,14 +52,20 @@ class ArtisanRepository {
                 'status' => $data['status'],
                 'num_whattsapp' => $data['num_whattsapp'],
                 'adresse' => $data['adresse'],
-                'speciality_id' => $data['speciality_id'],
+                // 'speciality_id' => $data['speciality_id'],
                 'photo'=>$filenametwo,
+                'referent'=> $data['referent'],
+                'numero_referent'=> $data['numero'],
                 'email' => $data['email'],
                 'description' => $data['description'],
                 'commune' =>  $data['commune'],
                 'date_adhesion' => $data['date_adhesion'],
                 'zone_intervention' =>$data['zone_intervention'],
             ]);
+
+
+            $ressourceStore->specialites()->sync($data->speciality_id);
+            $ressourceStore->save;
 
             if( $data->hasfile('file')) {
                 $file = $data->file('file');
@@ -166,6 +172,6 @@ class ArtisanRepository {
           return $collectionRessource;
     }
 
-  
+
 
 }

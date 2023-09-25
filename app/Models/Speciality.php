@@ -11,6 +11,11 @@ class Speciality extends Model
 
     protected $fillable = ['libelle', 'description'];
 
+
+    public function artisans() {
+        return $this->belongsToMany(Artisan::class, 'specialite_id', 'artisan_id');
+    }
+
     public function  missions() {
         return $this->belongsToMany(Mission::class, 'mission_specialite');
     }

@@ -68,7 +68,11 @@
                   <td >{{$value->name}} {{$value->prenom}}</td>
                   <td>{{$value->telephone}}</td>
                   <td>{{$value->commune}}</td>
-                  <td> {{$value->specilaite->libelle}}</td>
+                  <td>
+                        @foreach ($value->specialites as $specialite )
+                        {{ $specialite->libelle}}
+                        @endforeach
+                    </td>
                   <td> {{$value->created_at->diffForHumans()}}</td>
                   <td>
                     <span class="badge bg-success">Disponible</span>

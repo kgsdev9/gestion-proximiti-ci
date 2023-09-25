@@ -9,6 +9,7 @@ use App\Services\ArtisanService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ArtisanRequest;
+use App\Models\Artisan;
 
 class ArtisanController extends Controller
 {
@@ -60,6 +61,7 @@ class ArtisanController extends Controller
      */
 
     public function store(ArtisanRequest $request) {
+
         $this->artisanService->save($request);
         Flashy::message('Artisan ajouté avec succes!');
         return redirect()->back();
@@ -73,6 +75,7 @@ class ArtisanController extends Controller
      */
     public function show($id)
     {
+      
         return view('admin.artisans.detail', [
             'singleRessourceArtisan' =>  $this->artisanService->single($id),
             'allMediaArtisan'=>  $this->artisanService->getMediaArtisan($id),

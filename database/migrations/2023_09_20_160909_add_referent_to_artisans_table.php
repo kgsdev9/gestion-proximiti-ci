@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSpecialityIdToArtisansTable extends Migration
+class AddReferentToArtisansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddSpecialityIdToArtisansTable extends Migration
     public function up()
     {
         Schema::table('artisans', function (Blueprint $table) {
-            $table->unsignedBigInteger('speciality_id')->nullable();
-            $table->foreign('speciality_id')->references('id')->on('specialities');
+            $table->string('referent')->nullable();
         });
     }
 

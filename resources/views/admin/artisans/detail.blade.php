@@ -41,7 +41,12 @@
                                         <div class="flex-grow-1">
                                             <div>
                                                 <h5 class="font-size-16 mb-1">{{$singleRessourceArtisan->name}} {{$singleRessourceArtisan->prenom}}</h5>
-                                                <p class="text-muted font-size-13">{{$singleRessourceArtisan->specilaite->libelle}}</p>
+                                                <p class="text-muted font-size-13">
+                                                    @foreach ($singleRessourceArtisan->specialites as  $specialite)
+                                                                    {{$specialite->libelle}}
+                                                    @endforeach
+
+                                                </p>
 
 
                                             </div>
@@ -94,7 +99,11 @@
                                                 </div>
                                                 <div class="col-xl">
                                                     <div class="text-muted">
-                                                        <p class="mb-2"> {{$singleRessourceArtisan->specilaite->libelle  }} </p>
+                                                        <p class="mb-2">
+                                                            @foreach ($singleRessourceArtisan->specialites as  $specialite)
+                                                            {{$specialite->libelle}}
+                                                            @endforeach
+                                                        </p>
 
                                                     </div>
                                                 </div>
@@ -205,7 +214,7 @@
                             </div>
                             <!-- end card -->
 
-                            
+
                             <!-- end card -->
                         </div>
                         <!-- end tab pane -->

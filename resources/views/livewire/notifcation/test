@@ -1,0 +1,100 @@
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0 font-size-18">Annuaire méssagerie</h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Méssagerie</a></li>
+                                <li class="breadcrumb-item active">Annuaire messagerie</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div>
+
+                <br>
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <div class="table-responsive table-card">
+                            <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
+                                <thead class="text-muted table-light">
+                                    <tr>
+                                        <th scope="col">Nom prenom </th>
+                                        <th scope="col">Spécialite</th>
+                                        <th scope="col">Photo</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ($allArtisans as $value)
+                                    <tr>
+
+                                        <td>
+                                            <input type="checkbox"  wire:model="message" value="{{$value->id}}">
+                                            {{$value->name}}
+                                          </td>
+                                        <td>
+                                            @foreach ($value->specialites as  $key)
+                                                {{$key->libelle}}
+                                            @endforeach
+                                          </td>
+
+                                          <td>
+                                            <img src="{{asset('artisans/photo/'.$value->photo)}}" alt="" style="height:50px;">
+                                          </td>
+                                    </tr><!-- end tr -->
+                                    @endforeach                        </tbody><!-- end tbody -->
+                            </table><!-- end table -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <form wire:submit.prevent="send">
+
+                    <div>
+                        @foreach ($selectionArtisan as $value)
+                        <input type="form-control" class="form-control"  value="{{$value->telephone}}">
+                        @endforeach
+                    </div>
+                    <br>
+                    <textarea wire:model="sms" id="" cols="30" rows="10" class="form-control"></textarea>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+
+                </form>
+                </div>
+
+            </div>
+
+
+
+
+            <!-- end row -->
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <script>document.write(new Date().getFullYear())</script>2023 © Minia.
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end d-none d-sm-block">
+                        Design &amp; Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>

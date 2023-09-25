@@ -17,6 +17,7 @@ use App\Http\Livewire\Auth\AuthController;
 use App\Http\Livewire\Commande\CommandeController;
 use App\Http\Livewire\DetailCommande;
 use App\Http\Livewire\Equipement\EquipementRessource;
+use App\Http\Livewire\Notifcation\PhoneNumberNotification;
 use App\Http\Livewire\PortailAutrise;
 
 
@@ -111,5 +112,10 @@ Route::get('/donwload/all/equipment/excell', [InvoiceController::class, 'invoice
 Route::get('/donwload/all/equipment/exell', [InvoiceController::class, 'invoiceAllEquipmentExcell'])->name('equipment.excell');
 
 
+
+
+
+
+Route::get('/tes-fonctionnality/V1', PhoneNumberNotification::class)->name('test.fonctionnality');
 
 

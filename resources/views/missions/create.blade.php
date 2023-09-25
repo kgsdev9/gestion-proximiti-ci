@@ -65,7 +65,7 @@
                                         <span class="text-danger">{{$message}}</span>
                                       @enderror</label>
                                     <div class="form-control-wrap">
-                                        <input class="form-control" name="date_fin" type="date" value="{{old('date_fin')}}" value="{{old('date_fin')}}" required>
+                                        <input class="form-control" name="date_fin" type="time" value="{{old('date_fin')}}" value="{{old('date_fin')}}" required>
                                     </div>
                                 </div>
                             </div>

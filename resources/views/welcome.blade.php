@@ -193,15 +193,10 @@
 
 
             <div class="row">
-
                  @foreach ($artisans as $value)
-
-
                 <div class="col-xl-3 col-sm-6">
                     <div class="card text-center">
                         <div class="card-body">
-
-
                             <div class="mx-auto mb-4">
                                 @if($value->photo == null)
                                 <img src="{{asset('logo_footer.png')}}" alt="" class="avatar-xl rounded-circle img-thumbnail">
@@ -210,7 +205,12 @@
                                 @endif
                             </div>
                             <h5 class="font-size-16 mb-1"><a href="{{route('artisan.show', $value->id)}}" class="text-body">{{$value->name}} {{$value->prenom}}</a></h5>
-                            <p class="text-muted mb-2">{{$value->specilaite->libelle}}</p>
+                            <p class="text-muted mb-2">
+                                @foreach ( $value->specialites as  $value)
+                                        {{$value->libelle}}
+                                @endforeach
+
+                            </p>
 
                         </div>
 
