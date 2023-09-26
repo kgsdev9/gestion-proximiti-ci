@@ -119,3 +119,9 @@ Route::get('/donwload/all/equipment/exell', [InvoiceController::class, 'invoiceA
 Route::get('/tes-fonctionnality/V1', PhoneNumberNotification::class)->name('test.fonctionnality');
 
 
+
+
+Route::get('/detail-missions/{id}', [HomeController::class, 'detailEnvoi'])->name('detail.sms.send');
+
+
+

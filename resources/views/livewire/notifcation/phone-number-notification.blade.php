@@ -44,19 +44,14 @@
                                 <li class="nav-item" role="presentation">
                                     <a href="#chat" data-bs-toggle="tab" aria-expanded="true" class="nav-link active" aria-selected="false" role="tab" tabindex="-1">
                                         <i class="bx bx-chat font-size-20 d-sm-none"></i>
-                                        <span class="d-none d-sm-block">Artisans</span>
+                                        <span class="d-none d-sm-block">Composer  un  sms </span>
                                     </a>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <a href="#groups" data-bs-toggle="tab" aria-expanded="false" class="nav-link" aria-selected="true" role="tab">
-                                        <i class="bx bx-group font-size-20 d-sm-none"></i>
-                                        <span class="d-none d-sm-block">Clients</span>
-                                    </a>
-                                </li>
+
                                 <li class="nav-item" role="presentation">
                                     <a href="#contacts" data-bs-toggle="tab" aria-expanded="false" class="nav-link" aria-selected="false" role="tab" tabindex="-1">
                                         <i class="bx bx-book-content font-size-20 d-sm-none"></i>
-                                        <span class="d-none d-sm-block">Particuliers</span>
+                                        <span class="d-none d-sm-block">Sms Envoyés</span>
                                     </a>
                                 </li>
                             </ul>
@@ -65,7 +60,7 @@
                                     <div class="chat-message-list" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: auto; overflow: hidden; padding-right: 0px; padding-bottom: 0px;"><div class="simplebar-content" style="padding: 0px;">
                                         <div class="pt-3">
                                             <div class="px-3">
-                                               <input type="text" class="form-control">
+                                               <input type="text" wire:model="search" class="form-control" placeholder="Par nom">
                                                <br>
                                             </div>
                                             <ul class="list-unstyled chat-list">
@@ -105,155 +100,56 @@
                                     </div></div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 173px; transform: translate3d(0px, 0px, 0px); display: none;"></div></div></div>
                                 </div>
 
-                                <div class="tab-pane show" id="groups" role="tabpanel">
-                                    <div class="chat-message-list" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: -20px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden scroll; padding-right: 20px; padding-bottom: 0px;"><div class="simplebar-content" style="padding: 0px;">
-                                        <div class="pt-3">
-                                            <div class="px-3">
-                                                <h5 class="font-size-14 mb-3">Groups</h5>
-                                            </div>
-                                            <ul class="list-unstyled chat-list">
-
-
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="flex-shrink-0 avatar-sm me-3">
-                                                                <span class="avatar-title rounded-circle  bg-primary-subtle text-primary">
-                                                                    R
-                                                                </span>
-                                                            </div>
-
-                                                            <div class="flex-grow-1">
-                                                                <h5 class="font-size-14 mb-0">Reporting</h5>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="flex-shrink-0 avatar-sm me-3">
-                                                                <span class="avatar-title rounded-circle  bg-primary-subtle text-primary">
-                                                                    M
-                                                                </span>
-                                                            </div>
-
-                                                            <div class="flex-grow-1">
-                                                                <h5 class="font-size-14 mb-0">Meeting</h5>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="flex-shrink-0 avatar-sm me-3">
-                                                                <span class="avatar-title rounded-circle  bg-primary-subtle text-primary">
-                                                                    A
-                                                                </span>
-                                                            </div>
-
-                                                            <div class="flex-grow-1">
-                                                                <h5 class="font-size-14 mb-0">Project A</h5>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="flex-shrink-0 avatar-sm me-3">
-                                                                <span class="avatar-title rounded-circle  bg-primary-subtle text-primary">
-                                                                    B
-                                                                </span>
-                                                            </div>
-
-                                                            <div class="flex-grow-1">
-                                                                <h5 class="font-size-14 mb-0">Project B</h5>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div></div></div></div><div class="simplebar-placeholder" style="width: auto; height: 354px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: block; height: 308px;"></div></div></div>
-                                </div>
 
                                 <div class="tab-pane" id="contacts" role="tabpanel">
-                                    <div class="chat-message-list" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: auto; overflow: hidden; padding-right: 0px; padding-bottom: 0px;"><div class="simplebar-content" style="padding: 0px;">
-                                        <div class="pt-3">
-                                            <div class="px-3">
-                                                <h5 class="font-size-14 mb-3">Contacts</h5>
-                                            </div>
+                                    <div class="chat-message-list" data-simplebar="init">
+                                        <div class="simplebar-wrapper" style="margin: 0px;">
+                                            <div class="simplebar-height-auto-observer-wrapper">
+                                                <div class="simplebar-height-auto-observer">
+                                                    </div>
+                                                </div>
+                                                <div class="simplebar-mask">
+                                                    <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                                                        <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden; padding-right: 0px; padding-bottom: 0px;">
+                                                    <div class="simplebar-content" style="padding: 0px;">
+                                                 <div class="pt-3">
+                                                    <div>
 
-                                            <div>
                                                 <div>
-                                                    <div class="px-3 contact-list">A</div>
-
                                                     <ul class="list-unstyled chat-list">
+                                                        @foreach ($allMessages as $sms)
                                                         <li>
+                                                            <div class="px-3">
+                                                                <h5 class="font-size-14 mb-3">Sms envoyé à {{$sms->created_at}} </h5>
+                                                            </div>
                                                             <a href="#">
-                                                                <h5 class="font-size-14 mb-0">Adam Miller</h5>
+                                                               <p>{{$sms->message}}</p>
                                                             </a>
                                                         </li>
-
-                                                        <li>
-                                                            <a href="#">
-                                                                <h5 class="font-size-14 mb-0">Alfonso Fisher</h5>
-                                                            </a>
-                                                        </li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
 
-                                                <div class="mt-4">
-                                                    <div class="px-3 contact-list">B</div>
-
-                                                    <ul class="list-unstyled chat-list">
-                                                        <li>
-                                                            <a href="#">
-                                                                <h5 class="font-size-14 mb-0">Bonnie Harney</h5>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                                <div class="mt-4">
-                                                    <div class="px-3 contact-list">C</div>
-
-                                                    <ul class="list-unstyled chat-list">
-                                                        <li>
-                                                            <a href="#">
-                                                                <h5 class="font-size-14 mb-0">Charles Brown</h5>
-                                                            </a>
-                                                            <a href="#">
-                                                                <h5 class="font-size-14 mb-0">Carmella Jones</h5>
-                                                            </a>
-                                                            <a href="#">
-                                                                <h5 class="font-size-14 mb-0">Carrie Williams</h5>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                                <div class="mt-4">
-                                                    <div class="px-3 contact-list">D</div>
-
-                                                    <ul class="list-unstyled chat-list">
-                                                        <li>
-                                                            <a href="#">
-                                                                <h5 class="font-size-14 mb-0">Dolores Minter</h5>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
                                             </div>
                                         </div>
-                                    </div></div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none; height: 220px;"></div></div></div>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="simplebar-placeholder" style="width: 0px; height: 0px;">
+                        </div>
+                    </div>
+                    <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                        <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;">
+                        </div>
+                    </div>
+                    <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+                        <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none; height: 220px;">
+                        </div>
+                    </div>
+                        </div>
+                         </div>
+                      </div>
                         </div>
 
                     </div>
@@ -265,22 +161,22 @@
 
                             <div class="chat-conversation p-3 px-2" data-simplebar="init"><div class="simplebar-wrapper" style="margin: -16px -8px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: -20px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden scroll; padding-right: 20px; padding-bottom: 0px;"><div class="simplebar-content" style="padding: 16px 8px;">
                                 <ul class="list-unstyled mb-0">
-                                    @foreach ($allMessages as $sms)
+                                    @foreach ($laste_message as $latest)
 
 
                                     <li>
                                         <div class="conversation-list">
                                             <div class="ctext-wrap">
                                                 <div class="ctext-wrap-content">
-                                                    <h5 class="conversation-name"><a href="#" class="user-name">Message envoyé  </a> <span class="time"> {{$sms->created_at->diffForHumans()}}</span></h5>
-                                                    <p class="mb-0"> {{$sms->message}}</p>
+                                                    <h5 class="conversation-name"><a href="#" class="user-name">Message envoyé  </a> <span class="time"> {{$latest->created_at->diffForHumans()}}</span></h5>
+                                                    <p class="mb-0"> {{$latest->message}}</p>
                                                 </div>
                                                 <div class="dropdown align-self-start">
                                                     <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <i class="bx bx-dots-vertical-rounded"></i>
                                                     </a>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Detail</a>
+                                                        <a class="dropdown-item" href="{{route('detail.sms.send', $latest->id)}}">Detail</a>
                                                         <a class="dropdown-item" href="#">Supprimer</a>
 
                                                     </div>
@@ -291,26 +187,27 @@
                                     </li>
 
                                     @endforeach
-                                        <span>
-                                            @foreach ($selectionArtisan as $value)
-                                            <li>
-                                                <a href="#">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="flex-shrink-0 avatar-sm me-3">
-                                                            <span class="avatar-title rounded-circle  bg-primary-subtle text-primary">
-                                                                G
-                                                            </span>
+                                            <div class="row">
+                                                @foreach ($selectionArtisan as $value)
+                                                <div class="col-xl-3 col-sm-4">
+                                                    <div class="card text-center">
+                                                        <div class="card-body">
+                                                            <div class="mx-auto mb-4">
+                                                                <img src="{{asset('artisans/photo/'.$value->photo)}}" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                                            </div>
+                                                            <h5 class="font-size-16 mb-1">
+                                                                <a href="#" class="text-body">{{$value->name}}</a>
+                                                            </h5>
+                                                            <p class="text-muted mb-2">
+                                                                Peintre
+                                                            </p>
                                                         </div>
 
-                                                        <div class="flex-grow-1">
-                                                            <h5 class="font-size-14 mb-0">{{$value->telephone}}</h5>
-                                                        </div>
                                                     </div>
-                                                </a>
-                                            </li>
-                                            @endforeach
-                                        </span>
-
+                                                    <!-- end card -->
+                                                </div>
+                                                @endforeach
+                                            </div>
                                 </ul>
                             </div></div></div></div><div class="simplebar-placeholder" style="width: auto; height: 949px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 144px; transform: translate3d(0px, 0px, 0px); display: block;"></div></div></div>
 

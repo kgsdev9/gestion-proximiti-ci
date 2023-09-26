@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Commande;
 use App\Models\Equipement;
+use App\Models\Message;
 use App\Models\Mission;
 use App\Models\Speciality;
 use App\Models\TCommandeArticle;
@@ -18,7 +19,13 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class HomeController extends Controller
 {
 
-    
+    public function detailEnvoi($id) {
+
+        $ressource = Message::find($id);;
+        return view('livewire.messages.detail', compact('ressource'));
+
+
+    }
     public function invoiceOrder($id) {
         $commande=  Commande::findOrFail($id);
         $data=TCommandeArticle::where('commande_id', '=', $commande->id)->get();

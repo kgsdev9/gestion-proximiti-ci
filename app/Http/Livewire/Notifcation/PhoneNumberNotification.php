@@ -14,6 +14,9 @@ class PhoneNumberNotification extends Component
 
     public $message =  [] ;
 
+    public $search = "";
+
+
     public $sms ="Proximiti Vous avez une nouvelle mission. Appelez le 0500507952 et indiquez le code PX2509. A bientôt ! L'équipe Proximiti";
 
     public $filter ;
@@ -26,10 +29,12 @@ class PhoneNumberNotification extends Component
     public function render()
     {
         return view('livewire.notifcation.phone-number-notification', [
-            'allArtisans' => Artisan::all(),
+
+            'allArtisans' => Artisan::where('name', 'like', '%'.$this->search.'%')->get(),
             'selectionArtisan'=>  Artisan::find($this->message),
             'allSpecialites' => Speciality::all(),
-            'allMessages' => Message::orderByDesc('created_at')->get()
+            'allMessages' => Message::orderByDesc('created_at')->get(),
+            'laste_message' => Message::orderByDesc('created_at')->take(1)->get()
         ])
         ->extends('admin.layouts.app')->section('master');
     }
@@ -43,13 +48,12 @@ class PhoneNumberNotification extends Component
             $account_sid = getenv("TWILIO_SID");
             $auth_token = getenv("TWILIO_AUTH_TOKEN");
             $twilio_number = getenv("TWILIO_NUMBER");
-            $twilio_name = getenv('TWILIO_RECIPIENT_NAME');
+            $twilio_name = getenv("TWILIO_RECIPIENT_NAME");
             $client = new Client($account_sid, $auth_token);
             $client->messages->create($value->telephone, [
                 'from' => $twilio_number,
                 'to'=> $twilio_name,
                 'body' => $this->sms]);
-
                 $rs=Message::create([
                     'message'=> $this->sms,
                     'total_envoi' => $count,
@@ -58,7 +62,7 @@ class PhoneNumberNotification extends Component
                 $rs->artisans()->sync($value->id);
         }
 
-        $this->reset();
+        // $this->reset();
       }
 
 
