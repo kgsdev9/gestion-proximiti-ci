@@ -17,11 +17,7 @@ class CreateCommandesTable extends Migration
         {
         Schema::create('commandes', function (Blueprint $table) {
         $table->id();
-        $table->string('fullname');
-        $table->string('telephone_client');
-        $table->string('code_client')->unique();
         $table->string('codeCommande')->unique();
-        $table->string('adresse_intervention');
         $table->date('expired_at');
         $table->timestamps();
     });

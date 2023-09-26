@@ -1,3 +1,5 @@
+@section('title', 'Messagerie artisan')
+
 <div>
     <div class="main-content">
 

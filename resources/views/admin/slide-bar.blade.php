@@ -73,14 +73,35 @@
 
                 </li>
 
-                <li>
-                    <a href="{{route('annuaire.messagerie')}}">
-                        <i class="fa fa-building-o" style="color:#fff;"></i>
-                        <span data-key="t-components">Messagerie</span>
+                <li class="">
+                    <a href="javascript: void(0);" class="has-arrow" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        <span data-key="t-apps">MESSAGERIE </span>
                     </a>
+                    <ul class="sub-menu mm-collapse" aria-expanded="false" style="height: 0px;">
 
+                        <li class="">
+                            <a href="javascript: void(0);" class="has-arrow" aria-expanded="false">
+                                <span data-key="t-email">MARKETING SMS</span>
+                            </a>
+                            <ul class="sub-menu mm-collapse" aria-expanded="false" style="height: 0px;">
+                                <li><a href="{{route('messagerie.artisan')}}" data-key="t-inbox">ARTISANS</a></li>
+                                <li><a href="{{route('annuaire.messagerie')}}" data-key="t-read-email">PARTICULIERS</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow" aria-expanded="false">
+                                <span data-key="t-invoices">MARKETING EMAIL </span>
+                            </a>
+                            <ul class="sub-menu mm-collapse" aria-expanded="false">
+                                <li><a href="#" data-key="t-invoice-list">E-MAIL </a></li>
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
                 </li>
-
 
             </ul>
 

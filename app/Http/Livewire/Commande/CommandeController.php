@@ -99,7 +99,6 @@ class CommandeController extends Component
     {
         return view('livewire.commande.commande-controller', [
         'allCommandes'=> Commande::where('codeCommande', 'like', '%'. $this->search. '%')->paginate(10),
-
         'ressourceArtisans' => Artisan::all(),
         'allClients' => Client::all()
         ])->extends('admin.layouts.app')->section('master');

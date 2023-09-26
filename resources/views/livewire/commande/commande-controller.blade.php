@@ -48,8 +48,9 @@
 
                                           @enderror </label>
                                          <select wire:model="client_id" class="form-control @error('client_id')is-invalid @enderror ">
-                                            @foreach ($allClients as $value)
-                                            <option value="{{$value->id}}">{{$value->nom}}</option>
+                                            <option value="">Selectionner un client </option>
+                                            @foreach ($allClients as $client)
+                                            <option value="{{$client->id}}">{{$client->nom}}</option>
                                             @endforeach
 
                                          </select>
@@ -72,8 +73,17 @@
                                           @enderror</label>
                                            <select wire:model="artisan_id" class="form-control">
                                             <option value="">Mission à attribuer à </option>
-                                                @foreach ($ressourceArtisans as $value)
-                                                <option value="{{$value->id}}">{{$value->name}} {{$value->prenom}} -  Fonction: {{$value->specilaite->libelle}}</option>
+                                                @foreach ($ressourceArtisans as $artisan)
+                                                <option value="{{$artisan->id}}">{{$artisan->name}} {{$artisan->prenom}} -  Fonction:
+
+
+
+                                                    @foreach ($artisan->specialites as  $specialite)
+                                                            {{$specialite->libelle}}
+                                                    @endforeach
+
+
+                                                </option>
                                                 @endforeach
 
 
@@ -221,24 +231,24 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach ($allCommandes as $value)
+                                    @foreach ($allCommandes as $commande)
 
 
                                     <tr>
                                         <td>
-                                            {{$value->codeCommande}}
+                                            {{$commande->codeCommande}}
                                           </td>
 
                                           <td>
-                                           {{$value->client->nom}}   {{$value->client->prenom}}
+                                           {{$commande->client->nom}}   {{$commande->client->prenom}}
                                           </td>
 
                                           <td>
-                                            {{$value->client->adresse}}
+                                            {{$commande->client->adresse}}
                                           </td>
 
                                           <td>
-                                            {{$value->artisan->name}} {{$value->artisan->prenom}}
+                                            {{$commande->artisan->name}} {{$commande->artisan->prenom}}
                                           </td>
                                         <td>
                                             <div class="row">
@@ -247,8 +257,8 @@
                                                 <div class="col-md-1">
                                                 </div>
                                                 <div class="col-md-2">
-                                                        <button class="btn btn-danger" onclick="confirm('Voulez-vous vraiment supprimer la commande  ?') || event.stopImmediatePropagation()" wire:click="delete({{$value->id}})"><i class="fa fa-trash"></i></button>
-                                                        <a href="{{route('detail.commande', $value->id)}}"   class="btn btn-primary">
+                                                        <button class="btn btn-danger" onclick="confirm('Voulez-vous vraiment supprimer la commande  ?') || event.stopImmediatePropagation()" wire:click="delete({{$commande->id}})"><i class="fa fa-trash"></i></button>
+                                                        <a href="{{route('detail.commande', $commande->id)}}"   class="btn btn-primary">
                                                             <i class="fa fa-eye"></i>
                                                         </a>
                                                 </div>

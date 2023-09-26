@@ -116,7 +116,12 @@
                     <p>Code Client : {{$commande->client->codeClient}}</p>
                     <p><strong>Identite client: {{$commande->client->nom}}  {{$commande->client->prenom}}</strong></p>
                     <p>Adresse des travaux :  {{$commande->client->adresse}} </p>
-                    <p> Attribution à {{$commande->artisan->name}} {{$commande->artisan->prenom}}  {{$commande->artisan->specilaite->libelle}}</p>
+                    <p> Attribution à {{$commande->artisan->name}} {{$commande->artisan->prenom}}
+                        @foreach ($commande->artisan->specialites as $specialite)
+                            <span>{{$specialite->libelle}}</span>
+                        @endforeach
+
+                    </p>
                 </div>
             </td>
         </tr>

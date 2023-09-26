@@ -69,7 +69,10 @@
                                             <div class="mt-4">
                                                 <h5 class="font-size-15">Expiration :</h5>
                                                 <p class="mb-1"> {{$commande->expired_at}}</p>
-                                                <p>Attibution à   {{$commande->artisan->name}} {{$commande->artisan->prenom}}  {{$commande->artisan->specilaite->libelle}} </p>
+                                                <p>Attibution à   {{$commande->artisan->name}} {{$commande->artisan->name}} {{$commande->artisan->prenom}}
+
+
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
