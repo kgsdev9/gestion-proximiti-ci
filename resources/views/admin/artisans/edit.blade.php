@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Nouvel artisan')
+@section('title', 'Edition de l\'artisan')
 
 @section('master')
 
@@ -68,8 +68,24 @@
                                             <input class="form-control" type="file" name="photo" >
                                         </div>
 
+                                        <div class="mb-3">
+                                            <label for="example-email-input" class="form-label">Spécialités </label>
 
+                                            @foreach ($allSpecialites as $value)
+                                            @php
+                                                $checked = "";
+                                            @endphp
+                                             @foreach ($allArtisans as $artisan)
 
+                                              @if($artisan->id == $value->id)
+                                                @php
+                                                    $checked  = "checked";
+                                                @endphp
+                                                @endif
+                                             @endforeach
+                                           <input {{ $checked }} type="checkbox"  value="{{$value->id}}" name="specialite_id[]"> {{$value->libelle}}
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
 
@@ -164,52 +180,27 @@
                 </div> <!-- end col -->
             </div>
             <!-- end row -->
+            <div class="row">
+                @foreach ($singleRessource->medias as $value)
+                <div class="col-lg-4">
+                    <form action="{{route('unique.files', $value->id)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger">SUpprimer
 
-
-            <div class="card">
-                <div class="card-body">
-                    <div>
-                        <div class="row">
-                            <div class="col-xl-4">
-                                <div class="card p-1 mb-xl-0">
-                                    <div class="position-relative">
-                                        <img src="{{asset('artisans/photo/'.$singleRessource->photo)}}" alt="" class="img-thumbnail">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end col -->
-                            @foreach ($singleRessource->medias as $value)
-                            <form action="{{route('unique.files', $value->id)}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger">xx SUpprimer
-
-                                </button>
-                            </form>
-
-
-
-
-                            <div class="col-xl-4">
-                                <div class="card p-1 mb-xl-0">
-                                    <div class="position-relative">
-                                        <iframe src="{{asset('programme/'.$value->image)}}" frameborder="0"></iframe>
-                                    </div>
-
-
-                                </div>
-                                <!-- end card -->
-                            </div>
-                            <!-- end col -->
-                            @endforeach
-
+                        </button>
+                    <div class="card border-primary text-white-50">
+                        <div class="card-body">
+                         <iframe src="{{asset('programme/'.$value->image)}}" frameborder="0"></iframe>
                         </div>
-                        <!-- end row -->
                     </div>
-                </div>
-                <!-- end card body -->
-            </div>
+                </div><!-- end col -->
 
+                @endforeach
+
+
+
+            </div>
 
 
 

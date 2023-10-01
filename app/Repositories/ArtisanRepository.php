@@ -28,6 +28,12 @@ class ArtisanRepository {
                     ->get();
     }
 
+    public function getArtisansRandom() {
+         return $this->artisan->inRandomOrder()
+                              ->take(8)
+                              ->get();
+    }
+
 
     public function single($id) {
         return $this->artisan->find($id);
@@ -105,7 +111,6 @@ class ArtisanRepository {
         $ressource->commune = $data['commune'];
         $ressource->date_adhesion = $data['date_adhesion'];
         $ressource->zone_intervention = $data['zone_intervention'];
-        $ressource->speciality_id = $data['speciality_id'];
         $ressource->description = $data['description'];
 
         if($data->hasFile('photo')) {
@@ -154,7 +159,7 @@ class ArtisanRepository {
 
     }
 
-    public function display(string $photo, Object $files) {
+    public function displayFileArtisans(string $photo, Object $files) {
         $collectionRessource = [];
         if($photo) {
             $pathPhoto = "artisans/photo/".$photo;

@@ -3,13 +3,9 @@
 @section('title', 'Bienvenue sur gestion proximiti')
 @section('master')
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
-
             <!-- start page title -->
-
-
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -28,9 +24,6 @@
             <!-- end page title -->
 
             <div class="row">
-
-
-
                 <div class="col-xl-3 col-md-6">
                     <!-- card -->
                     <div class="card card-h-100">
@@ -40,13 +33,10 @@
                                 <div class="col-md-6">
                                     <span class="text-muted mb-3 lh-1 d-block text-truncate">TOTAL ARTISAN </span>
                                     <h4 class="mb-3">
-                                        <span class="counter-value" data-target="{{$candidats}}">{{$candidats}}</span>
+                                        <span class="counter-value" data-target="{{$countArtisan}}">{{$countArtisan}}</span>
                                     </h4>
                                 </div>
-
-
                             </div>
-
                         </div><!-- end card body -->
                     </div><!-- end card -->
                 </div><!-- end col -->
@@ -60,7 +50,7 @@
                                 <div class="col-6">
                                     <span class="text-muted mb-3 lh-1 d-block text-truncate">TOTAL SPECIALITES</span>
                                     <h4 class="mb-3">
-                                        <span class="counter-value" data-target="{{$specialite}}">{{$specialite}}</span>
+                                        <span class="counter-value" data-target="{{$countspecialite}}">{{$countspecialite}}</span>
                                     </h4>
                                 </div>
 
@@ -79,7 +69,7 @@
                                 <div class="col-6">
                                     <span class="text-muted mb-3 lh-1 d-block text-truncate">TOTAL UTILISATEURS</span>
                                     <h4 class="mb-3">
-                                        <span class="counter-value" data-target="{{$users}}">{{$users}}</span>
+                                        <span class="counter-value" data-target="{{$countUsers}}">{{$countUsers}}</span>
                                     </h4>
                                 </div>
 
@@ -108,24 +98,6 @@
                     </div><!-- end card -->
                 </div><!-- end col -->
 
-                <div class="col-xl-3 col-md-6">
-                    <!-- card -->
-                    <div class="card card-h-100">
-                        <!-- card body -->
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-6">
-                                    <span class="text-muted mb-3 lh-3 d-block text-truncate">TOTAL DEVIS </span>
-                                    <h4 class="mb-3">
-                                        <span class="counter-value" data-target="">0</span>
-                                    </h4>
-                                </div>
-
-                            </div>
-
-                        </div><!-- end card body -->
-                    </div><!-- end card -->
-                </div><!-- end col -->
 
                   <div class="col-xl-3 col-md-6">
                     <!-- card -->
@@ -136,7 +108,7 @@
                                 <div class="col-6">
                                     <span class="text-muted mb-3 lh-3 d-block text-truncate">TOTAL EQUIPEMENT </span>
                                     <h4 class="mb-3">
-                                        <span class="counter-value" data-target="{{$equipment}}">{{$equipment}}</span>
+                                        <span class="counter-value" data-target="{{$countEquipment}}">{{$countEquipment}}</span>
                                     </h4>
                                 </div>
 
@@ -155,7 +127,7 @@
                                 <div class="col-6">
                                     <span class="text-muted mb-3 lh-3 d-block text-truncate">TOTAL MISSION </span>
                                     <h4 class="mb-3">
-                                        <span class="counter-value" data-target="{{$missions}}">{{$missions}}</span>
+                                        <span class="counter-value" data-target="{{$countMissions}}">{{$countMissions}}</span>
                                     </h4>
                                 </div>
 
@@ -174,7 +146,7 @@
                                 <div class="col-6">
                                     <span class="text-muted mb-3 lh-3 d-block text-truncate">TOTAL COMMANDE </span>
                                     <h4 class="mb-3">
-                                        <span class="counter-value" data-target="">{{$commande}}</span>
+                                        <span class="counter-value" data-target="{{$countCommande}}">{{$countCommande}}</span>
                                     </h4>
                                 </div>
 
@@ -193,7 +165,7 @@
 
 
             <div class="row">
-                 @foreach ($artisans as $value)
+                 @foreach ($getArtisansRandom as $value)
                 <div class="col-xl-3 col-sm-6">
                     <div class="card text-center">
                         <div class="card-body">
@@ -240,24 +212,8 @@
         <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
-    <div>
-        <canvas id="myChart">sssssssssss</canvas>
-      </div>
 
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> ©Proximiti CI.
-                </div>
-                <div class="col-sm-6">
-                    <div class="text-sm-end d-none d-sm-block">
-                        Copyright <a href="#" class="text-decoration-underline">©Proximiti CI.</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+
 </div>
 
 

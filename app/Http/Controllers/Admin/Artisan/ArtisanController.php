@@ -31,8 +31,6 @@ class ArtisanController extends Controller
     public function index()
     {
 
-
-
         return view('admin.artisans.liste', [
             'allArtisans' => $this->artisanService->all(),
             'allSpecialites'=> $this->specialiteService->all()
@@ -75,7 +73,7 @@ class ArtisanController extends Controller
      */
     public function show($id)
     {
-      
+
         return view('admin.artisans.detail', [
             'singleRessourceArtisan' =>  $this->artisanService->single($id),
             'allMediaArtisan'=>  $this->artisanService->getMediaArtisan($id),
@@ -93,6 +91,7 @@ class ArtisanController extends Controller
     {
         return view('admin.artisans.edit', [
             'allSpecialites'=> $this->specialiteService->all(),
+            'allArtisans' => Artisan::all(),
             'singleRessource'=> $this->artisanService->single($id)
         ]);
     }

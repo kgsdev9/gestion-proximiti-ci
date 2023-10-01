@@ -21,6 +21,10 @@ class ArtisanService
         return $this->artisanRepositories->all();
     }
 
+    public function getArtisansRandom() {
+        return $this->artisanRepositories->getArtisansRandom();
+    }
+
     public function single($id) {
         return $this->artisanRepositories->single($id);
     }
