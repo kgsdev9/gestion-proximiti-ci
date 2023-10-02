@@ -129,6 +129,9 @@
                                                             </a>
                                                         </li>
                                                         @endforeach
+
+
+
                                                     </ul>
                                                 </div>
 
@@ -178,8 +181,8 @@
                                                         <i class="bx bx-dots-vertical-rounded"></i>
                                                     </a>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="{{route('detail.sms.send', $latest->id)}}">Detail</a>
-                                                        <a class="dropdown-item" href="#">Supprimer</a>
+
+
 
                                                     </div>
                                                 </div>
@@ -201,7 +204,10 @@
                                                                 <a href="#" class="text-body">{{$value->name}}</a>
                                                             </h5>
                                                             <p class="text-muted mb-2">
-                                                                Peintre
+                                                                @foreach ($value->specialites as  $specialite)
+                                                                    {{$specialite->libelle}}
+                                                                @endforeach
+
                                                             </p>
                                                         </div>
 
@@ -209,6 +215,12 @@
                                                     <!-- end card -->
                                                 </div>
                                                 @endforeach
+                                                @if (session()->has('message'))
+                                                <div class="alert alert-success">
+                                                    {{ session('message') }}
+                                                </div>
+                                                @endif
+
                                             </div>
                                 </ul>
                             </div></div></div></div><div class="simplebar-placeholder" style="width: auto; height: 949px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 144px; transform: translate3d(0px, 0px, 0px); display: block;"></div></div></div>

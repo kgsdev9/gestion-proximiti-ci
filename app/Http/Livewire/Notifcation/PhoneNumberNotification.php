@@ -50,7 +50,7 @@ class PhoneNumberNotification extends Component
             $twilio_number = getenv("TWILIO_NUMBER");
             $twilio_name = getenv("TWILIO_RECIPIENT_NAME");
             $client = new Client($account_sid, $auth_token);
-            $client->messages->create($value->telephone, [
+            $client->messages->create('+225'.$value->telephone, [
                 'from' => $twilio_number,
                 'to'=> $twilio_name,
                 'body' => $this->sms]);
@@ -60,9 +60,10 @@ class PhoneNumberNotification extends Component
                     'user_id' => Auth::user()->id
                 ]);
                 $rs->artisans()->sync($value->id);
+                session()->flash('message', 'message diffusé avec success.');
         }
 
-        // $this->reset();
+        $this->reset();
       }
 
 
@@ -73,7 +74,3 @@ class PhoneNumberNotification extends Component
 
 
 
-
-
-
-// return back()->with( 'success', $count . "Message énvoyé avec succes!" );

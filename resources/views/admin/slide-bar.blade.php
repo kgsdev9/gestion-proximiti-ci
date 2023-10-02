@@ -89,15 +89,7 @@
                                 <li><a href="{{route('annuaire.messagerie')}}" data-key="t-read-email">PARTICULIERS</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow" aria-expanded="false">
-                                <span data-key="t-invoices">MARKETING EMAIL </span>
-                            </a>
-                            <ul class="sub-menu mm-collapse" aria-expanded="false">
-                                <li><a href="#" data-key="t-invoice-list">E-MAIL </a></li>
-
-                            </ul>
-                        </li>
+                        
 
 
                     </ul>
