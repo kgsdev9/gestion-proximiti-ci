@@ -56,7 +56,7 @@ class HomeController extends Controller
         $pdf = Pdf::loadView('livewire.commande.downloadorder', [
             'ressource' =>$data,
             'commande' =>$commande
-        ]);
+        ])->setPaper('a4', 'landscape')->setWarnings(false);
         return $pdf->download('invoice.pdf');
     }
 

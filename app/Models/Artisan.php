@@ -17,7 +17,7 @@ class Artisan extends Model
     public function specialites() {
         return $this->belongsToMany(Speciality::class,'artisan_speciality','artisan_id','speciality_id');
     }
-
+    
     public function medias() {
         return $this->hasMany(Media::class);
     }

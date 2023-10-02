@@ -41,6 +41,7 @@ class ArtisanRepository {
 
     public function save(ArtisanRequest $data) {
 
+
         if(!empty($data)) {
 
         if($data->hasfile('photo')) {
@@ -100,6 +101,7 @@ class ArtisanRepository {
 
     public function update(ArtisanRequest $data, int $id)
     {
+ 
         $ressource  = Artisan::find($id);
         $ressource->name = $data['name'];
         $ressource->slug = \Str::slug($data['name']);
@@ -108,6 +110,7 @@ class ArtisanRepository {
         $ressource->adresse =  $data['adresse'];
         $ressource->email =  $data['email'];
         $ressource->status = $data['statut'];
+
         $ressource->commune = $data['commune'];
         $ressource->date_adhesion = $data['date_adhesion'];
         $ressource->zone_intervention = $data['zone_intervention'];
@@ -123,7 +126,7 @@ class ArtisanRepository {
             $file->move(public_path('artisans/photo/'),$name);
             $ressource->photo = $name;
          }
-
+         $ressource->specialites()->sync($data->speciality_id);
         $ressource->update();
 
         if($data->hasFile('file')) {
