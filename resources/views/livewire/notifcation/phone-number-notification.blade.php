@@ -61,14 +61,23 @@
                                 <div class="tab-pane active" id="chat" role="tabpanel">
                                     <div class="chat-message-list" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: auto; overflow: hidden; padding-right: 0px; padding-bottom: 0px;"><div class="simplebar-content" style="padding: 0px;">
                                         <div class="pt-3">
+
+                                            <div class="px-3">
+                                                <select wire:model="commune_id"  class="form-control">
+                                                    <option value="">Selectionner une commune </option>
+                                                    @foreach ($allCommues as $commune)
+                                                    <option value="{{$commune->id}}">{{$commune->commune}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <br>
+                                             </div>
+
                                             <div class="px-3">
                                                <input type="text" wire:model="search" class="form-control" placeholder="Par nom">
                                                <br>
                                             </div>
                                             <ul class="list-unstyled chat-list">
                                                 @foreach ($allArtisans as $value)
-
-
                                                 <li class="active">
                                                     <a href="#">
                                                         <div class="d-flex align-items-start">
@@ -84,8 +93,8 @@
                                                                     @foreach ( $value->specialites as $specialite )
                                                                     {{$specialite->libelle}}
                                                                     @endforeach
-
-
+                                                                        <br>
+                                                                    <span>{{$value->commune}}</span>
                                                                 </p>
                                                             </div>
                                                             <div class="flex-shrink-0">
