@@ -15,7 +15,8 @@ class PhoneNumberNotification extends Component
     public $message =  [] ;
 
     public $search = "";
-    public $commune_id = "";
+    public $commune= "";
+
 
 
     public $sms ="Proximiti Vous avez une nouvelle mission. Appelez le 0500507952 et indiquez le code PX2509. A bientôt ! L'équipe Proximiti";
@@ -33,18 +34,19 @@ class PhoneNumberNotification extends Component
         $artisans =  Artisan::query();
 
         if($this->search != "") {
-            $artisans->where('name', 'like', '%'.$this->search.'%')->get();
+            $artisans->where('name', 'like', '%'.$this->search.'%')
+            ->orWhere('commune', 'like', '%'.$this->search.'%');
+
         }
 
-        if($this->commune_id != "") {
-            $artisans->where('id',$this->commune_id);
+        if($this->commune != "") {
+            $artisans->where('commune',$this->commune);
         }
 
         return view('livewire.notifcation.phone-number-notification', [
-            'allArtisans' => $artisans->paginate(30),
+            'allArtisans' => $artisans->get(),
             'selectionArtisan'=>  Artisan::find($this->message),
             'allSpecialites' => Speciality::all(),
-            'allCommues' => Artisan::select('id', 'commune')->get(),
             'allMessages' => Message::orderByDesc('created_at')->get(),
             'laste_message' => Message::orderByDesc('created_at')->take(1)->get()
         ])

@@ -63,11 +63,15 @@
                                         <div class="pt-3">
 
                                             <div class="px-3">
-                                                <select wire:model="commune_id"  class="form-control">
+                                                <select wire:model="commune"  class="form-control">
                                                     <option value="">Selectionner une commune </option>
-                                                    @foreach ($allCommues as $commune)
-                                                    <option value="{{$commune->id}}">{{$commune->commune}}</option>
-                                                    @endforeach
+                                                        <option value="ABOBO">ABOBO</option>
+                                                        <option value="Cocody">COCODY</option>
+                                                        <option value="koumassi">KOUMASSI</option>
+                                                        <option value="Yopougon">YOPOUGON</option>
+                                                        <option value="BINGERVILLE">BINGERVILLE</option>
+                                                        <option value="Anyama">ANAYAMA</option>
+                                                        <option value="Port-Bouet">PORT - BOUET </option>
                                                 </select>
                                                 <br>
                                              </div>
